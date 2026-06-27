@@ -29,14 +29,86 @@ import '../styles/global.css';
 				<p class="text-xl font-medium">let's get in touch</p>
 				<p>Whether you’re a boutique hotel, a resort, a restaurant, a concept store or an alternative venue — if you want content that’s ready to post and actually performs, let’s talk about your project.</p>
 
-				<form class="space-y-3 text-left">
-					<input type="text" placeholder="Your name" class="w-full border-b border-neutral-300 bg-transparent pb-2 text-sm outline-none placeholder:text-neutral-400 focus:border-[#1c1c1c]" />
-					<input type="text" placeholder="Property / Brand name" class="w-full border-b border-neutral-300 bg-transparent pb-2 text-sm outline-none placeholder:text-neutral-400 focus:border-[#1c1c1c]" />
-					<input type="text" placeholder="Type of venue" class="w-full border-b border-neutral-300 bg-transparent pb-2 text-sm outline-none placeholder:text-neutral-400 focus:border-[#1c1c1c]" />
-					<input type="text" placeholder="Country and city" class="w-full border-b border-neutral-300 bg-transparent pb-2 text-sm outline-none placeholder:text-neutral-400 focus:border-[#1c1c1c]" />
-					<textarea placeholder="Tell me about your project" rows="3" class="w-full resize-none border-b border-neutral-300 bg-transparent pb-2 text-sm outline-none placeholder:text-neutral-400 focus:border-[#1c1c1c]"></textarea>
-					<button type="submit" class="pt-2 text-sm font-medium transition-colors hover:text-neutral-400">send my request</button>
+				<form id="contact-form" class="space-y-3 text-left" novalidate>
+					<input type="text" name="name" placeholder="Your name" class="w-full border-b border-neutral-300 bg-transparent pb-2 text-sm outline-none placeholder:text-neutral-400 focus:border-[#1c1c1c]" />
+					<input type="text" name="brand" placeholder="Property / Brand name" class="w-full border-b border-neutral-300 bg-transparent pb-2 text-sm outline-none placeholder:text-neutral-400 focus:border-[#1c1c1c]" />
+					<input type="text" name="venue" placeholder="Type of venue" class="w-full border-b border-neutral-300 bg-transparent pb-2 text-sm outline-none placeholder:text-neutral-400 focus:border-[#1c1c1c]" />
+					<input type="text" name="location" placeholder="Country and city" class="w-full border-b border-neutral-300 bg-transparent pb-2 text-sm outline-none placeholder:text-neutral-400 focus:border-[#1c1c1c]" />
+					<textarea name="message" placeholder="Tell me about your project" rows="3" class="w-full resize-none border-b border-neutral-300 bg-transparent pb-2 text-sm outline-none placeholder:text-neutral-400 focus:border-[#1c1c1c]"></textarea>
+					<input type="text" name="_hp" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off" />
+					<div id="turnstile-container" class="pt-2"></div>
+					<div id="form-status"></div>
+					<button type="submit" id="submit-btn" class="pt-2 text-sm font-medium transition-colors hover:text-neutral-400">send my request</button>
 				</form>
+
+				<script is:inline define:vars={{ siteKey: import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '' }}>
+					(function() {
+						const form = document.getElementById('contact-form');
+						const btn = document.getElementById('submit-btn');
+						const status = document.getElementById('form-status');
+						let widgetId = null;
+
+						if (siteKey) {
+							const script = document.createElement('script');
+							script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=__onTurnstileLoad';
+							script.async = true;
+							window.__onTurnstileLoad = function() {
+								widgetId = window.turnstile.render('#turnstile-container', {
+									sitekey: siteKey,
+									theme: 'light',
+									size: 'flexible',
+								});
+							};
+							document.head.appendChild(script);
+						}
+
+						form.addEventListener('submit', async function(e) {
+							e.preventDefault();
+							btn.disabled = true;
+							btn.textContent = 'sending…';
+							status.textContent = '';
+							status.style.color = '';
+
+							const data = Object.fromEntries(new FormData(form));
+							const token = widgetId != null ? window.turnstile.getResponse(widgetId) : '';
+
+							if (siteKey && !token) {
+								status.textContent = 'Please complete the verification.';
+								status.style.color = '#a04040';
+								btn.disabled = false;
+								btn.textContent = 'send my request';
+								return;
+							}
+
+							try {
+								const res = await fetch('/api/contact', {
+									method: 'POST',
+									headers: { 'Content-Type': 'application/json' },
+									body: JSON.stringify({ ...data, 'cf-turnstile-response': token }),
+								});
+								const result = await res.json();
+								if (!res.ok) {
+									status.textContent = result.error || 'Something went wrong.';
+									status.style.color = '#a04040';
+									if (widgetId != null) window.turnstile.reset(widgetId);
+									btn.disabled = false;
+									btn.textContent = 'send my request';
+									return;
+								}
+								btn.style.display = 'none';
+								status.textContent = 'Message sent — thank you.';
+								status.style.color = '#4a7a3a';
+								form.reset();
+							} catch {
+								status.textContent = 'Network error. Please try again.';
+								status.style.color = '#a04040';
+								if (widgetId != null) window.turnstile.reset(widgetId);
+								btn.disabled = false;
+								btn.textContent = 'send my request';
+							}
+						});
+					})();
+				</script>
 
 				<p>Prefer to reach out directly? <a href="mailto:hello@senjastudio.com" class="font-medium transition-colors hover:text-neutral-400">hello@senjastudio.com</a></p>
 			</div>
