@@ -47,22 +47,22 @@ export async function onRequestPost(context) {
 		</div>
 	`;
 
-	const res = await fetch('https://api.resend.com/emails', {
+	const form = new URLSearchParams();
+	form.set('from', env.FROM_EMAIL || 'Senja Studio <noreply@contact.senjastudio.com>');
+	form.set('to', env.RECIPIENT_EMAIL || 'anna.k.ext@gmail.com');
+	form.set('subject', emailSubject);
+	form.set('html', emailHtml);
+
+	const res = await fetch(`https://api.mailgun.net/v3/${env.MAILGUN_DOMAIN}/messages`, {
 		method: 'POST',
 		headers: {
-			'Authorization': `Bearer ${env.RESEND_API_KEY}`,
-			'Content-Type': 'application/json',
+			'Authorization': 'Basic ' + btoa('api:' + env.MAILGUN_API_KEY),
 		},
-		body: JSON.stringify({
-			from: env.FROM_EMAIL || 'Senja Studio <noreply@contact.senjastudio.com>',
-			to: [env.RECIPIENT_EMAIL || 'anna.k.ext@gmail.com'],
-			subject: emailSubject,
-			html: emailHtml,
-		}),
+		body: form,
 	});
 
 	if (!res.ok) {
-		console.error('Resend error:', await res.text());
+		console.error('Mailgun error:', await res.text());
 		return json({ error: 'Failed to send message' }, 500);
 	}
 
