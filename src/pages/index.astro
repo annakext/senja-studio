@@ -1,5 +1,11 @@
 ---
-
+import '@fontsource/inter/200.css';
+import '@fontsource/inter/300.css';
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '../styles/global.css';
+import inter300 from '@fontsource/inter/files/inter-latin-300-normal.woff2?url';
+import inter400 from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
 ---
 
 <html lang="en">
@@ -9,9 +15,330 @@
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+		<link rel="preload" href={inter300} as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href={inter400} as="font" type="font/woff2" crossorigin />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@0;1&display=swap" rel="stylesheet" />
 		<title>Astro</title>
+		<style>
+			#htrack figure { filter: grayscale(1); transition: filter 0.45s ease; }
+			#htrack figure.is-active { filter: grayscale(0); }
+			#htrack figure { position: relative; }
+			#idx-table p { transition: color 0.4s ease; }
+			#idx-table p.on { color: #1c1c1c; }
+		</style>
 	</head>
 	<body>
-		<h1>Astro</h1>
+				<div class="absolute top-3 left-6 z-10">
+			<a href="/" class="block text-lg leading-tight font-normal" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.05em; color: #1c1c1c; text-transform: uppercase;">senja studio</a>
+		</div>
+		<nav class="absolute top-3 right-6 z-10 flex flex-col items-end text-sm font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #aeaeae; text-transform: uppercase;">
+			<p><a href="/hotels" class="transition-colors hover:text-[#1c1c1c] hover:underline">hotels and stays</a> / <a href="/food" class="transition-colors hover:text-[#1c1c1c] hover:underline">food and spaces</a> / <a href="/ugc" class="transition-colors hover:text-[#1c1c1c] hover:underline">user generated</a></p>
+			<p class="mt-2"><a href="/about" class="transition-colors hover:text-[#1c1c1c] hover:underline">[about]</a> <a href="/contact" class="transition-colors hover:text-[#1c1c1c] hover:underline">[contact]</a></p>
+		</nav>
+		<div class="fixed bottom-4 left-6 z-30 text-[0.8125rem] font-[325] leading-[1.2em]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0; color: #1c1c1c;">
+			<p>Your place deserves to be seen.</p>
+			<p>Film. Photo. Narrative.</p>
+			<p class="mt-3 max-w-[11rem]">Visual content studio specializing in travel, hospitality and lifestyle. Driven by a passion for image-making and telling stories.</p>
+		</div>
+
+
+		<main id="hscroll" class="h-screen overflow-hidden">
+			<div id="htrack" class="flex w-full flex-col items-center gap-[2px] will-change-transform">
+				<figure class="group relative w-[13vw] max-w-md">
+					<img src="/images/01-bali.jpg" alt="" class="aspect-square w-full object-cover" />
+					<a href="/hotels" class="absolute inset-0 z-20" aria-label="hotels and stays"></a>
+					<img src="/images/01-bali-blur.jpg" alt="" class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+					<div class="absolute inset-0 bg-white/0 transition-colors duration-300 group-hover:bg-white/30"></div>
+				</figure>
+				<figure class="group relative w-[17vw] max-w-md">
+					<img src="/images/02-bali-3.jpg" alt="" class="aspect-square w-full object-cover object-bottom" />
+					<a href="/food" class="absolute inset-0 z-20" aria-label="food and spaces"></a>
+					<img src="/images/02-bali-blur-3.jpg" alt="" class="absolute inset-0 h-full w-full object-cover object-bottom opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+				</figure>
+				<figure class="group relative w-[14vw] max-w-md">
+					<img src="/images/nepal.jpg" alt="" class="aspect-square w-full object-cover" />
+					<a href="/outdoors" class="absolute inset-0 z-20" aria-label="outdoors"></a>
+					<img src="/images/nepal-blur.jpg" alt="" class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+					<div class="absolute inset-0 bg-white/0 transition-colors duration-300 group-hover:bg-white/30"></div>
+				</figure>
+				<figure class="group relative w-[16vw] max-w-md">
+					<img src="/images/priscine.jpg" alt="" class="aspect-square w-full object-cover object-center" />
+					<a href="/ugc" class="absolute inset-0 z-20" aria-label="user generated content"></a>
+					<img src="/images/priscine-blur.jpg" alt="" class="absolute inset-0 h-full w-full object-cover object-center opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+					<div class="absolute inset-0 bg-white/0 transition-colors duration-300 group-hover:bg-white/30"></div>
+				</figure>
+				<figure class="group relative w-[13vw] max-w-md">
+					<img src="/images/01-bali.jpg" alt="" class="aspect-square w-full object-cover" />
+					<a href="/hotels" class="absolute inset-0 z-20" aria-label="hotels and stays"></a>
+					<img src="/images/01-bali-blur.jpg" alt="" class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+					<div class="absolute inset-0 bg-white/0 transition-colors duration-300 group-hover:bg-white/30"></div>
+				</figure>
+				<figure class="group relative w-[17vw] max-w-md">
+					<img src="/images/02-bali-3.jpg" alt="" class="aspect-square w-full object-cover object-bottom" />
+					<a href="/food" class="absolute inset-0 z-20" aria-label="food and spaces"></a>
+					<img src="/images/02-bali-blur-3.jpg" alt="" class="absolute inset-0 h-full w-full object-cover object-bottom opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+				</figure>
+				<figure class="group relative w-[14vw] max-w-md">
+					<img src="/images/nepal.jpg" alt="" class="aspect-square w-full object-cover" />
+					<a href="/outdoors" class="absolute inset-0 z-20" aria-label="outdoors"></a>
+					<img src="/images/nepal-blur.jpg" alt="" class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+					<div class="absolute inset-0 bg-white/0 transition-colors duration-300 group-hover:bg-white/30"></div>
+				</figure>
+				<figure class="group relative w-[16vw] max-w-md">
+					<img src="/images/priscine.jpg" alt="" class="aspect-square w-full object-cover object-center" />
+					<a href="/ugc" class="absolute inset-0 z-20" aria-label="user generated content"></a>
+					<img src="/images/priscine-blur.jpg" alt="" class="absolute inset-0 h-full w-full object-cover object-center opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+					<div class="absolute inset-0 bg-white/0 transition-colors duration-300 group-hover:bg-white/30"></div>
+				</figure>
+				<figure class="group relative w-[13vw] max-w-md">
+					<img src="/images/01-bali.jpg" alt="" class="aspect-square w-full object-cover" />
+					<a href="/hotels" class="absolute inset-0 z-20" aria-label="hotels and stays"></a>
+					<img src="/images/01-bali-blur.jpg" alt="" class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+					<div class="absolute inset-0 bg-white/0 transition-colors duration-300 group-hover:bg-white/30"></div>
+				</figure>
+				<figure class="group relative w-[17vw] max-w-md">
+					<img src="/images/02-bali-3.jpg" alt="" class="aspect-square w-full object-cover object-bottom" />
+					<a href="/food" class="absolute inset-0 z-20" aria-label="food and spaces"></a>
+					<img src="/images/02-bali-blur-3.jpg" alt="" class="absolute inset-0 h-full w-full object-cover object-bottom opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+				</figure>
+				<figure class="group relative w-[14vw] max-w-md">
+					<img src="/images/nepal.jpg" alt="" class="aspect-square w-full object-cover" />
+					<a href="/outdoors" class="absolute inset-0 z-20" aria-label="outdoors"></a>
+					<img src="/images/nepal-blur.jpg" alt="" class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+					<div class="absolute inset-0 bg-white/0 transition-colors duration-300 group-hover:bg-white/30"></div>
+				</figure>
+				<figure class="group relative w-[16vw] max-w-md">
+					<img src="/images/priscine.jpg" alt="" class="aspect-square w-full object-cover object-center" />
+					<a href="/ugc" class="absolute inset-0 z-20" aria-label="user generated content"></a>
+					<img src="/images/priscine-blur.jpg" alt="" class="absolute inset-0 h-full w-full object-cover object-center opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+					<div class="absolute inset-0 bg-white/0 transition-colors duration-300 group-hover:bg-white/30"></div>
+				</figure>
+				
+			
+				<figure class="group relative w-[13vw] max-w-md">
+					<img src="/images/01-bali.jpg" alt="" class="aspect-square w-full object-cover" />
+					<a href="/hotels" class="absolute inset-0 z-20" aria-label="hotels and stays"></a>
+					<img src="/images/01-bali-blur.jpg" alt="" class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+					<div class="absolute inset-0 bg-white/0 transition-colors duration-300 group-hover:bg-white/30"></div>
+				</figure>
+				<figure class="group relative w-[17vw] max-w-md">
+					<img src="/images/02-bali-3.jpg" alt="" class="aspect-square w-full object-cover object-bottom" />
+					<a href="/food" class="absolute inset-0 z-20" aria-label="food and spaces"></a>
+					<img src="/images/02-bali-blur-3.jpg" alt="" class="absolute inset-0 h-full w-full object-cover object-bottom opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+				</figure>
+				<figure class="group relative w-[14vw] max-w-md">
+					<img src="/images/nepal.jpg" alt="" class="aspect-square w-full object-cover" />
+					<a href="/outdoors" class="absolute inset-0 z-20" aria-label="outdoors"></a>
+					<img src="/images/nepal-blur.jpg" alt="" class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+					<div class="absolute inset-0 bg-white/0 transition-colors duration-300 group-hover:bg-white/30"></div>
+				</figure>
+				<figure class="group relative w-[16vw] max-w-md">
+					<img src="/images/priscine.jpg" alt="" class="aspect-square w-full object-cover object-center" />
+					<a href="/ugc" class="absolute inset-0 z-20" aria-label="user generated content"></a>
+					<img src="/images/priscine-blur.jpg" alt="" class="absolute inset-0 h-full w-full object-cover object-center opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+					<div class="absolute inset-0 bg-white/0 transition-colors duration-300 group-hover:bg-white/30"></div>
+				</figure>
+				<figure class="group relative w-[13vw] max-w-md">
+					<img src="/images/01-bali.jpg" alt="" class="aspect-square w-full object-cover" />
+					<a href="/hotels" class="absolute inset-0 z-20" aria-label="hotels and stays"></a>
+					<img src="/images/01-bali-blur.jpg" alt="" class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+					<div class="absolute inset-0 bg-white/0 transition-colors duration-300 group-hover:bg-white/30"></div>
+				</figure>
+				<figure class="group relative w-[17vw] max-w-md">
+					<img src="/images/02-bali-3.jpg" alt="" class="aspect-square w-full object-cover object-bottom" />
+					<a href="/food" class="absolute inset-0 z-20" aria-label="food and spaces"></a>
+					<img src="/images/02-bali-blur-3.jpg" alt="" class="absolute inset-0 h-full w-full object-cover object-bottom opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+				</figure>
+				<figure class="group relative w-[14vw] max-w-md">
+					<img src="/images/nepal.jpg" alt="" class="aspect-square w-full object-cover" />
+					<a href="/outdoors" class="absolute inset-0 z-20" aria-label="outdoors"></a>
+					<img src="/images/nepal-blur.jpg" alt="" class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+					<div class="absolute inset-0 bg-white/0 transition-colors duration-300 group-hover:bg-white/30"></div>
+				</figure>
+				<figure class="group relative w-[16vw] max-w-md">
+					<img src="/images/priscine.jpg" alt="" class="aspect-square w-full object-cover object-center" />
+					<a href="/ugc" class="absolute inset-0 z-20" aria-label="user generated content"></a>
+					<img src="/images/priscine-blur.jpg" alt="" class="absolute inset-0 h-full w-full object-cover object-center opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+					<div class="absolute inset-0 bg-white/0 transition-colors duration-300 group-hover:bg-white/30"></div>
+				</figure>
+				<figure class="group relative w-[13vw] max-w-md">
+					<img src="/images/01-bali.jpg" alt="" class="aspect-square w-full object-cover" />
+					<a href="/hotels" class="absolute inset-0 z-20" aria-label="hotels and stays"></a>
+					<img src="/images/01-bali-blur.jpg" alt="" class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+					<div class="absolute inset-0 bg-white/0 transition-colors duration-300 group-hover:bg-white/30"></div>
+				</figure>
+				<figure class="group relative w-[17vw] max-w-md">
+					<img src="/images/02-bali-3.jpg" alt="" class="aspect-square w-full object-cover object-bottom" />
+					<a href="/food" class="absolute inset-0 z-20" aria-label="food and spaces"></a>
+					<img src="/images/02-bali-blur-3.jpg" alt="" class="absolute inset-0 h-full w-full object-cover object-bottom opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+				</figure>
+				<figure class="group relative w-[14vw] max-w-md">
+					<img src="/images/nepal.jpg" alt="" class="aspect-square w-full object-cover" />
+					<a href="/outdoors" class="absolute inset-0 z-20" aria-label="outdoors"></a>
+					<img src="/images/nepal-blur.jpg" alt="" class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+					<div class="absolute inset-0 bg-white/0 transition-colors duration-300 group-hover:bg-white/30"></div>
+				</figure>
+				<figure class="group relative w-[16vw] max-w-md">
+					<img src="/images/priscine.jpg" alt="" class="aspect-square w-full object-cover object-center" />
+					<a href="/ugc" class="absolute inset-0 z-20" aria-label="user generated content"></a>
+					<img src="/images/priscine-blur.jpg" alt="" class="absolute inset-0 h-full w-full object-cover object-center opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+					<div class="absolute inset-0 bg-white/0 transition-colors duration-300 group-hover:bg-white/30"></div>
+				</figure>
+				
+			</div>
+		</main>
+		<div id="idx-table" class="fixed bottom-4 left-3/4 right-6 z-30 text-[0.75rem] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0; color: #aeaeae;">
+			<div class="relative h-[15.6em]">
+				<div id="idx-line" class="pointer-events-none absolute inset-x-0 border-t border-[#1c1c1c]" style="top: 6em;"></div>
+				<span id="idx-num" class="tabular-nums absolute left-0" style="top: 5.4em; transform: translateY(-50%); color: #1c1c1c;">01</span>
+				<span id="idx-theme" class="absolute right-0" style="top: 5.4em; transform: translateY(-50%); color: #1c1c1c;">XX</span>
+				<div class="absolute top-0 h-[15.6em] overflow-hidden" style="left: 50%; transform: translateX(calc(-50% + 4rem));">
+					<div id="idx-list">
+						<p class="leading-[1.2em]" data-i="0">indonesia</p>
+						<p class="leading-[1.2em]" data-i="1">thailand</p>
+						<p class="leading-[1.2em]" data-i="2">vietnam</p>
+						<p class="leading-[1.2em]" data-i="3">cambodia</p>
+						<p class="leading-[1.2em]" data-i="4">laos</p>
+						<p class="leading-[1.2em]" data-i="5">myanmar</p>
+						<p class="leading-[1.2em]" data-i="6">philippines</p>
+						<p class="leading-[1.2em]" data-i="7">malaysia</p>
+						<p class="leading-[1.2em]" data-i="8">singapore</p>
+						<p class="leading-[1.2em]" data-i="9">japan</p>
+						<p class="leading-[1.2em]" data-i="10">south korea</p>
+						<p class="leading-[1.2em]" data-i="11">sri lanka</p>
+						<p class="leading-[1.2em]" data-i="12">indonesia</p>
+						<p class="leading-[1.2em]" data-i="13">thailand</p>
+						<p class="leading-[1.2em]" data-i="14">vietnam</p>
+						<p class="leading-[1.2em]" data-i="15">cambodia</p>
+						<p class="leading-[1.2em]" data-i="16">laos</p>
+						<p class="leading-[1.2em]" data-i="17">myanmar</p>
+						<p class="leading-[1.2em]" data-i="18">philippines</p>
+						<p class="leading-[1.2em]" data-i="19">malaysia</p>
+						<p class="leading-[1.2em]" data-i="20">singapore</p>
+						<p class="leading-[1.2em]" data-i="21">japan</p>
+						<p class="leading-[1.2em]" data-i="22">south korea</p>
+						<p class="leading-[1.2em]" data-i="23">sri lanka</p>
+						<p class="leading-[1.2em]" data-i="24">indonesia</p>
+						<p class="leading-[1.2em]" data-i="25">thailand</p>
+						<p class="leading-[1.2em]" data-i="26">vietnam</p>
+						<p class="leading-[1.2em]" data-i="27">cambodia</p>
+						<p class="leading-[1.2em]" data-i="28">laos</p>
+						<p class="leading-[1.2em]" data-i="29">myanmar</p>
+						<p class="leading-[1.2em]" data-i="30">philippines</p>
+						<p class="leading-[1.2em]" data-i="31">malaysia</p>
+						<p class="leading-[1.2em]" data-i="32">singapore</p>
+						<p class="leading-[1.2em]" data-i="33">japan</p>
+						<p class="leading-[1.2em]" data-i="34">south korea</p>
+						<p class="leading-[1.2em]" data-i="35">sri lanka</p>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+
+
+
+		<script>
+			const main = document.getElementById('hscroll');
+			const track = document.getElementById('htrack');
+			const figs = Array.from(track.querySelectorAll('figure'));
+			const numEl = document.getElementById('idx-num');
+			const themeEl = document.getElementById('idx-theme');
+			const listEl = document.getElementById('idx-list');
+			const rows = listEl ? Array.from(listEl.querySelectorAll('p[data-i]')) : [];
+			const themes = ['XX', 'YY', 'ZZ', 'AA', 'BB', 'CC'];
+			const N = 12;
+			const ROW = 1.2;
+			let centers = figs.map((f) => f.offsetTop + f.offsetHeight / 2);
+			let vw = window.innerHeight;
+			let setWidth = figs[N].offsetTop - figs[0].offsetTop;
+			let target = 0;
+			let current = 0;
+			let activeBi = -1;
+			let activeM = -1;
+			let reelIdx = N;
+			let prevCountry = 0;
+			let idle = 0;
+			let snapped = false;
+			const measure = () => {
+				centers = figs.map((f) => f.offsetTop + f.offsetHeight / 2);
+				vw = window.innerHeight;
+				setWidth = figs[N].offsetTop - figs[0].offsetTop;
+			};
+			window.addEventListener('resize', measure);
+			main.addEventListener('wheel', (e) => {
+				e.preventDefault();
+				let d = Math.abs(e.deltaY) > Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
+				if (e.deltaMode === 1) d *= 16;
+				else if (e.deltaMode === 2) d *= vw;
+				target += d;
+				idle = 0;
+				snapped = false;
+			}, { passive: false });
+			const placeReel = () => {
+				listEl.style.transform = 'translateY(' + ((4 - reelIdx) * ROW) + 'em)';
+				rows.forEach((r) => r.classList.toggle('on', Number(r.dataset.i) === reelIdx));
+			};
+			const setReel = (country) => {
+				let diff = country - prevCountry;
+				if (diff > N / 2) diff -= N;
+				if (diff < -N / 2) diff += N;
+				reelIdx += diff;
+				prevCountry = country;
+				if (reelIdx < N || reelIdx >= 2 * N) {
+					reelIdx = N + (((reelIdx % N) + N) % N);
+				}
+				placeReel();
+			};
+			const updateActive = (vis) => {
+				const targetPos = vis + vw / 2;
+				let bi = 0;
+				let bd = Infinity;
+				for (let i = 0; i < centers.length; i++) {
+					const dd = Math.abs(centers[i] - targetPos);
+					if (dd < bd) { bd = dd; bi = i; }
+				}
+				if (bi !== activeBi) {
+						activeBi = bi;
+						const m = bi % N;
+						if (m !== activeM) {
+							activeM = m;
+							for (let i = 0; i < figs.length; i++) figs[i].classList.toggle('is-active', i % N === m);
+							if (numEl) numEl.textContent = String(m + 1).padStart(2, '0');
+							if (themeEl) themeEl.textContent = themes[m % themes.length];
+							setReel(m);
+						}
+					}
+
+				return centers[bi] - targetPos;
+			};
+			placeReel();
+			const raf = () => {
+				current += (target - current) * 0.08;
+				const vis = (((current % setWidth) + setWidth) % setWidth);
+				track.style.transform = 'translate3d(0, ' + (-vis) + 'px, 0)';
+				const bestD = updateActive(vis);
+				idle++;
+				if (!snapped && idle > 8 && Math.abs(target - current) < 1.5) {
+					target += bestD;
+					snapped = true;
+				}
+				requestAnimationFrame(raf);
+			};
+			requestAnimationFrame(raf);
+		</script>
+
+
+
+
+
+
 	</body>
 </html>
