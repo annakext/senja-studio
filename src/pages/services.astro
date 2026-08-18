@@ -1,0 +1,40 @@
+---
+import '@fontsource/inter/300.css';
+import '@fontsource/inter/400.css';
+import '../styles/global.css';
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@0;1&display=swap" rel="stylesheet" />
+		<title>services — senja studio</title>
+		<style>
+			.nav-link { position: relative; }
+			.nav-link:hover { color: #c2c2c2; }
+			.nav-link.active { color: #1c1c1c; }
+		</style>
+	</head>
+	<body>
+		<div class="absolute top-4 left-12 z-10">
+			<a href="/" class="block text-4xl leading-tight font-normal" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.05em; color: #1c1c1c; text-transform: uppercase;">senja studio</a>
+		</div>
+		<nav class="fixed top-4 left-1/2 right-6 z-10 flex flex-row items-center justify-between text-sm font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c;">
+			<a href="/hotels" class="nav-link">selected work</a>
+			<a href="/services" class="nav-link active">services</a>
+			<a href="/about" class="nav-link">about</a>
+			<a href="/contact" class="nav-link">contact</a>
+		</nav>
+
+		<a href="/" class="absolute top-4 right-6 z-10 text-lg leading-tight font-normal text-[#1c1c1c] transition-colors hover:text-neutral-300" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">✕</a>
+
+
+		<main class="min-h-screen"></main>
+	</body>
+</html>

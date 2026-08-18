@@ -13,13 +13,22 @@ import '../styles/global.css';
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>about — senja studio</title>
+		<style>
+			.nav-link { position: relative; }
+			.nav-link:hover { color: #c2c2c2; }
+			.nav-link.active { color: #1c1c1c; }
+		</style>
 	</head>
 	<body>
 		<div class="absolute top-4 left-12 z-10">
-			<a href="/" class="block text-lg leading-tight font-normal" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.05em; color: #1c1c1c; text-transform: uppercase;">senja studio</a>
-			<p class="mt-1 text-sm font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #aeaeae;"><a href="/hotels" class="transition-colors hover:text-[#1c1c1c] hover:underline">hotels and stays</a> / <a href="/food" class="transition-colors hover:text-[#1c1c1c] hover:underline">food and spaces</a> / <a href="/outdoors" class="transition-colors hover:text-[#1c1c1c] hover:underline">outdoors</a> / <a href="/ugc" class="transition-colors hover:text-[#1c1c1c] hover:underline">user generated content</a></p>
-			<p class="text-sm font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #aeaeae;"><a href="/about" class="text-[#1c1c1c] underline">about</a> / <a href="/contact" class="transition-colors hover:text-[#1c1c1c] hover:underline">contact</a></p>
+			<a href="/" class="block text-4xl leading-tight font-normal" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.05em; color: #1c1c1c; text-transform: uppercase;">senja studio</a>
 		</div>
+		<nav class="fixed top-4 left-1/2 right-6 z-10 flex flex-row items-center justify-between text-sm font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c;">
+			<a href="/hotels" class="nav-link">selected work</a>
+			<a href="/services" class="nav-link">services</a>
+			<a href="/about" class="nav-link active">about</a>
+			<a href="/contact" class="nav-link">contact</a>
+		</nav>
 
 		<a href="/" class="absolute top-4 right-6 z-10 text-lg leading-tight font-normal text-[#1c1c1c] transition-colors hover:text-neutral-300" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">✕</a>
 

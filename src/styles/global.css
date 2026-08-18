@@ -1,9 +1,5 @@
 @import "tailwindcss";
 
-html {
-	scrollbar-gutter: stable;
-}
-
 @font-face {
 	font-family: "Restora";
 	src: url("/fonts/restora.otf") format("opentype");
