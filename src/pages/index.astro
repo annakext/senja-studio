@@ -28,7 +28,7 @@ import inter400 from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
 			#htrack .photo-visual { filter: grayscale(1) contrast(0.63) brightness(1.14); transform: scale(1); transform-origin: top; transition: filter 0.45s ease, transform 0.45s ease; }
 			#htrack figure.is-active .photo-visual { filter: grayscale(0); z-index: 5; }
 			#htrack figure { position: relative; }
-			#htrack figure::after { content: ""; position: absolute; inset: 0; background: rgba(255, 255, 255, 0.1); pointer-events: none; transition: opacity 0.45s ease; }
+			#htrack figure::after { content: ""; position: absolute; inset: 0; background: rgba(255, 255, 255, 0.2); pointer-events: none; transition: opacity 0.45s ease; }
 			#htrack figure.is-active::after { opacity: 0; }
 			#htrack figure.is-active .photo-num { opacity: 0; }
 			#idx-table p { transition: color 0.4s ease; }
@@ -438,17 +438,16 @@ import inter400 from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
 		<div class="absolute top-[44vh] left-1/2 z-10 inline-block">
 			<h1 class="relative block text-2xl leading-tight font-normal" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c;">projects</h1>
 			<img src="/images/projects-photo-5.jpg" alt="" class="absolute top-full right-full mt-6 w-[365px] max-w-none aspect-[3/4] object-cover brightness-125 -translate-x-1" />
-			<div class="absolute top-full left-0 mt-6 ml-2 flex w-[62px] max-w-none flex-col gap-2 -translate-x-1">
-				<div class="relative w-[62px] h-[82.67px] shrink-0">
-					<img src="/images/projects-photo-5.jpg" alt="" class="h-full w-full object-cover brightness-125" />
-					<div class="pointer-events-none absolute inset-0" style="background: rgba(255,255,255,0.65);"></div>
-				</div>
-				<div class="relative w-[62px] h-[82.67px] shrink-0">
-					<img src="/images/projects-photo-6.jpg" alt="" class="h-full w-full object-cover brightness-125" />
-					<div class="pointer-events-none absolute inset-0" style="background: rgba(255,255,255,0.65);"></div>
-				</div>
+			<div class="absolute top-full left-0 mt-6 ml-2 w-[59px] h-[78.67px] max-w-none -translate-x-1">
+				<img src="/images/projects-photo-5.jpg" alt="" class="h-full w-full object-cover brightness-125" />
+				<div class="pointer-events-none absolute inset-0" style="background: rgba(255,255,255,0.65);"></div>
+			</div>
+			<div class="peer/photo2 group/photo2 absolute top-full left-0 mt-[110.67px] ml-2 w-[59px] h-[78.67px] max-w-none -translate-x-1">
+				<img src="/images/projects-photo-6.jpg" alt="" class="h-full w-full object-cover brightness-125" />
+				<div class="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover/photo2:opacity-100" style="background: rgba(255,255,255,0.65);"></div>
 			</div>
 			<p class="absolute top-full mt-6 w-40 text-[0.76rem] font-[325] -translate-x-1" style="left: 78px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">I. VILLA CONNEXION<br />intimate luxurious spaces</p>
+			<p class="peer-hover/photo2:opacity-100 absolute top-full mt-[110.67px] w-40 text-[0.76rem] font-[325] opacity-0 transition-opacity duration-300 -translate-x-1" style="left: 78px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">II. RESORT LIFE<br />stillness and light</p>
 		</div>
 		<div id="idx-table" class="fixed bottom-[56vh] left-1/2 right-6 z-30 text-[0.7rem] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0; color: #c4c4c4;">
 			<div class="relative h-[15.6em]">
