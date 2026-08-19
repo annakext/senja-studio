@@ -454,7 +454,8 @@ import inter400 from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
 				<div class="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" style="background: rgba(230,230,230,0.65);"></div>
 			</div>
 			<div class="pointer-events-none peer-hover/photo2:opacity-0 peer-hover/photo3:opacity-0 peer-hover/photo4:opacity-0 absolute top-full left-0 mt-6 ml-2 w-[56.05px] h-[74.73px] max-w-none opacity-100 transition-opacity duration-300 -translate-x-1" style="background: rgba(230,230,230,0.65);"></div>
-			<p class="peer-hover/photo2:opacity-0 peer-hover/photo3:opacity-0 peer-hover/photo4:opacity-0 absolute top-full mt-6 w-40 text-[0.76rem] font-[325] opacity-100 transition-opacity duration-300 -translate-x-1" style="left: 98px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">I. VILLA CONNEXION<br />intimate luxurious spaces</p>
+			<p id="caption1-line1" class="peer-hover/photo2:opacity-0 peer-hover/photo3:opacity-0 peer-hover/photo4:opacity-0 fixed w-40 text-[0.76rem] font-[325] opacity-100 transition-opacity duration-300" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">I.</p>
+			<p id="caption1-line2" class="peer-hover/photo2:opacity-0 peer-hover/photo3:opacity-0 peer-hover/photo4:opacity-0 fixed w-40 text-[0.76rem] font-[325] opacity-100 transition-opacity duration-300" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">VILLA CONNEXION<br />intimate luxurious spaces</p>
 			<p class="peer-hover/photo2:opacity-100 absolute top-full mt-[106.73px] w-40 text-[0.76rem] font-[325] opacity-0 transition-opacity duration-300 -translate-x-1" style="left: 78px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">II. RESORT LIFE<br />stillness and light</p>
 			<p class="peer-hover/photo3:opacity-100 absolute top-full mt-[189.47px] w-40 text-[0.76rem] font-[325] opacity-0 transition-opacity duration-300 -translate-x-1" style="left: 78px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">III. CURATED PLACES<br />lifestyle, food and culture</p>
 			<p class="peer-hover/photo4:opacity-100 absolute top-full mt-[272.2px] w-40 text-[0.76rem] font-[325] opacity-0 transition-opacity duration-300 -translate-x-1" style="left: 78px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">IV. UGC<br />authentic and ready to post</p>
@@ -528,14 +529,33 @@ import inter400 from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
 			const connectorLine = document.getElementById('projects-connector-line');
 			const placeConnectorLine = () => {
 				const h1 = Array.from(document.querySelectorAll('h1')).find((x) => x.textContent.trim() === 'projects');
-				const countryCol = document.getElementById('idx-country-col');
-				if (!connectorLine || !h1 || !bigImg || !countryCol) return;
+				const taglineP = Array.from(document.querySelectorAll('p')).find((x) => x.textContent.includes('visual content studio'));
+				if (!connectorLine || !h1 || !bigImg || !taglineP) return;
+				const textNode = Array.from(taglineP.childNodes).find((n) => n.nodeType === 3 && n.textContent.includes('consultancy'));
+				const idx = textNode.textContent.indexOf('consultancy');
+				const range = document.createRange();
+				range.setStart(textNode, idx);
+				range.setEnd(textNode, idx + 'consultancy'.length);
+				const consultancyRect = range.getBoundingClientRect();
 				const h1Rect = h1.getBoundingClientRect();
 				const bigRect = bigImg.getBoundingClientRect();
-				const colRect = countryCol.getBoundingClientRect();
 				connectorLine.style.left = h1Rect.right + 'px';
 				connectorLine.style.top = bigRect.top + 'px';
-				connectorLine.style.width = (colRect.left - h1Rect.right) + 'px';
+				connectorLine.style.width = (consultancyRect.right - h1Rect.right) + 'px';
+
+				const gap = 12;
+				const indent = 20;
+				const lineHeight = 14;
+				const caption1Line1 = document.getElementById('caption1-line1');
+				const caption1Line2 = document.getElementById('caption1-line2');
+				if (caption1Line1) {
+					caption1Line1.style.left = h1Rect.right + 'px';
+					caption1Line1.style.top = (bigRect.top + gap) + 'px';
+				}
+				if (caption1Line2) {
+					caption1Line2.style.left = (h1Rect.right + indent) + 'px';
+					caption1Line2.style.top = (bigRect.top + gap + lineHeight) + 'px';
+				}
 			};
 			placeConnectorLine();
 			window.addEventListener('resize', placeConnectorLine);
