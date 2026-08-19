@@ -460,12 +460,13 @@ import inter400 from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
 			<p class="peer-hover/photo4:opacity-100 absolute top-full mt-[272.2px] w-40 text-[0.76rem] font-[325] opacity-0 transition-opacity duration-300 -translate-x-1" style="left: 78px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">IV. UGC<br />authentic and ready to post</p>
 		</div>
 		<div id="projects-connector-line" class="fixed pointer-events-none z-20" style="border-top: 0.5px solid #1c1c1c;"></div>
+		<p id="projects-page-indicator" class="fixed text-[0.76rem] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">1/4</p>
 		<div id="idx-table" class="fixed bottom-[56vh] left-1/2 right-6 z-30 text-[0.7rem] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0; color: #c4c4c4;">
 			<div class="relative h-[15.6em]">
 				<div id="idx-line" class="pointer-events-none absolute inset-x-0" style="top: 6em; border-top: 0.5px solid #1c1c1c;"></div>
 				<span id="idx-num" class="tabular-nums absolute left-0" style="top: 5.4em; transform: translateY(-50%); color: #1c1c1c;">01</span>
 				<span id="idx-theme" class="absolute right-0" style="top: 5.4em; transform: translateY(-50%); color: #1c1c1c;">XX</span>
-				<div id="idx-country-col" class="absolute top-0 h-[15.6em] overflow-hidden" style="left: 50%; transform: translateX(calc(-50% + 5.3rem)); mask-image: linear-gradient(to bottom, transparent 0%, transparent 23.08%, black 23.08%, black 69.23%, transparent 69.23%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, transparent 0%, transparent 23.08%, black 23.08%, black 69.23%, transparent 69.23%, transparent 100%);">
+				<div id="idx-country-col" class="absolute top-0 h-[15.6em] overflow-hidden" style="left: 50%; transform: translateX(calc(-50% + 5.8rem)); mask-image: linear-gradient(to bottom, transparent 0%, transparent 23.08%, black 23.08%, black 69.23%, transparent 69.23%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, transparent 0%, transparent 23.08%, black 23.08%, black 69.23%, transparent 69.23%, transparent 100%);">
 					<div id="idx-list">
 						<p class="leading-[1.2em]" data-i="0">indonesia</p>
 						<p class="leading-[1.2em]" data-i="1">thailand</p>
@@ -503,6 +504,12 @@ import inter400 from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
 						<p class="leading-[1.2em]" data-i="33">japan</p>
 						<p class="leading-[1.2em]" data-i="34">south korea</p>
 						<p class="leading-[1.2em]" data-i="35">sri lanka</p>
+						<p class="leading-[1.2em]" data-i="36">indonesia</p>
+						<p class="leading-[1.2em]" data-i="37">thailand</p>
+						<p class="leading-[1.2em]" data-i="38">vietnam</p>
+						<p class="leading-[1.2em]" data-i="39">cambodia</p>
+						<p class="leading-[1.2em]" data-i="40">laos</p>
+						<p class="leading-[1.2em]" data-i="41">myanmar</p>
 
 					</div>
 				</div>
@@ -540,13 +547,20 @@ import inter400 from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
 				const bigRect = bigImg.getBoundingClientRect();
 				connectorLine.style.left = h1Rect.right + 'px';
 				connectorLine.style.top = bigRect.top + 'px';
-				connectorLine.style.width = (consultancyRect.right - h1Rect.right + 25) + 'px';
+				connectorLine.style.width = (consultancyRect.right - h1Rect.right + 12) + 'px';
 
-				const gap = 3.48;
+				const gap = 4.5;
 				const caption1Line2 = document.getElementById('caption1-line2');
 				if (caption1Line2) {
 					caption1Line2.style.left = h1Rect.right + 'px';
 					caption1Line2.style.top = (bigRect.top + gap) + 'px';
+				}
+
+				const lineRight = h1Rect.right + parseFloat(connectorLine.style.width);
+				const pageIndicator = document.getElementById('projects-page-indicator');
+				if (pageIndicator) {
+					pageIndicator.style.right = (window.innerWidth - lineRight) + 'px';
+					pageIndicator.style.top = (bigRect.top + gap) + 'px';
 				}
 			};
 			placeConnectorLine();
