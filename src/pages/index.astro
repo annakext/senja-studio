@@ -437,22 +437,21 @@ import inter400 from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
 		</main>
 		<div class="absolute top-[44vh] left-1/2 z-10 inline-block">
 			<h1 class="relative block text-2xl leading-tight font-normal" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c;">projects</h1>
-			<img src="/images/projects-photo-5.jpg" alt="" class="absolute top-full right-full mt-6 w-[365px] max-w-none aspect-[3/4] object-cover brightness-125 -translate-x-1" />
-			<div class="absolute top-full left-0 mt-6 ml-2 w-[59px] h-[78.67px] max-w-none -translate-x-1">
+			<div class="absolute top-full right-full mt-6 w-[365px] -translate-x-1">
+				<img id="projects-big-img" src="/images/projects-photo-5.jpg" alt="" class="aspect-[3/4] w-full max-w-none object-cover brightness-125" />
+				<div class="pointer-events-none absolute inset-0" style="background: rgba(255,255,255,0.65);"></div>
+			</div>
+			<div class="projects-thumb absolute top-full left-0 mt-6 ml-2 w-[59px] h-[78.67px] max-w-none -translate-x-1" data-img="/images/projects-photo-5.jpg">
 				<img src="/images/projects-photo-5.jpg" alt="" class="h-full w-full object-cover brightness-125" />
-				<div class="pointer-events-none absolute inset-0" style="background: rgba(255,255,255,0.65);"></div>
 			</div>
-			<div class="peer/photo2 group/photo2 absolute top-full left-0 mt-[110.67px] ml-2 w-[59px] h-[78.67px] max-w-none -translate-x-1">
+			<div class="projects-thumb peer/photo2 absolute top-full left-0 mt-[110.67px] ml-2 w-[59px] h-[78.67px] max-w-none -translate-x-1" data-img="/images/projects-photo-6.jpg">
 				<img src="/images/projects-photo-6.jpg" alt="" class="h-full w-full object-cover brightness-125" />
-				<div class="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover/photo2:opacity-100" style="background: rgba(255,255,255,0.65);"></div>
 			</div>
-			<div class="absolute top-full left-0 mt-[197.34px] ml-2 w-[59px] h-[78.67px] max-w-none -translate-x-1">
+			<div class="projects-thumb absolute top-full left-0 mt-[197.34px] ml-2 w-[59px] h-[78.67px] max-w-none -translate-x-1" data-img="/images/projects-photo-7.jpg">
 				<img src="/images/projects-photo-7.jpg" alt="" class="h-full w-full object-cover brightness-125" />
-				<div class="pointer-events-none absolute inset-0" style="background: rgba(255,255,255,0.65);"></div>
 			</div>
-			<div class="absolute top-full left-0 mt-[284.01px] ml-2 w-[59px] h-[78.67px] max-w-none -translate-x-1">
+			<div class="projects-thumb absolute top-full left-0 mt-[284.01px] ml-2 w-[59px] h-[78.67px] max-w-none -translate-x-1" data-img="/images/projects-photo-8.jpg">
 				<img src="/images/projects-photo-8.jpg" alt="" class="h-full w-full object-cover brightness-125" />
-				<div class="pointer-events-none absolute inset-0" style="background: rgba(255,255,255,0.65);"></div>
 			</div>
 			<p class="absolute top-full mt-6 w-40 text-[0.76rem] font-[325] -translate-x-1" style="left: 78px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">I. VILLA CONNEXION<br />intimate luxurious spaces</p>
 			<p class="peer-hover/photo2:opacity-100 absolute top-full mt-[110.67px] w-40 text-[0.76rem] font-[325] opacity-0 transition-opacity duration-300 -translate-x-1" style="left: 78px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">II. RESORT LIFE<br />stillness and light</p>
@@ -514,6 +513,14 @@ import inter400 from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
 
 
 		<script>
+			const bigImg = document.getElementById('projects-big-img');
+			const defaultBigSrc = bigImg ? bigImg.getAttribute('src') : '';
+			document.querySelectorAll('.projects-thumb').forEach((thumb) => {
+				const src = thumb.dataset.img;
+				thumb.addEventListener('mouseenter', () => { if (bigImg) bigImg.src = src; });
+				thumb.addEventListener('mouseleave', () => { if (bigImg) bigImg.src = defaultBigSrc; });
+			});
+
 			const main = document.getElementById('hscroll');
 			const track = document.getElementById('htrack');
 			const figs = Array.from(track.querySelectorAll('figure'));
