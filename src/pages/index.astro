@@ -544,8 +544,6 @@ import inter400 from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
 				connectorLine.style.width = (consultancyRect.right - h1Rect.right) + 'px';
 
 				const gap = 3.48;
-				const indent = 20;
-				const lineHeight = 14;
 				const caption1Line1 = document.getElementById('caption1-line1');
 				const caption1Line2 = document.getElementById('caption1-line2');
 				if (caption1Line1) {
@@ -553,7 +551,18 @@ import inter400 from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
 					caption1Line1.style.top = (bigRect.top + gap) + 'px';
 				}
 				if (caption1Line2) {
-					caption1Line2.style.left = (h1Rect.right + indent) + 'px';
+					const cs2 = getComputedStyle(caption1Line2);
+					const measureSpan = document.createElement('span');
+					measureSpan.textContent = 'intimate luxurious spaces';
+					measureSpan.style.font = cs2.font;
+					measureSpan.style.letterSpacing = cs2.letterSpacing;
+					measureSpan.style.visibility = 'hidden';
+					measureSpan.style.position = 'absolute';
+					measureSpan.style.whiteSpace = 'pre';
+					document.body.appendChild(measureSpan);
+					const spacesWidth = measureSpan.getBoundingClientRect().width;
+					measureSpan.remove();
+					caption1Line2.style.left = (consultancyRect.right - spacesWidth - 10) + 'px';
 					caption1Line2.style.top = (bigRect.top + gap) + 'px';
 				}
 			};
