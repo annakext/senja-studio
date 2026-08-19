@@ -557,14 +557,14 @@ import inter400 from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
 				innerEl.innerHTML = html;
 				innerEl.style.position = 'relative';
 				innerEl.style.transform = 'translateY(' + step + 'px)';
-				innerEl.style.color = '#9a9a9a';
+				innerEl.style.color = '#c4c4c4';
 				innerEl.style.transition = 'none';
 				innerEl.style.backfaceVisibility = 'hidden';
 				void innerEl.offsetHeight;
 				innerEl.style.transition = 'transform 0.5s ease, color 0.5s ease';
 				requestAnimationFrame(() => {
 					old.style.transform = 'translateY(-' + step + 'px)';
-					old.style.color = '#9a9a9a';
+					old.style.color = '#c4c4c4';
 					innerEl.style.transform = 'translateY(0px)';
 					innerEl.style.color = '#1c1c1c';
 				});
