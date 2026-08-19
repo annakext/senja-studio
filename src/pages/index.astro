@@ -549,20 +549,24 @@ import inter400 from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
 				old.style.left = '0';
 				old.style.right = '0';
 				old.style.transform = 'translateY(0px)';
-				old.style.transition = 'transform 0.5s ease';
+				old.style.color = '#1c1c1c';
+				old.style.transition = 'transform 0.5s ease, color 0.5s ease';
 				old.style.backfaceVisibility = 'hidden';
 				wrap.appendChild(old);
 
 				innerEl.innerHTML = html;
 				innerEl.style.position = 'relative';
 				innerEl.style.transform = 'translateY(' + step + 'px)';
+				innerEl.style.color = '#9a9a9a';
 				innerEl.style.transition = 'none';
 				innerEl.style.backfaceVisibility = 'hidden';
 				void innerEl.offsetHeight;
-				innerEl.style.transition = 'transform 0.5s ease';
+				innerEl.style.transition = 'transform 0.5s ease, color 0.5s ease';
 				requestAnimationFrame(() => {
 					old.style.transform = 'translateY(-' + step + 'px)';
+					old.style.color = '#9a9a9a';
 					innerEl.style.transform = 'translateY(0px)';
+					innerEl.style.color = '#1c1c1c';
 				});
 				setTimeout(() => { old.remove(); }, 520);
 			};
