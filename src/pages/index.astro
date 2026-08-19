@@ -454,11 +454,8 @@ import inter400 from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
 				<img src="/images/projects-photo-8.jpg" alt="" class="h-full w-full object-cover brightness-125" style="filter: grayscale(1);" />
 				<div class="thumb-veil pointer-events-none absolute inset-0 transition-opacity duration-300" style="opacity: 1; background: rgba(255,255,255,0.7);"></div>
 			</div>
-			<div id="caption-line1-wrap" class="fixed w-40 overflow-hidden" style="height: 14px;">
-				<div id="caption-line1-inner" class="text-[0.76rem] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">VILLA CONNEXION</div>
-			</div>
-			<div id="caption-line2-wrap" class="fixed w-40 overflow-hidden" style="height: 14px;">
-				<div id="caption-line2-inner" class="text-[0.76rem] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">intimate luxurious spaces</div>
+			<div id="caption-wrap" class="fixed w-40 overflow-hidden" style="height: 33px;">
+				<div id="caption-inner" class="text-[0.76rem] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">VILLA CONNEXION<br />intimate luxurious spaces</div>
 			</div>
 		</div>
 		<div id="projects-connector-line" class="fixed pointer-events-none z-20" style="border-top: 0.5px solid #1c1c1c;"></div>
@@ -530,8 +527,7 @@ import inter400 from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
 		<script>
 			const bigImg = document.getElementById('projects-big-img');
 			const defaultBigSrc = bigImg ? bigImg.getAttribute('src') : '';
-			const captionLine1Inner = document.getElementById('caption-line1-inner');
-			const captionLine2Inner = document.getElementById('caption-line2-inner');
+			const captionInner = document.getElementById('caption-inner');
 			const defaultTitle1 = 'VILLA CONNEXION';
 			const defaultTitle2 = 'intimate luxurious spaces';
 			const pageInner = document.getElementById('projects-page-inner');
@@ -591,8 +587,7 @@ import inter400 from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
 				const img = thumb.querySelector('img');
 				thumb.addEventListener('mouseenter', () => {
 					if (bigImg) bigImg.src = src;
-					rollTo(captionLine1Inner, title1);
-					rollTo(captionLine2Inner, title2);
+					rollTo(captionInner, title1 + '<br />' + title2);
 					rollTo(pageInner, page);
 					if (!isDefault) {
 						setVeil(veil, img, false);
@@ -601,8 +596,7 @@ import inter400 from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
 				});
 				thumb.addEventListener('mouseleave', () => {
 					if (bigImg) bigImg.src = defaultBigSrc;
-					rollTo(captionLine1Inner, defaultTitle1);
-					rollTo(captionLine2Inner, defaultTitle2);
+					rollTo(captionInner, defaultTitle1 + '<br />' + defaultTitle2);
 					rollTo(pageInner, defaultPage);
 					if (!isDefault) {
 						setVeil(veil, img, true);
@@ -629,16 +623,10 @@ import inter400 from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
 				connectorLine.style.width = (consultancyRect.right - h1Rect.right + 12) + 'px';
 
 				const gap = 4.5;
-				const lineWrapHeight = 14;
-				const captionLine1Wrap = document.getElementById('caption-line1-wrap');
-				const captionLine2Wrap = document.getElementById('caption-line2-wrap');
-				if (captionLine1Wrap) {
-					captionLine1Wrap.style.left = h1Rect.right + 'px';
-					captionLine1Wrap.style.top = (bigRect.top + gap) + 'px';
-				}
-				if (captionLine2Wrap) {
-					captionLine2Wrap.style.left = h1Rect.right + 'px';
-					captionLine2Wrap.style.top = (bigRect.top + gap + lineWrapHeight) + 'px';
+				const captionWrap = document.getElementById('caption-wrap');
+				if (captionWrap) {
+					captionWrap.style.left = h1Rect.right + 'px';
+					captionWrap.style.top = (bigRect.top + gap) + 'px';
 				}
 
 				const lineRight = h1Rect.right + parseFloat(connectorLine.style.width);
