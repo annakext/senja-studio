@@ -556,7 +556,7 @@ import inter400 from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
 						{ transform: 'translateY(0px)', color: '#1c1c1c' },
 						{ transform: 'translateY(-' + step + 'px)', color: '#c4c4c4' },
 					],
-					{ duration: ROLL_MS, easing: 'ease-in', fill: 'forwards' }
+					{ duration: ROLL_MS, easing: 'ease', fill: 'forwards' }
 				).onfinish = () => old.remove();
 
 				innerEl.innerHTML = html;
@@ -566,7 +566,7 @@ import inter400 from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
 						{ transform: 'translateY(' + step + 'px)', color: '#c4c4c4' },
 						{ transform: 'translateY(0px)', color: '#1c1c1c' },
 					],
-					{ duration: ROLL_MS, easing: 'ease-out', fill: 'forwards' }
+					{ duration: ROLL_MS, easing: 'ease', fill: 'forwards' }
 				);
 			};
 
