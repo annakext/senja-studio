@@ -316,15 +316,15 @@ import inter400 from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
 				<img src="/images/projects-photo-5.jpg?v=2" alt="" class="h-full w-full object-cover brightness-125" />
 				<div class="thumb-veil pointer-events-none absolute inset-0 transition-opacity duration-300" style="opacity: 0; background: rgba(255,255,255,0.75);"></div>
 			</div>
-			<div class="projects-thumb absolute top-full left-0 mt-[67.37px] w-[44.29px] h-[55.37px] max-w-none" data-img="/images/projects-photo-6.jpg?v=2" data-title1="RESORT LIFE" data-title2="stillness and light" data-page="2/4">
+			<div class="projects-thumb absolute top-full left-0 mt-[85.37px] w-[44.29px] h-[55.37px] max-w-none" data-img="/images/projects-photo-6.jpg?v=2" data-title1="RESORT LIFE" data-title2="stillness and light" data-page="2/4">
 				<img src="/images/projects-photo-6.jpg?v=2" alt="" class="h-full w-full object-cover brightness-125" style="filter: grayscale(1);" />
 				<div class="thumb-veil pointer-events-none absolute inset-0 transition-opacity duration-300" style="opacity: 1; background: rgba(255,255,255,0.75);"></div>
 			</div>
-			<div class="projects-thumb absolute top-full left-0 mt-[128.74px] w-[44.29px] h-[55.37px] max-w-none" data-img="/images/projects-photo-7.jpg?v=2" data-title1="CURATED PLACES" data-title2="lifestyle, food and culture" data-page="3/4">
+			<div class="projects-thumb absolute top-full left-0 mt-[146.74px] w-[44.29px] h-[55.37px] max-w-none" data-img="/images/projects-photo-7.jpg?v=2" data-title1="CURATED PLACES" data-title2="lifestyle, food and culture" data-page="3/4">
 				<img src="/images/projects-photo-7.jpg?v=2" alt="" class="h-full w-full object-cover brightness-125" style="filter: grayscale(1);" />
 				<div class="thumb-veil pointer-events-none absolute inset-0 transition-opacity duration-300" style="opacity: 1; background: rgba(255,255,255,0.75);"></div>
 			</div>
-			<div class="projects-thumb absolute top-full left-0 mt-[190.11px] w-[44.29px] h-[55.37px] max-w-none" data-img="/images/projects-photo-8.jpg?v=2" data-title1="UGC" data-title2="authentic and ready to post" data-page="4/4">
+			<div class="projects-thumb absolute top-full left-0 mt-[208.11px] w-[44.29px] h-[55.37px] max-w-none" data-img="/images/projects-photo-8.jpg?v=2" data-title1="UGC" data-title2="authentic and ready to post" data-page="4/4">
 				<img src="/images/projects-photo-8.jpg?v=2" alt="" class="h-full w-full object-cover brightness-125" style="filter: grayscale(1);" />
 				<div class="thumb-veil pointer-events-none absolute inset-0 transition-opacity duration-300" style="opacity: 1; background: rgba(255,255,255,0.75);"></div>
 			</div>
@@ -487,11 +487,7 @@ import inter400 from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
 					bigImg._fadeOverlay = overlay;
 
 					overlay.animate(
-						[
-							{ opacity: 0, filter: 'brightness(1)', offset: 0 },
-							{ opacity: 0.5, filter: 'brightness(1.6)', offset: 0.5 },
-							{ opacity: 1, filter: 'brightness(1)', offset: 1 },
-						],
+						[{ opacity: 0 }, { opacity: 1 }],
 						{ duration: ROLL_MS, easing: 'ease', fill: 'forwards' }
 					).onfinish = () => {
 						bigImg.src = thumb.dataset.img;
