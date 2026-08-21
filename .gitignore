@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# raw source reference images (not part of the deployed site)
+/PROJECTS HOME PAGE/
