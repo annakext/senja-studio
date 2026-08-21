@@ -531,13 +531,6 @@ import inter400 from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
 					pageIndicator.style.right = (window.innerWidth - lineRight) + 'px';
 					pageIndicator.style.top = (bigRect.top + gap) + 'px';
 				}
-
-				const countryCol = document.getElementById('idx-country-col');
-				if (countryCol && countryCol.parentElement) {
-					const wrapperRect = countryCol.parentElement.getBoundingClientRect();
-					countryCol.style.left = (lineRight - wrapperRect.left) + 'px';
-					countryCol.style.transform = 'none';
-				}
 			};
 			placeConnectorLine();
 			window.addEventListener('resize', placeConnectorLine);
