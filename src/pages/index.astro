@@ -553,6 +553,15 @@ import Footer from '../components/Footer.astro';
 					pageIndicator.style.right = (window.innerWidth - lineRight) + 'px';
 					pageIndicator.style.top = (bigRect.top + gap) + 'px';
 				}
+
+				const projectsNavLink = document.querySelector('nav a.nav-link.active');
+				const countryCol = document.getElementById('idx-country-col');
+				if (projectsNavLink && countryCol && countryCol.parentElement) {
+					const navRect = projectsNavLink.getBoundingClientRect();
+					const wrapperRect = countryCol.parentElement.getBoundingClientRect();
+					countryCol.style.left = (navRect.left - wrapperRect.left) + 'px';
+					countryCol.style.transform = 'none';
+				}
 			};
 			placeConnectorLine();
 			window.addEventListener('resize', placeConnectorLine);
