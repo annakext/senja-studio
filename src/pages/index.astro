@@ -312,7 +312,7 @@ import inter400 from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
 		<div class="absolute top-[40.2vh] left-1/2 z-10 inline-block">
 			<h1 class="relative block text-[25.33px] leading-tight font-normal" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c;">projects</h1>
 			<img id="projects-big-img" src="/images/projects-photo-5.jpg?v=2" alt="" class="absolute top-full right-full mt-6 w-[345.89px] max-w-none aspect-[4/5] object-cover brightness-125 -translate-x-2" />
-			<div class="projects-thumb absolute top-full left-0 mt-6 w-[44.29px] h-[55.37px] max-w-none" data-img="/images/projects-photo-5.jpg?v=2" data-title1="VILLA CONNEXION" data-title2="intimate luxurious spaces" data-page="1/4">
+			<div class="projects-thumb absolute top-full left-0 mt-6 w-[44.29px] h-[55.37px] max-w-none" data-img="/images/projects-photo-5.jpg?v=2" data-title1="VILLA CONNEXION" data-title2="intimate luxurious spaces" data-page="1/4" data-href="/projects/villa-connexion">
 				<img src="/images/projects-photo-5.jpg?v=2" alt="" class="h-full w-full object-cover brightness-125" />
 				<div class="thumb-veil pointer-events-none absolute inset-0 transition-opacity duration-300" style="opacity: 0; background: rgba(255,255,255,0.75);"></div>
 			</div>
@@ -467,6 +467,20 @@ import inter400 from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
 			};
 
 			let activeThumb = thumb1;
+			let activeHref = thumb1 ? thumb1.dataset.href || null : null;
+
+			const goToActive = () => {
+				if (activeHref) window.location.href = activeHref;
+			};
+			if (bigImg) {
+				bigImg.style.cursor = activeHref ? 'pointer' : 'default';
+				bigImg.addEventListener('click', goToActive);
+			}
+			const captionWrap = document.getElementById('caption-wrap');
+			if (captionWrap) {
+				captionWrap.style.cursor = activeHref ? 'pointer' : 'default';
+				captionWrap.addEventListener('click', goToActive);
+			}
 
 			const setActive = (thumb) => {
 				if (thumb === activeThumb) return;
@@ -500,10 +514,17 @@ import inter400 from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
 				if (activeThumb) setVeil(activeThumb, true);
 				setVeil(thumb, false);
 				activeThumb = thumb;
+				activeHref = thumb.dataset.href || null;
+				if (bigImg) bigImg.style.cursor = activeHref ? 'pointer' : 'default';
+				if (captionWrap) captionWrap.style.cursor = activeHref ? 'pointer' : 'default';
 			};
 
 			allThumbs.forEach((thumb) => {
 				thumb.addEventListener('mouseenter', () => setActive(thumb));
+				if (thumb.dataset.href) {
+					thumb.style.cursor = 'pointer';
+					thumb.addEventListener('click', () => { window.location.href = thumb.dataset.href; });
+				}
 			});
 
 			const connectorLine = document.getElementById('projects-connector-line');
