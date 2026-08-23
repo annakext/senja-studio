@@ -67,7 +67,7 @@ import Footer from '../../components/Footer.astro';
 				<img src="/images/villa-connexion/11.jpg" alt="" class="h-[290px] aspect-[3/4] object-cover" />
 			</div>
 
-			<div class="mt-8 flex flex-row">
+			<div id="vc-row6" class="mt-8 ml-auto flex w-fit flex-row">
 				<video src="/videos/villa-connexion-14.mp4" class="h-[360px] aspect-[3/4] object-cover" autoplay loop muted playsinline></video>
 			</div>
 
@@ -106,9 +106,12 @@ import Footer from '../../components/Footer.astro';
 				const row2 = document.getElementById('vc-row2');
 				const row4 = document.getElementById('vc-row4');
 				const row5 = document.getElementById('vc-row5');
+				const row6 = document.getElementById('vc-row6');
 				if (img1 && row2) alignRightEdgeTo(row2, img1.getBoundingClientRect().left);
 				if (img5 && row4) alignRightEdgeTo(row4, img5.getBoundingClientRect().left);
 				if (row4 && row5) alignLeftEdgeTo(row5, row4.getBoundingClientRect().right);
+				const row5FirstImg = row5 && row5.querySelector('img');
+				if (row5FirstImg && row6) alignRightEdgeTo(row6, row5FirstImg.getBoundingClientRect().left);
 			};
 			layoutRows();
 			window.addEventListener('resize', layoutRows);
