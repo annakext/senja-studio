@@ -16,6 +16,7 @@ import Footer from '../../components/Footer.astro';
 		<title>ugc — senja studio</title>
 		<style>
 			:global(html), :global(body) { overflow: auto; height: auto; min-height: 100%; background: #fff; }
+			:global(body) { position: relative; }
 			.nav-link { position: relative; text-decoration: none; }
 			.nav-link.fixed { position: fixed; }
 			.nav-link::after { content: ""; position: absolute; left: 0; bottom: 1px; width: 0; height: 1px; background: currentColor; transition: width 0.3s ease; }
@@ -24,14 +25,14 @@ import Footer from '../../components/Footer.astro';
 		</style>
 	</head>
 	<body>
-		<div style="position: fixed; inset: 0; z-index: -1; background: #fff;"></div>
-		<div class="fixed top-3 left-6 right-6 z-10 flex flex-row items-start">
+		<div style="position: absolute; inset: 0; z-index: -1; background: #fff;"></div>
+		<div class="js-blend-fixed absolute top-3 left-6 right-6 flex flex-row items-start">
 			<a href="/" class="block text-[41px] leading-tight font-normal" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.05em; color: #fff; mix-blend-mode: difference; text-transform: uppercase;">senja studio</a>
 		</div>
 		<div class="absolute top-3 right-6 z-10 w-1/2">
 			<p class="text-[0.76rem] font-[325]" style="margin-top: 7px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">4/4<br />UGC<br />authentic and ready to post</p>
 		</div>
-		<nav class="fixed right-6 z-10 flex flex-row text-[0.76rem] font-[325]" style="top: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em;">
+		<nav class="js-blend-fixed absolute right-6 flex flex-row text-[0.76rem] font-[325]" style="top: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em;">
 			<a href="/" class="nav-link active" style="color: #fff; mix-blend-mode: difference;">projects</a><span style="color: #fff; mix-blend-mode: difference;">,&nbsp;</span><a href="/services" class="nav-link" style="color: #fff; mix-blend-mode: difference;">services</a><span style="color: #fff; mix-blend-mode: difference;">,&nbsp;</span><a href="/about" class="nav-link" style="color: #fff; mix-blend-mode: difference;">about</a><span style="color: #fff; mix-blend-mode: difference;">,&nbsp;</span><a href="/contact" class="nav-link" style="color: #fff; mix-blend-mode: difference;">contact</a>
 		</nav>
 
@@ -45,5 +46,19 @@ import Footer from '../../components/Footer.astro';
 		</main>
 
 		<Footer />
+		<script>
+			const blendFixedEls = Array.from(document.querySelectorAll('.js-blend-fixed')).map((el) => ({
+				el,
+				offset: parseFloat(getComputedStyle(el).top) || 0,
+			}));
+			const syncBlendFixed = () => {
+				blendFixedEls.forEach(({ el, offset }) => {
+					el.style.top = (window.scrollY + offset) + 'px';
+				});
+			};
+			syncBlendFixed();
+			window.addEventListener('scroll', syncBlendFixed, { passive: true });
+			window.addEventListener('resize', syncBlendFixed);
+		</script>
 	</body>
 </html>
