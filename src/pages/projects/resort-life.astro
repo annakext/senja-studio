@@ -64,9 +64,18 @@ import Footer from '../../components/Footer.astro';
 			</div>
 
 			<div id="rl-row11" class="mt-8 ml-auto flex w-fit flex-row gap-2">
-				<img src="/images/resort-life/11.jpg" alt="" class="w-[175px] aspect-[9/16] object-cover" />
-				<img src="/images/resort-life/12.jpg" alt="" class="w-[175px] aspect-[9/16] object-cover" />
+				<img src="/images/resort-life/11qua.png" alt="" class="w-[175px] aspect-[9/16] object-cover" />
+				<img src="/images/resort-life/12ter.png" alt="" class="w-[175px] aspect-[9/16] object-cover" />
 				<img id="rl-img13bis" src="/images/resort-life/13bis.png" alt="" class="w-[175px] aspect-[9/16] object-cover" />
+			</div>
+
+			<div id="rl-row14" class="mt-8 flex w-fit flex-row items-end gap-2">
+				<video id="rl-video14" src="/videos/resort-life-14.mp4" class="w-[200px] aspect-[9/16] object-cover" autoplay loop muted playsinline></video>
+			</div>
+
+			<div id="rl-row16" class="mt-8 ml-auto flex w-fit flex-row items-end gap-2">
+				<img src="/images/resort-life/16.png" alt="" class="w-[190px] aspect-[2160/2544] object-cover" />
+				<img id="rl-img17" src="/images/resort-life/17.png" alt="" class="w-[190px] aspect-[2160/2544] object-cover object-[center_65%]" />
 			</div>
 
 			<a href="/projects/curated-places" class="mt-16 block pt-6" style="border-top: 0.5px solid #1c1c1c;">
@@ -122,6 +131,12 @@ import Footer from '../../components/Footer.astro';
 				const img10bis = document.getElementById('rl-img10bis');
 				const row11 = document.getElementById('rl-row11');
 				if (img10bis && row11) alignRightEdgeTo(row11, img10bis.getBoundingClientRect().right);
+				const img13bis = document.getElementById('rl-img13bis');
+				const row14 = document.getElementById('rl-row14');
+				if (img13bis && row14) alignLeftEdgeTo(row14, img13bis.getBoundingClientRect().right);
+				const video14 = document.getElementById('rl-video14');
+				const row16 = document.getElementById('rl-row16');
+				if (video14 && row16) alignRightEdgeTo(row16, video14.getBoundingClientRect().left);
 			};
 			layoutRows();
 			window.addEventListener('resize', layoutRows);
