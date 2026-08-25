@@ -39,6 +39,30 @@ import Footer from '../../components/Footer.astro';
 		<a href="/" class="fixed left-6 z-10 text-2xl font-normal" style="top: 84px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #1c1c1c; text-decoration: none;">←</a>
 
 		<main class="min-h-screen px-6 pb-24 pt-32">
+			<div class="ml-auto mr-16 flex w-fit flex-row items-end gap-6">
+				<p id="rl-text" class="max-w-[220px] text-[0.76rem] font-[325] text-justify" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.5;">A resort is experienced as a sequence of spaces rather than a collection of rooms. Pools, lobbies, restaurants and quiet corners shape the rhythm of a stay as much as the accommodation itself. Through careful attention to light, texture and materials, these images explore the character of a place and the quiet experience it offers.</p>
+				<video id="rl-video" src="/videos/resort-life-1.mp4" class="w-[500px] aspect-[16/9] object-cover" autoplay loop muted playsinline></video>
+			</div>
+
+			<img id="rl-img2" src="/images/resort-life/2.jpg" alt="" class="mt-12 ml-auto w-[420px] aspect-[16/9] object-cover" />
+
+			<div id="rl-row3" class="mt-8 flex w-fit flex-row gap-2">
+				<img src="/images/resort-life/3.png" alt="" class="w-[130px] aspect-[3/4] object-cover" />
+				<img src="/images/resort-life/4.png" alt="" class="w-[130px] aspect-[3/4] object-cover" />
+				<img src="/images/resort-life/5.png" alt="" class="w-[130px] aspect-[3/4] object-cover" />
+				<img src="/images/resort-life/6bis.png" alt="" class="w-[130px] aspect-[3/4] object-cover" />
+			</div>
+
+			<div id="rl-row7" class="mt-8 ml-auto flex w-fit flex-row items-end gap-2">
+				<img id="rl-img7" src="/images/resort-life/7.png" alt="" class="w-[320px] aspect-[4/5] object-cover" />
+				<img id="rl-img8bis" src="/images/resort-life/8bis.png" alt="" class="w-[110px] aspect-[3/5] object-cover object-[center_75%]" />
+			</div>
+
+			<div id="rl-row9" class="mt-8 flex w-fit flex-row items-end gap-2">
+				<img id="rl-img10bis" src="/images/resort-life/10bis.png" alt="" class="w-[180px] aspect-[4/3] object-cover" />
+				<img id="rl-img9bis" src="/images/resort-life/9bis.png" alt="" class="w-[320px] aspect-[3/4] object-cover" />
+			</div>
+
 			<a href="/projects/curated-places" class="mt-16 block pt-6" style="border-top: 0.5px solid #1c1c1c;">
 				<p class="text-[0.76rem] font-[325] uppercase" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.08em; color: #8c8a84;">Next</p>
 				<p class="mt-1 text-[0.76rem] font-[325] tabular-nums" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">3/4<br />CURATED PLACES<br />lifestyle, food and culture</p>
@@ -59,6 +83,40 @@ import Footer from '../../components/Footer.astro';
 			syncBlendFixed();
 			window.addEventListener('scroll', syncBlendFixed, { passive: true });
 			window.addEventListener('resize', syncBlendFixed);
+
+			const alignRightEdgeTo = (el, targetX) => {
+				const currentMR = parseFloat(getComputedStyle(el).marginRight) || 0;
+				el.style.marginRight = (currentMR + (el.getBoundingClientRect().right - targetX)) + 'px';
+			};
+			const alignLeftEdgeTo = (el, targetX) => {
+				const currentML = parseFloat(getComputedStyle(el).marginLeft) || 0;
+				el.style.marginLeft = (currentML + (targetX - el.getBoundingClientRect().left)) + 'px';
+			};
+			const layoutRows = () => {
+				const text = document.getElementById('rl-text');
+				const img2 = document.getElementById('rl-img2');
+				const video = document.getElementById('rl-video');
+				const row3 = document.getElementById('rl-row3');
+				if (text && img2) alignRightEdgeTo(img2, text.getBoundingClientRect().right);
+				if (img2 && row3) alignLeftEdgeTo(row3, img2.getBoundingClientRect().right);
+				const img7 = document.getElementById('rl-img7');
+				const row7 = document.getElementById('rl-row7');
+				if (img2 && img7 && row7) {
+					const rowGap = 8;
+					const row7Extra = row7.getBoundingClientRect().width - img7.getBoundingClientRect().width;
+					alignRightEdgeTo(row7, img2.getBoundingClientRect().right + row7Extra);
+				}
+				const img8bis = document.getElementById('rl-img8bis');
+				const img9bis = document.getElementById('rl-img9bis');
+				const row9 = document.getElementById('rl-row9');
+				if (img8bis && img9bis && row9) {
+					const offset = img9bis.getBoundingClientRect().left - row9.getBoundingClientRect().left;
+					alignLeftEdgeTo(row9, img8bis.getBoundingClientRect().right - offset);
+				}
+			};
+			layoutRows();
+			window.addEventListener('resize', layoutRows);
+			window.addEventListener('load', layoutRows);
 		</script>
 	</body>
 </html>

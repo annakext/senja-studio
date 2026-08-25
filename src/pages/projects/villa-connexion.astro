@@ -67,8 +67,20 @@ import Footer from '../../components/Footer.astro';
 				<img src="/images/villa-connexion/11.jpg" alt="" class="w-[180px] aspect-[3/4] object-cover" />
 			</div>
 
-			<div id="vc-row6" class="mt-8 ml-auto flex w-fit flex-row">
-				<video src="/videos/villa-connexion-14.mp4" class="h-[440px] aspect-[3/4] object-cover" autoplay loop muted playsinline></video>
+			<div id="vc-row6" class="mt-2 ml-auto flex w-fit flex-row items-end gap-2">
+				<video src="/videos/villa-connexion-14.mp4" class="h-[380px] aspect-[3/4] object-cover" autoplay loop muted playsinline></video>
+				<img src="/images/villa-connexion/15qua.png" alt="" class="w-[120px] aspect-[3/4] object-cover object-bottom" />
+			</div>
+
+			<div id="vc-row7" class="mt-2 flex w-fit flex-row gap-2">
+				<img src="/images/villa-connexion/17.jpg" alt="" class="w-[190px] aspect-[3/4] object-cover" />
+				<img src="/images/villa-connexion/18.jpg" alt="" class="w-[190px] aspect-[3/4] object-cover" />
+				<img src="/images/villa-connexion/19.png" alt="" class="w-[190px] aspect-[3/4] object-cover" />
+			</div>
+
+			<div id="vc-row8" class="mt-2 ml-auto flex w-fit flex-row items-end gap-2">
+				<img src="/images/villa-connexion/16bis.png" alt="" class="h-[350px] aspect-[3/4] object-cover" />
+				<video src="/videos/villa-connexion-22ter.mp4" class="w-[120px] aspect-[3/4] object-cover" autoplay loop muted playsinline></video>
 			</div>
 
 			<a href="/projects/resort-life" class="mt-16 block pt-6" style="border-top: 0.5px solid #1c1c1c;">
@@ -103,15 +115,30 @@ import Footer from '../../components/Footer.astro';
 			const layoutRows = () => {
 				const img1 = document.querySelector('img[src*="01.jpg"]');
 				const img5 = document.querySelector('img[src*="05.jpg"]');
+				const img15 = document.querySelector('img[src*="15qua.png"]');
 				const row2 = document.getElementById('vc-row2');
 				const row4 = document.getElementById('vc-row4');
 				const row5 = document.getElementById('vc-row5');
 				const row6 = document.getElementById('vc-row6');
-				if (img1 && row2) alignRightEdgeTo(row2, img1.getBoundingClientRect().left);
+				const row7 = document.getElementById('vc-row7');
+				const row8 = document.getElementById('vc-row8');
+				if (img1 && row2) alignRightEdgeTo(row2, img1.getBoundingClientRect().left - 16);
 				if (img5 && row4) alignRightEdgeTo(row4, img5.getBoundingClientRect().left);
 				if (row4 && row5) alignLeftEdgeTo(row5, row4.getBoundingClientRect().right);
 				const row5FirstImg = row5 && row5.querySelector('img');
-				if (row5FirstImg && row6) alignRightEdgeTo(row6, row5FirstImg.getBoundingClientRect().left);
+				if (row5FirstImg && row6 && img15) {
+					const rowGap = 8;
+					const photo15Width = img15.getBoundingClientRect().width;
+					alignRightEdgeTo(row6, row5FirstImg.getBoundingClientRect().left + rowGap + photo15Width);
+				}
+				if (img15 && row7) alignLeftEdgeTo(row7, img15.getBoundingClientRect().right);
+				const img17 = row7 && row7.querySelector('img');
+				const video22 = row8 && row8.querySelector('video');
+				if (img17 && row8 && video22) {
+					const rowGap = 8;
+					const video22Width = video22.getBoundingClientRect().width;
+					alignRightEdgeTo(row8, img17.getBoundingClientRect().left + rowGap + video22Width);
+				}
 			};
 			layoutRows();
 			window.addEventListener('resize', layoutRows);
