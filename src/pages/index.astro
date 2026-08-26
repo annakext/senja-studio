@@ -702,17 +702,27 @@ import Footer from '../components/Footer.astro';
 				if (activeBi < 0) return 0;
 				return centers[activeBi] - (vis + vw / 2);
 			};
+			const centerOnFirst = () => {
+				activeBi = 0;
+				activeM = 0;
+				const startVis = centers[0] - vw / 2;
+				current = startVis;
+				target = startVis;
+				figs.forEach((f, i) => {
+					f.classList.toggle('is-active', i === 0);
+					f.classList.toggle('is-before', false);
+					f.classList.toggle('is-after', i > 0);
+				});
+				if (numEl) numEl.textContent = '01';
+				if (themeEl) themeEl.textContent = themes[0];
+				snapped = true;
+			};
 			placeReel();
-			activeBi = 0;
-			activeM = 0;
-			figs.forEach((f, i) => {
-				f.classList.toggle('is-active', i === 0);
-				f.classList.toggle('is-before', false);
-				f.classList.toggle('is-after', i > 0);
+			centerOnFirst();
+			window.addEventListener('load', () => {
+				measure();
+				centerOnFirst();
 			});
-			if (numEl) numEl.textContent = '01';
-			if (themeEl) themeEl.textContent = themes[0];
-			snapped = true;
 			const raf = () => {
 				if (autoplayAnim) {
 					const t = Math.min(1, (performance.now() - autoplayAnim.start) / autoplayAnim.duration);
