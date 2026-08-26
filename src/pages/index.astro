@@ -719,10 +719,15 @@ import Footer from '../components/Footer.astro';
 			};
 			placeReel();
 			centerOnFirst();
-			window.addEventListener('load', () => {
+			const recenterOnceLoaded = () => {
 				measure();
 				centerOnFirst();
-			});
+			};
+			if (document.readyState === 'complete') {
+				recenterOnceLoaded();
+			} else {
+				window.addEventListener('load', recenterOnceLoaded);
+			}
 			const raf = () => {
 				if (autoplayAnim) {
 					const t = Math.min(1, (performance.now() - autoplayAnim.start) / autoplayAnim.duration);
