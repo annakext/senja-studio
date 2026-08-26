@@ -17,9 +17,11 @@ import Footer from '../components/Footer.astro';
 		<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@0;1&display=swap" rel="stylesheet" />
 		<title>services — senja studio</title>
 		<style>
-			.nav-link { position: relative; }
-			.nav-link:hover { color: #c2c2c2; }
+			.nav-link { position: relative; text-decoration: none; }
+			.nav-link::after { content: ""; position: absolute; left: 0; bottom: 1px; width: 0; height: 1px; background: currentColor; transition: width 0.3s ease; }
+			.nav-link:hover::after { width: 100%; }
 			.nav-link.active { color: #1c1c1c; }
+			.nav-link.active::after { width: 100%; }
 		</style>
 	</head>
 	<body>
@@ -30,13 +32,13 @@ import Footer from '../components/Footer.astro';
 			<a href="/" class="nav-link">projects</a><span>,&nbsp;</span><a href="/services" class="nav-link active">services</a><span>,&nbsp;</span><a href="/about" class="nav-link">about</a><span>,&nbsp;</span><a href="/contact" class="nav-link">contact</a>
 		</nav>
 
-		<a href="/" class="absolute top-4 right-6 z-10 text-lg leading-tight font-normal text-[#1c1c1c] transition-colors hover:text-neutral-300" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">✕</a>
+		<a href="/" class="fixed left-6 z-10 text-2xl font-normal" style="top: 84px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #1c1c1c; text-decoration: none;">←</a>
 
 
 		<main class="min-h-screen px-6 pb-24 pt-28">
 			<div class="ml-[29vw] max-w-xl">
 				<h1 class="relative block text-[25.33px] leading-tight font-normal" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c;">services</h1>
-				<div class="mt-6 space-y-6 text-justify text-sm font-[325] leading-relaxed" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c;">
+				<div class="mt-6 space-y-6 text-justify text-[0.76rem] font-[325] leading-relaxed" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c;">
 					<p>SENJA STUDIO works across creative direction, brand consulting and visual content production for hospitality and lifestyle brands.</p>
 					<p>Projects can be developed from the ground up or tailored to a specific need, from a complete visual direction to a small collection of images and short form videos.</p>
 

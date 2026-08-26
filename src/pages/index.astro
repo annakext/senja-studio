@@ -565,7 +565,7 @@ import Footer from '../components/Footer.astro';
 
 				const pageIndicator = document.getElementById('projects-page-indicator');
 				if (pageIndicator) {
-					pageIndicator.style.right = (window.innerWidth - lineRight) + 'px';
+					pageIndicator.style.right = (document.documentElement.clientWidth - lineRight) + 'px';
 					pageIndicator.style.top = (bigRect.top + gap) + 'px';
 				}
 
@@ -606,7 +606,7 @@ import Footer from '../components/Footer.astro';
 			let autoplayAnim = null;
 			const measure = () => {
 				centers = figs.map((f) => f.offsetLeft + f.offsetWidth / 2);
-				vw = window.innerWidth;
+				vw = document.documentElement.clientWidth;
 				setWidth = (figs[N].offsetLeft - figs[0].offsetLeft) || 1;
 			};
 			measure();

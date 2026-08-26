@@ -15,9 +15,11 @@ import Footer from '../components/Footer.astro';
 		<meta name="generator" content={Astro.generator} />
 		<title>about — senja studio</title>
 		<style>
-			.nav-link { position: relative; }
-			.nav-link:hover { color: #c2c2c2; }
+			.nav-link { position: relative; text-decoration: none; }
+			.nav-link::after { content: ""; position: absolute; left: 0; bottom: 1px; width: 0; height: 1px; background: currentColor; transition: width 0.3s ease; }
+			.nav-link:hover::after { width: 100%; }
 			.nav-link.active { color: #1c1c1c; }
+			.nav-link.active::after { width: 100%; }
 		</style>
 	</head>
 	<body>
@@ -28,7 +30,7 @@ import Footer from '../components/Footer.astro';
 			<a href="/" class="nav-link">projects</a><span>,&nbsp;</span><a href="/services" class="nav-link">services</a><span>,&nbsp;</span><a href="/about" class="nav-link active">about</a><span>,&nbsp;</span><a href="/contact" class="nav-link">contact</a>
 		</nav>
 
-		<a href="/" class="absolute top-4 right-6 z-10 text-lg leading-tight font-normal text-[#1c1c1c] transition-colors hover:text-neutral-300" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">✕</a>
+		<a href="/" class="fixed left-6 z-10 text-2xl font-normal" style="top: 84px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #1c1c1c; text-decoration: none;">←</a>
 
 
 		<main class="min-h-screen px-6 pb-24 pt-28">
