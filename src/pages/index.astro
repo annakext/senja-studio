@@ -618,7 +618,7 @@ import Footer from '../components/Footer.astro';
 			const wrapVis = (v) => (((v % setWidth) + setWidth) % setWidth);
 			const AUTOPLAY_MS = 3000;
 			const AUTOPLAY_RESUME_MS = 6000;
-			const REVEAL_TOTAL_MS = 3600;
+			const REVEAL_TOTAL_MS = 1900;
 			let autoplayTimer = null;
 			const AUTOPLAY_TWEEN_MS = 2000;
 			const advanceOne = () => {
@@ -720,13 +720,6 @@ import Footer from '../components/Footer.astro';
 			};
 			placeReel();
 			centerOnFirst();
-			const recenterOnceLoaded = () => {
-				if (autoplayAnim || activeBi !== N) return;
-				measure();
-				centerOnFirst();
-			};
-			window.addEventListener('load', recenterOnceLoaded);
-			setTimeout(recenterOnceLoaded, 400);
 			const raf = () => {
 				if (autoplayAnim) {
 					const t = Math.min(1, (performance.now() - autoplayAnim.start) / autoplayAnim.duration);
