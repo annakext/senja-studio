@@ -21,14 +21,11 @@ import Footer from '../components/Footer.astro';
 		</style>
 	</head>
 	<body>
-		<div class="absolute top-4 left-12 z-10">
-			<a href="/" class="block text-4xl leading-tight font-normal" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.05em; color: #1c1c1c; text-transform: uppercase;">senja studio</a>
+		<div class="fixed top-3 left-6 right-6 z-10 flex flex-row items-start">
+			<a href="/" class="block text-[41px] leading-tight font-normal" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.05em; color: #1c1c1c; text-transform: uppercase;">senja studio</a>
 		</div>
-		<nav class="fixed top-4 left-1/2 right-6 z-10 flex flex-row items-center justify-between text-sm font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c;">
-			<a href="/" class="nav-link">selected work</a>
-			<a href="/services" class="nav-link">services</a>
-			<a href="/about" class="nav-link">about</a>
-			<a href="/contact" class="nav-link active">contact</a>
+		<nav class="fixed right-6 z-10 flex flex-row text-[0.76rem] font-[325]" style="top: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c;">
+			<a href="/" class="nav-link">projects</a><span>,&nbsp;</span><a href="/services" class="nav-link">services</a><span>,&nbsp;</span><a href="/about" class="nav-link">about</a><span>,&nbsp;</span><a href="/contact" class="nav-link active">contact</a>
 		</nav>
 
 		<a href="/" class="absolute top-4 right-6 z-10 text-lg leading-tight font-normal text-[#1c1c1c] transition-colors hover:text-neutral-300" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">✕</a>
