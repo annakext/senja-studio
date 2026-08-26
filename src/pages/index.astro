@@ -703,7 +703,15 @@ import Footer from '../components/Footer.astro';
 				return centers[activeBi] - (vis + vw / 2);
 			};
 			placeReel();
-			updateActive(wrapVis(current));
+			activeBi = 0;
+			activeM = 0;
+			figs.forEach((f, i) => {
+				f.classList.toggle('is-active', i === 0);
+				f.classList.toggle('is-before', false);
+				f.classList.toggle('is-after', i > 0);
+			});
+			if (numEl) numEl.textContent = '01';
+			if (themeEl) themeEl.textContent = themes[0];
 			const raf = () => {
 				if (autoplayAnim) {
 					const t = Math.min(1, (performance.now() - autoplayAnim.start) / autoplayAnim.duration);
