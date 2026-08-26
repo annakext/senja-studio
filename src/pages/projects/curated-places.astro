@@ -4,6 +4,7 @@ import '@fontsource/inter/400.css';
 import '@fontsource/inter/500.css';
 import '../../styles/global.css';
 import Footer from '../../components/Footer.astro';
+import VideoHoverSound from '../../components/VideoHoverSound.astro';
 ---
 
 <html lang="en">
@@ -29,24 +30,51 @@ import Footer from '../../components/Footer.astro';
 		<div class="js-blend-fixed absolute top-3 left-6 right-6 flex flex-row items-start">
 			<a href="/" class="block text-[41px] leading-tight font-normal" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.05em; color: #fff; mix-blend-mode: difference; text-transform: uppercase;">senja studio</a>
 		</div>
-		<div class="absolute top-3 right-6 z-10 w-1/2">
-			<p class="text-[0.76rem] font-[325]" style="margin-top: 7px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">3/4<br />CURATED PLACES<br />lifestyle, food and culture</p>
+		<div class="absolute top-3 left-1/2 z-10 w-1/2">
+			<p id="cp-header-info" class="text-[0.76rem] font-[325]" style="margin-top: 7px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">3/4<br />CURATED PLACES<br />lifestyle, food and culture</p>
 		</div>
-		<nav class="js-blend-fixed absolute right-6 flex flex-row text-[0.76rem] font-[325]" style="top: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em;">
-			<a href="/" class="nav-link active" style="color: #fff; mix-blend-mode: difference;">projects</a><span style="color: #fff; mix-blend-mode: difference;">,&nbsp;</span><a href="/services" class="nav-link" style="color: #fff; mix-blend-mode: difference;">services</a><span style="color: #fff; mix-blend-mode: difference;">,&nbsp;</span><a href="/about" class="nav-link" style="color: #fff; mix-blend-mode: difference;">about</a><span style="color: #fff; mix-blend-mode: difference;">,&nbsp;</span><a href="/contact" class="nav-link" style="color: #fff; mix-blend-mode: difference;">contact</a>
+		<nav class="fixed right-6 z-10 flex flex-row text-[0.76rem] font-[325]" style="top: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c;">
+			<a href="/" class="nav-link active">projects</a><span>,&nbsp;</span><a href="/services" class="nav-link">services</a><span>,&nbsp;</span><a href="/about" class="nav-link">about</a><span>,&nbsp;</span><a href="/contact" class="nav-link">contact</a>
 		</nav>
 
 		<a href="/" class="fixed left-6 z-10 text-2xl font-normal" style="top: 84px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #1c1c1c; text-decoration: none;">←</a>
 
-		<main class="min-h-screen px-6 pb-24 pt-32">
+		<main class="min-h-screen px-6 pb-24 pt-48 reveal-page">
+			<div id="cp-row1" class="flex w-fit flex-row items-start gap-4">
+				<div id="cp-images1" class="flex flex-row gap-2">
+					<img src="/images/curated-places/1qua.png" alt="" class="w-[115px] h-[150px] object-cover" />
+					<img src="/images/curated-places/2ter.png" alt="" class="w-[115px] h-[150px] object-cover object-bottom" />
+				</div>
+				<p id="cp-text" class="max-w-[220px] text-[0.76rem] font-[325] text-justify" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.5;">Curated places are defined by the details that shape their identity. Concept stores, restaurants, spas and the spaces in between. Through a mix of digital formats and vintage-inspired imagery, these visuals offer a more personal perspective on each place, capturing atmosphere over artifice.</p>
+				<div id="cp-triptych" class="flex flex-row items-start gap-2">
+					<img src="/images/curated-places/5.png" alt="" class="w-[145px] aspect-[9/16] object-cover" />
+					<img src="/images/curated-places/4.png" alt="" class="w-[145px] aspect-[9/16] object-cover" />
+					<img src="/images/curated-places/3.png" alt="" class="w-[145px] aspect-[9/16] object-cover" />
+				</div>
+			</div>
+
+			<VideoHoverSound class="mt-2">
+				<video id="cp-video6" src="/videos/curated-places-6.mp4" class="w-[170px] aspect-[9/16] object-cover" autoplay loop muted playsinline></video>
+			</VideoHoverSound>
+
+			<div id="cp-row7" class="mt-2 flex w-fit flex-row items-end gap-2">
+				<img id="cp-img7" src="/images/curated-places/7.png" alt="" class="w-[160px] aspect-[3/4] object-cover" />
+				<img id="cp-img8bis" src="/images/curated-places/8bis.png" alt="" class="w-[240px] aspect-[4/3] object-cover" />
+			</div>
+
+			<video id="cp-video9" src="/videos/curated-places-9.mp4" class="mt-2 ml-auto w-[400px] aspect-[16/9] object-cover" autoplay loop muted playsinline></video>
+
 			<a href="/projects/ugc" class="mt-16 block pt-6" style="border-top: 0.5px solid #1c1c1c;">
 				<p class="text-[0.76rem] font-[325] uppercase" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.08em; color: #8c8a84;">Next</p>
 				<p class="mt-1 text-[0.76rem] font-[325] tabular-nums" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">4/4<br />UGC<br />authentic and ready to post</p>
 			</a>
 		</main>
 
-		<Footer />
+		<Footer fixed={false} />
 		<script>
+			import { initHoverSoundVideos } from '../../scripts/video-hover-sound.js';
+			initHoverSoundVideos();
+
 			const blendFixedEls = Array.from(document.querySelectorAll('.js-blend-fixed')).map((el) => ({
 				el,
 				offset: parseFloat(getComputedStyle(el).top) || 0,
@@ -59,6 +87,52 @@ import Footer from '../../components/Footer.astro';
 			syncBlendFixed();
 			window.addEventListener('scroll', syncBlendFixed, { passive: true });
 			window.addEventListener('resize', syncBlendFixed);
+
+			const alignLeftEdgeTo = (el, targetX) => {
+				const currentML = parseFloat(getComputedStyle(el).marginLeft) || 0;
+				el.style.marginLeft = (currentML + (targetX - el.getBoundingClientRect().left)) + 'px';
+			};
+			const alignRightEdgeTo = (el, targetX) => {
+				const currentMR = parseFloat(getComputedStyle(el).marginRight) || 0;
+				el.style.marginRight = (currentMR + (el.getBoundingClientRect().right - targetX)) + 'px';
+			};
+			const layoutRows = () => {
+				const text = document.getElementById('cp-text');
+				const images1 = document.getElementById('cp-images1');
+				if (text && images1) images1.style.marginTop = text.getBoundingClientRect().height + 'px';
+				const headerInfo = document.getElementById('cp-header-info');
+				const triptych = document.getElementById('cp-triptych');
+				const row1 = document.getElementById('cp-row1');
+				if (headerInfo && triptych && row1) {
+					const offset = triptych.getBoundingClientRect().left - row1.getBoundingClientRect().left;
+					alignLeftEdgeTo(row1, headerInfo.getBoundingClientRect().left - offset);
+				}
+				if (images1 && triptych) {
+					const targetHeight = images1.getBoundingClientRect().bottom - triptych.getBoundingClientRect().top;
+					const targetWidth = targetHeight * (9 / 16);
+					triptych.querySelectorAll('img').forEach((img) => {
+						img.style.width = targetWidth + 'px';
+					});
+				}
+				const video6 = document.getElementById('cp-video6');
+				if (text && video6) {
+					video6.style.width = (text.getBoundingClientRect().width + 20) + 'px';
+				}
+				if (images1 && triptych && video6) {
+					const gapCenter = (images1.getBoundingClientRect().right + triptych.getBoundingClientRect().left) / 2;
+					alignLeftEdgeTo(video6, gapCenter - video6.getBoundingClientRect().width / 2);
+				}
+				const img7 = document.getElementById('cp-img7');
+				if (video6 && img7) {
+					img7.style.width = (video6.getBoundingClientRect().width + 30) + 'px';
+					alignLeftEdgeTo(img7, video6.getBoundingClientRect().right);
+				}
+				const video9 = document.getElementById('cp-video9');
+				if (img7 && video9) alignRightEdgeTo(video9, img7.getBoundingClientRect().right);
+			};
+			layoutRows();
+			window.addEventListener('resize', layoutRows);
+			window.addEventListener('load', layoutRows);
 		</script>
 	</body>
 </html>

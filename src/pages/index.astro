@@ -42,12 +42,12 @@ import Footer from '../components/Footer.astro';
 			.nav-link.active::after { width: 100%; }
 		</style>
 	</head>
-	<body>
+	<body class="reveal-page">
 				<div class="fixed top-3 left-6 right-6 z-10 flex flex-row items-start">
 			<a href="/" class="block text-[41px] leading-tight font-normal" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.05em; color: #1c1c1c; text-transform: uppercase;">senja studio</a>
-			<div class="ml-auto flex w-1/2 flex-col items-start">
-				<p class="text-[0.76rem] font-[325]" style="margin-top: 7px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">visual content studio and brand image consultancy<br />for luxury hospitality and lifestyle brands.<br />film. photography. direction.</p>
-			</div>
+		</div>
+		<div id="header-tagline" class="fixed top-3 left-1/2 z-10">
+			<p class="text-[0.76rem] font-[325]" style="margin-top: 7px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">visual content studio and brand image consultancy<br />for luxury hospitality and lifestyle brands.<br />film. photography. direction.</p>
 		</div>
 		<nav class="fixed right-6 z-10 flex flex-row text-[0.76rem] font-[325]" style="top: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c;">
 			<a href="/" class="nav-link active">projects</a><span>,&nbsp;</span><a href="/services" class="nav-link">services</a><span>,&nbsp;</span><a href="/about" class="nav-link">about</a><span>,&nbsp;</span><a href="/contact" class="nav-link">contact</a>
@@ -331,22 +331,22 @@ import Footer from '../components/Footer.astro';
 				</figure>
 			</div>
 		</main>
-		<div class="absolute top-[40.2vh] left-1/2 z-10 inline-block">
+		<div id="projects-group" class="absolute top-[40.2vh] left-1/2 z-10 inline-block">
 			<h1 class="relative block text-[25.33px] leading-tight font-normal" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c;">projects</h1>
 			<img id="projects-big-img" src="/images/projects-photo-5.jpg?v=2" alt="" class="absolute top-full right-full mt-6 w-[345.89px] max-w-none aspect-[4/5] object-cover brightness-125 -translate-x-2" />
-			<div class="projects-thumb absolute top-full left-0 mt-6 w-[42.96px] h-[53.71px] max-w-none overflow-hidden rounded-[2px]" data-img="/images/projects-photo-5.jpg?v=2" data-title1="VILLA CONNEXION" data-title2="intimate luxurious spaces" data-page="1/4" data-href="/projects/villa-connexion">
+			<div class="projects-thumb absolute top-full left-0 mt-6 w-[42.96px] h-[53.71px] max-w-none overflow-hidden rounded-[3px]" data-img="/images/projects-photo-5.jpg?v=2" data-title1="VILLA CONNEXION" data-title2="intimate luxurious spaces" data-page="1/4" data-href="/projects/villa-connexion">
 				<img src="/images/projects-photo-5.jpg?v=2" alt="" class="h-full w-full object-cover brightness-125" />
 				<div class="thumb-veil pointer-events-none absolute inset-0 transition-opacity duration-300" style="opacity: 0; background: rgba(255,255,255,0.75);"></div>
 			</div>
-			<div class="projects-thumb absolute top-full left-0 mt-[83.71px] w-[42.96px] h-[53.71px] max-w-none overflow-hidden rounded-[2px]" data-img="/images/projects-photo-6.jpg?v=2" data-title1="RESORT LIFE" data-title2="stillness and light" data-page="2/4" data-href="/projects/resort-life">
+			<div class="projects-thumb absolute top-full left-0 mt-[83.71px] w-[42.96px] h-[53.71px] max-w-none overflow-hidden rounded-[3px]" data-img="/images/projects-photo-6.jpg?v=2" data-title1="RESORT LIFE" data-title2="stillness and light" data-page="2/4" data-href="/projects/resort-life">
 				<img src="/images/projects-photo-6.jpg?v=2" alt="" class="h-full w-full object-cover brightness-125" style="filter: grayscale(1);" />
 				<div class="thumb-veil pointer-events-none absolute inset-0 transition-opacity duration-300" style="opacity: 1; background: rgba(255,255,255,0.75);"></div>
 			</div>
-			<div class="projects-thumb absolute top-full left-0 mt-[143.42px] w-[42.96px] h-[53.71px] max-w-none overflow-hidden rounded-[2px]" data-img="/images/projects-photo-7.jpg?v=2" data-title1="CURATED PLACES" data-title2="lifestyle, food and culture" data-page="3/4" data-href="/projects/curated-places">
+			<div class="projects-thumb absolute top-full left-0 mt-[143.42px] w-[42.96px] h-[53.71px] max-w-none overflow-hidden rounded-[3px]" data-img="/images/projects-photo-7.jpg?v=2" data-title1="CURATED PLACES" data-title2="lifestyle, food and culture" data-page="3/4" data-href="/projects/curated-places">
 				<img src="/images/projects-photo-7.jpg?v=2" alt="" class="h-full w-full object-cover brightness-125" style="filter: grayscale(1);" />
 				<div class="thumb-veil pointer-events-none absolute inset-0 transition-opacity duration-300" style="opacity: 1; background: rgba(255,255,255,0.75);"></div>
 			</div>
-			<div class="projects-thumb absolute top-full left-0 mt-[203.13px] w-[42.96px] h-[53.71px] max-w-none overflow-hidden rounded-[2px]" data-img="/images/projects-photo-8.jpg?v=2" data-title1="UGC" data-title2="authentic and ready to post" data-page="4/4" data-href="/projects/ugc">
+			<div class="projects-thumb absolute top-full left-0 mt-[203.13px] w-[42.96px] h-[53.71px] max-w-none overflow-hidden rounded-[3px]" data-img="/images/projects-photo-8.jpg?v=2" data-title1="UGC" data-title2="authentic and ready to post" data-page="4/4" data-href="/projects/ugc">
 				<img src="/images/projects-photo-8.jpg?v=2" alt="" class="h-full w-full object-cover brightness-125" style="filter: grayscale(1);" />
 				<div class="thumb-veil pointer-events-none absolute inset-0 transition-opacity duration-300" style="opacity: 1; background: rgba(255,255,255,0.75);"></div>
 			</div>

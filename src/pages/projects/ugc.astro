@@ -4,6 +4,7 @@ import '@fontsource/inter/400.css';
 import '@fontsource/inter/500.css';
 import '../../styles/global.css';
 import Footer from '../../components/Footer.astro';
+import VideoHoverSound from '../../components/VideoHoverSound.astro';
 ---
 
 <html lang="en">
@@ -29,24 +30,74 @@ import Footer from '../../components/Footer.astro';
 		<div class="js-blend-fixed absolute top-3 left-6 right-6 flex flex-row items-start">
 			<a href="/" class="block text-[41px] leading-tight font-normal" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.05em; color: #fff; mix-blend-mode: difference; text-transform: uppercase;">senja studio</a>
 		</div>
-		<div class="absolute top-3 right-6 z-10 w-1/2">
+		<div class="absolute top-3 left-1/2 z-10 w-1/2">
 			<p class="text-[0.76rem] font-[325]" style="margin-top: 7px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">4/4<br />UGC<br />authentic and ready to post</p>
 		</div>
-		<nav class="js-blend-fixed absolute right-6 flex flex-row text-[0.76rem] font-[325]" style="top: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em;">
-			<a href="/" class="nav-link active" style="color: #fff; mix-blend-mode: difference;">projects</a><span style="color: #fff; mix-blend-mode: difference;">,&nbsp;</span><a href="/services" class="nav-link" style="color: #fff; mix-blend-mode: difference;">services</a><span style="color: #fff; mix-blend-mode: difference;">,&nbsp;</span><a href="/about" class="nav-link" style="color: #fff; mix-blend-mode: difference;">about</a><span style="color: #fff; mix-blend-mode: difference;">,&nbsp;</span><a href="/contact" class="nav-link" style="color: #fff; mix-blend-mode: difference;">contact</a>
+		<nav id="ugc-nav" class="fixed right-6 z-10 flex flex-row text-[0.76rem] font-[325]" style="top: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c;">
+			<a href="/" class="nav-link active">projects</a><span>,&nbsp;</span><a href="/services" class="nav-link">services</a><span>,&nbsp;</span><a href="/about" class="nav-link">about</a><span>,&nbsp;</span><a href="/contact" class="nav-link">contact</a>
 		</nav>
 
 		<a href="/" class="fixed left-6 z-10 text-2xl font-normal" style="top: 84px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #1c1c1c; text-decoration: none;">←</a>
 
-		<main class="min-h-screen px-6 pb-24 pt-32">
+		<main class="min-h-screen px-6 pb-24 pt-48 reveal-page">
+			<div id="ugc-row1" class="ml-auto flex w-fit flex-row items-start gap-4">
+				<div id="ugc-images1" class="flex flex-row items-end gap-3">
+					<img src="/images/ugc/1.png" alt="" class="w-[195px] aspect-[694/933] object-cover" />
+					<VideoHoverSound>
+						<video src="/videos/ugc-2.mp4" class="w-[255px] aspect-[9/16] object-cover brightness-125 saturate-90" autoplay loop muted playsinline></video>
+					</VideoHoverSound>
+				</div>
+				<p class="max-w-[220px] text-[0.76rem] font-[325] text-justify" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.5;">Designed for social platforms, these visuals combine a natural perspective with a refined aesthetic. Created to feel spontaneous yet intentional, the content captures the experience and atmosphere of a place while remaining ready to share across digital channels.</p>
+				<img id="ugc-img3bis" src="/images/ugc/3bis.png" alt="" class="w-[310px] aspect-[1280/700] object-cover" />
+			</div>
+
+			<div id="ugc-row4" class="mt-2 ml-auto flex w-fit flex-row items-end gap-2">
+				<img id="ugc-img4bis" src="/images/ugc/4bis.png" alt="" class="w-[130px] aspect-[2297/3024] object-cover" />
+				<img id="ugc-img5" src="/images/ugc/5.png" alt="" class="w-[200px] aspect-[1886/1190] object-cover" />
+			</div>
+
+			<div id="ugc-row6" class="mt-2 ml-auto flex w-fit flex-row items-end gap-2">
+				<VideoHoverSound>
+					<video id="ugc-video6" src="/videos/ugc-6.mp4" class="w-[215px] aspect-[9/16] object-cover" autoplay loop muted playsinline></video>
+				</VideoHoverSound>
+				<img id="ugc-img7" src="/images/ugc/7.png" alt="" class="w-[420px] aspect-[4032/3024] object-cover" />
+			</div>
+
+			<div id="ugc-row9" class="mt-2 flex w-fit flex-row items-end gap-6">
+				<img id="ugc-img9bis" src="/images/ugc/9bis.png" alt="" class="w-[140px] aspect-[2048/2657] object-cover brightness-145" />
+				<img id="ugc-img8bis" src="/images/ugc/8bis.png" alt="" class="w-[230px] aspect-[3024/4032] object-cover" />
+			</div>
+
+			<div id="ugc-row12" class="mt-2 ml-auto flex w-fit flex-row items-end gap-[300px]">
+				<div class="flex flex-row items-end gap-2">
+					<img id="ugc-img10bis" src="/images/ugc/10bis.png" alt="" class="w-[170px] aspect-[2160/2700] object-cover" />
+					<VideoHoverSound>
+						<video id="ugc-video11" src="/videos/ugc-11.mp4" class="w-[215px] aspect-[9/16] object-cover" autoplay loop muted playsinline></video>
+					</VideoHoverSound>
+				</div>
+				<VideoHoverSound>
+					<video id="ugc-video12" src="/videos/ugc-12.mp4" class="w-[215px] aspect-[9/16] object-cover brightness-115" autoplay loop muted playsinline></video>
+				</VideoHoverSound>
+			</div>
+
+			<img id="ugc-img13bis" src="/images/ugc/13bis.png" alt="" class="mt-2 w-[160px] aspect-[720/837] object-cover saturate-125" />
+
+			<div id="ugc-row14" class="mt-2 flex w-fit flex-row items-end gap-2">
+				<img id="ugc-img14" src="/images/ugc/14.png" alt="" class="w-[230px] aspect-[3024/4032] object-cover" />
+				<img id="ugc-img15" src="/images/ugc/15.png" alt="" class="w-[230px] aspect-[3024/4032] object-cover" />
+			</div>
+
 			<a href="/projects/villa-connexion" class="mt-16 block pt-6" style="border-top: 0.5px solid #1c1c1c;">
 				<p class="text-[0.76rem] font-[325] uppercase" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.08em; color: #8c8a84;">Next</p>
 				<p class="mt-1 text-[0.76rem] font-[325] tabular-nums" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">1/4<br />VILLA CONNEXION<br />intimate luxurious spaces</p>
 			</a>
 		</main>
 
-		<Footer />
+		<Footer fixed={false} />
 		<script>
+			import { initHoverSoundVideos } from '../../scripts/video-hover-sound.js';
+			initHoverSoundVideos();
+
 			const blendFixedEls = Array.from(document.querySelectorAll('.js-blend-fixed')).map((el) => ({
 				el,
 				offset: parseFloat(getComputedStyle(el).top) || 0,
@@ -59,6 +110,60 @@ import Footer from '../../components/Footer.astro';
 			syncBlendFixed();
 			window.addEventListener('scroll', syncBlendFixed, { passive: true });
 			window.addEventListener('resize', syncBlendFixed);
+
+			const alignRightEdgeTo = (el, targetX) => {
+				const currentMR = parseFloat(getComputedStyle(el).marginRight) || 0;
+				el.style.marginRight = (currentMR + (el.getBoundingClientRect().right - targetX)) + 'px';
+			};
+			const alignLeftEdgeTo = (el, targetX) => {
+				const currentML = parseFloat(getComputedStyle(el).marginLeft) || 0;
+				el.style.marginLeft = (currentML + (targetX - el.getBoundingClientRect().left)) + 'px';
+			};
+			const layoutRows = () => {
+				const nav = document.getElementById('ugc-nav');
+				const row1 = document.getElementById('ugc-row1');
+				if (nav && row1) alignRightEdgeTo(row1, nav.getBoundingClientRect().right);
+				const images1 = document.getElementById('ugc-images1');
+				const row4 = document.getElementById('ugc-row4');
+				const img3bis = document.getElementById('ugc-img3bis');
+				if (img3bis && row4) alignRightEdgeTo(row4, img3bis.getBoundingClientRect().right);
+				const img4bis = document.getElementById('ugc-img4bis');
+				const img5 = document.getElementById('ugc-img5');
+				if (img4bis && img5) {
+					const targetHeight = img4bis.getBoundingClientRect().height;
+					img5.style.width = (targetHeight * (1886 / 1190)) + 'px';
+				}
+				const row6 = document.getElementById('ugc-row6');
+				if (img4bis && row6) alignRightEdgeTo(row6, img4bis.getBoundingClientRect().right);
+				const video6 = document.getElementById('ugc-video6');
+				const img7 = document.getElementById('ugc-img7');
+				if (video6 && img7) {
+					const targetHeight = video6.getBoundingClientRect().height;
+					img7.style.width = (targetHeight * (4032 / 3024)) + 'px';
+				}
+				const img9bis = document.getElementById('ugc-img9bis');
+				const img8bis = document.getElementById('ugc-img8bis');
+				if (img7 && img8bis) alignLeftEdgeTo(img8bis, img7.getBoundingClientRect().right);
+				const row12 = document.getElementById('ugc-row12');
+				if (row12 && img8bis) alignRightEdgeTo(row12, img8bis.getBoundingClientRect().left);
+				const video12 = document.getElementById('ugc-video12');
+				if (video12 && img9bis) {
+					const w = img9bis.getBoundingClientRect().width;
+					alignLeftEdgeTo(img9bis, video12.getBoundingClientRect().left - w);
+				}
+				const video11 = document.getElementById('ugc-video11');
+				const img13bis = document.getElementById('ugc-img13bis');
+				if (video11 && img13bis) alignLeftEdgeTo(img13bis, video11.getBoundingClientRect().right);
+				const row14 = document.getElementById('ugc-row14');
+				const img15 = document.getElementById('ugc-img15');
+				if (img13bis && row14 && img15) {
+					const rowOffset = img15.getBoundingClientRect().left - row14.getBoundingClientRect().left;
+					alignLeftEdgeTo(row14, img13bis.getBoundingClientRect().left - rowOffset);
+				}
+			};
+			layoutRows();
+			window.addEventListener('resize', layoutRows);
+			window.addEventListener('load', layoutRows);
 		</script>
 	</body>
 </html>

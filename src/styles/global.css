@@ -1,8 +1,15 @@
 @import "tailwindcss";
 
-html, body {
-	overflow: hidden;
+html {
+	overflow-x: hidden;
+	overflow-y: auto;
+	scrollbar-gutter: stable;
 	height: 100%;
+}
+
+body {
+	height: 100%;
+	background-color: #fff;
 }
 
 @font-face {
@@ -20,4 +27,34 @@ html, body {
 	font-weight: 300 500;
 	font-style: normal;
 	font-display: swap;
+}
+
+@keyframes reveal-fade-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+.reveal-page > * {
+	opacity: 0;
+	animation: reveal-fade-in 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.reveal-page > *:nth-child(1) { animation-delay: 0ms; }
+.reveal-page > *:nth-child(2) { animation-delay: 220ms; }
+.reveal-page > *:nth-child(3) { animation-delay: 440ms; }
+.reveal-page > *:nth-child(4) { animation-delay: 660ms; }
+.reveal-page > *:nth-child(5) { animation-delay: 880ms; }
+.reveal-page > *:nth-child(6) { animation-delay: 1100ms; }
+.reveal-page > *:nth-child(7) { animation-delay: 1320ms; }
+.reveal-page > *:nth-child(n + 8) { animation-delay: 1540ms; }
+
+@media (prefers-reduced-motion: reduce) {
+	.reveal-page > * {
+		animation: none;
+		opacity: 1;
+	}
 }

@@ -4,6 +4,7 @@ import '@fontsource/inter/400.css';
 import '@fontsource/inter/500.css';
 import '../../styles/global.css';
 import Footer from '../../components/Footer.astro';
+import VideoHoverSound from '../../components/VideoHoverSound.astro';
 ---
 
 <html lang="en">
@@ -29,51 +30,55 @@ import Footer from '../../components/Footer.astro';
 		<div class="js-blend-fixed absolute top-3 left-6 right-6 flex flex-row items-start">
 			<a href="/" class="block text-[41px] leading-tight font-normal" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.05em; color: #fff; mix-blend-mode: difference; text-transform: uppercase;">senja studio</a>
 		</div>
-		<div class="absolute top-3 right-6 z-10 w-1/2">
+		<div class="absolute top-3 left-1/2 z-10 w-1/2">
 			<p class="text-[0.76rem] font-[325]" style="margin-top: 7px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">2/4<br />RESORT LIFE<br />stillness and light</p>
 		</div>
-		<nav class="js-blend-fixed absolute right-6 flex flex-row text-[0.76rem] font-[325]" style="top: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em;">
-			<a href="/" class="nav-link active" style="color: #fff; mix-blend-mode: difference;">projects</a><span style="color: #fff; mix-blend-mode: difference;">,&nbsp;</span><a href="/services" class="nav-link" style="color: #fff; mix-blend-mode: difference;">services</a><span style="color: #fff; mix-blend-mode: difference;">,&nbsp;</span><a href="/about" class="nav-link" style="color: #fff; mix-blend-mode: difference;">about</a><span style="color: #fff; mix-blend-mode: difference;">,&nbsp;</span><a href="/contact" class="nav-link" style="color: #fff; mix-blend-mode: difference;">contact</a>
+		<nav class="fixed right-6 z-10 flex flex-row text-[0.76rem] font-[325]" style="top: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c;">
+			<a href="/" class="nav-link active">projects</a><span>,&nbsp;</span><a href="/services" class="nav-link">services</a><span>,&nbsp;</span><a href="/about" class="nav-link">about</a><span>,&nbsp;</span><a href="/contact" class="nav-link">contact</a>
 		</nav>
 
 		<a href="/" class="fixed left-6 z-10 text-2xl font-normal" style="top: 84px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #1c1c1c; text-decoration: none;">←</a>
 
-		<main class="min-h-screen px-6 pb-24 pt-32">
+		<main class="min-h-screen px-6 pb-24 pt-48 reveal-page">
 			<div class="ml-auto mr-16 flex w-fit flex-row items-end gap-6">
 				<p id="rl-text" class="max-w-[220px] text-[0.76rem] font-[325] text-justify" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.5;">A resort is experienced as a sequence of spaces rather than a collection of rooms. Pools, lobbies, restaurants and quiet corners shape the rhythm of a stay as much as the accommodation itself. Through careful attention to light, texture and materials, these images explore the character of a place and the quiet experience it offers.</p>
-				<video id="rl-video" src="/videos/resort-life-1.mp4" class="w-[500px] aspect-[16/9] object-cover" autoplay loop muted playsinline></video>
+				<VideoHoverSound>
+					<video id="rl-video" src="/videos/resort-life-1.mp4" class="w-[500px] aspect-[16/9] object-cover" autoplay loop muted playsinline></video>
+				</VideoHoverSound>
 			</div>
 
-			<img id="rl-img2" src="/images/resort-life/2.jpg" alt="" class="mt-12 ml-auto w-[420px] aspect-[16/9] object-cover" />
+			<img id="rl-img2" src="/images/resort-life/2.jpg" alt="" class="mt-2 ml-auto w-[420px] aspect-[16/9] object-cover" />
 
-			<div id="rl-row3" class="mt-8 flex w-fit flex-row gap-2">
+			<div id="rl-row3" class="mt-2 flex w-fit flex-row gap-2">
 				<img src="/images/resort-life/3.png" alt="" class="w-[130px] aspect-[3/4] object-cover" />
 				<img src="/images/resort-life/4.png" alt="" class="w-[130px] aspect-[3/4] object-cover" />
 				<img src="/images/resort-life/5.png" alt="" class="w-[130px] aspect-[3/4] object-cover" />
 				<img src="/images/resort-life/6bis.png" alt="" class="w-[130px] aspect-[3/4] object-cover" />
 			</div>
 
-			<div id="rl-row7" class="mt-8 ml-auto flex w-fit flex-row items-end gap-2">
+			<div id="rl-row7" class="mt-2 ml-auto flex w-fit flex-row items-end gap-2">
 				<img id="rl-img7" src="/images/resort-life/7.png" alt="" class="w-[320px] aspect-[4/5] object-cover" />
-				<img id="rl-img8bis" src="/images/resort-life/8bis.png" alt="" class="w-[110px] aspect-[3/5] object-cover object-[center_75%]" />
+				<img id="rl-img8bis" src="/images/resort-life/8bis.png" alt="" class="w-[110px] aspect-[3/5] object-cover object-[center_80%]" />
 			</div>
 
-			<div id="rl-row9" class="mt-8 flex w-fit flex-row items-end gap-2">
+			<div id="rl-row9" class="mt-2 flex w-fit flex-row items-end gap-2">
 				<img id="rl-img10bis" src="/images/resort-life/10bis.png" alt="" class="w-[180px] aspect-[4/3] object-cover" />
 				<img id="rl-img9bis" src="/images/resort-life/9bis.png" alt="" class="w-[320px] aspect-[3/4] object-cover" />
 			</div>
 
-			<div id="rl-row11" class="mt-8 ml-auto flex w-fit flex-row gap-2">
+			<div id="rl-row11" class="mt-2 ml-auto flex w-fit flex-row gap-2">
 				<img src="/images/resort-life/11qua.png" alt="" class="w-[175px] aspect-[9/16] object-cover" />
 				<img src="/images/resort-life/12ter.png" alt="" class="w-[175px] aspect-[9/16] object-cover" />
 				<img id="rl-img13bis" src="/images/resort-life/13bis.png" alt="" class="w-[175px] aspect-[9/16] object-cover" />
 			</div>
 
-			<div id="rl-row14" class="mt-8 flex w-fit flex-row items-end gap-2">
-				<video id="rl-video14" src="/videos/resort-life-14.mp4" class="w-[200px] aspect-[9/16] object-cover" autoplay loop muted playsinline></video>
+			<div id="rl-row14" class="mt-2 flex w-fit flex-row items-end gap-2">
+				<VideoHoverSound>
+					<video id="rl-video14" src="/videos/resort-life-14.mp4" class="w-[200px] aspect-[9/16] object-cover" autoplay loop muted playsinline></video>
+				</VideoHoverSound>
 			</div>
 
-			<div id="rl-row16" class="mt-8 ml-auto flex w-fit flex-row items-end gap-2">
+			<div id="rl-row16" class="mt-2 ml-auto flex w-fit flex-row items-end gap-2">
 				<img src="/images/resort-life/16.png" alt="" class="w-[190px] aspect-[2160/2544] object-cover" />
 				<img id="rl-img17" src="/images/resort-life/17.png" alt="" class="w-[190px] aspect-[2160/2544] object-cover object-[center_65%]" />
 			</div>
@@ -84,8 +89,11 @@ import Footer from '../../components/Footer.astro';
 			</a>
 		</main>
 
-		<Footer />
+		<Footer fixed={false} />
 		<script>
+			import { initHoverSoundVideos } from '../../scripts/video-hover-sound.js';
+			initHoverSoundVideos();
+
 			const blendFixedEls = Array.from(document.querySelectorAll('.js-blend-fixed')).map((el) => ({
 				el,
 				offset: parseFloat(getComputedStyle(el).top) || 0,
