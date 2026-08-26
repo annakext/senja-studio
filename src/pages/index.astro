@@ -703,15 +703,16 @@ import Footer from '../components/Footer.astro';
 				return centers[activeBi] - (vis + vw / 2);
 			};
 			const centerOnFirst = () => {
-				activeBi = 0;
+				const refBi = N;
+				activeBi = refBi;
 				activeM = 0;
-				const startVis = centers[0] - vw / 2;
+				const startVis = centers[refBi] - vw / 2;
 				current = startVis;
 				target = startVis;
 				figs.forEach((f, i) => {
-					f.classList.toggle('is-active', i === 0);
-					f.classList.toggle('is-before', false);
-					f.classList.toggle('is-after', i > 0);
+					f.classList.toggle('is-active', i === refBi);
+					f.classList.toggle('is-before', i < refBi);
+					f.classList.toggle('is-after', i > refBi);
 				});
 				if (numEl) numEl.textContent = '01';
 				if (themeEl) themeEl.textContent = themes[0];
@@ -720,7 +721,7 @@ import Footer from '../components/Footer.astro';
 			placeReel();
 			centerOnFirst();
 			const recenterOnceLoaded = () => {
-				if (autoplayAnim || activeBi !== 0) return;
+				if (autoplayAnim || activeBi !== N) return;
 				measure();
 				centerOnFirst();
 			};
