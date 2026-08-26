@@ -726,7 +726,7 @@ import Footer from '../components/Footer.astro';
 				centerOnFirst();
 			};
 			window.addEventListener('load', recenterOnceLoaded);
-			[0, 100, 300, 600, 1000, 1500].forEach((ms) => setTimeout(recenterOnceLoaded, ms));
+			setTimeout(recenterOnceLoaded, 400);
 			const raf = () => {
 				if (autoplayAnim) {
 					const t = Math.min(1, (performance.now() - autoplayAnim.start) / autoplayAnim.duration);
