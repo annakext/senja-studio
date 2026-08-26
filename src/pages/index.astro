@@ -712,6 +712,7 @@ import Footer from '../components/Footer.astro';
 			});
 			if (numEl) numEl.textContent = '01';
 			if (themeEl) themeEl.textContent = themes[0];
+			snapped = true;
 			const raf = () => {
 				if (autoplayAnim) {
 					const t = Math.min(1, (performance.now() - autoplayAnim.start) / autoplayAnim.duration);
