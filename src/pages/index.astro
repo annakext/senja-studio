@@ -720,14 +720,12 @@ import Footer from '../components/Footer.astro';
 			placeReel();
 			centerOnFirst();
 			const recenterOnceLoaded = () => {
+				if (autoplayAnim || activeBi !== 0) return;
 				measure();
 				centerOnFirst();
 			};
-			if (document.readyState === 'complete') {
-				recenterOnceLoaded();
-			} else {
-				window.addEventListener('load', recenterOnceLoaded);
-			}
+			window.addEventListener('load', recenterOnceLoaded);
+			[0, 100, 300, 600, 1000, 1500].forEach((ms) => setTimeout(recenterOnceLoaded, ms));
 			const raf = () => {
 				if (autoplayAnim) {
 					const t = Math.min(1, (performance.now() - autoplayAnim.start) / autoplayAnim.duration);
