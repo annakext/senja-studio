@@ -1,3 +1,19 @@
+// Browsers only allow audible autoplay after a real user gesture (click,
+// keydown, touchstart) — hovering never counts. So the very first hover on a
+// freshly loaded page can end up silently stuck muted even though we set
+// video.muted = false. The page's first real click establishes that gesture
+// for the rest of the page's life, so we retry the unmute for whichever
+// video is currently hovered at that moment, and every hover after that
+// works normally on its own.
+const currentlyHovered = new Set();
+document.addEventListener(
+	'click',
+	() => {
+		currentlyHovered.forEach((retry) => retry());
+	},
+	{ capture: true }
+);
+
 export function initHoverSoundVideos(root) {
 	const scope = root || document;
 	const wrappers = scope.querySelectorAll('.video-hover-sound');
@@ -22,7 +38,7 @@ export function initHoverSoundVideos(root) {
 		};
 		updateIcon();
 
-		wrapper.addEventListener('mouseenter', () => {
+		const attemptUnmute = () => {
 			hoverIntentUnmuted = true;
 			video.muted = false;
 			updateIcon();
@@ -36,9 +52,15 @@ export function initHoverSoundVideos(root) {
 					updateIcon();
 				});
 			}
+		};
+
+		wrapper.addEventListener('mouseenter', () => {
+			currentlyHovered.add(attemptUnmute);
+			attemptUnmute();
 		});
 
 		wrapper.addEventListener('mouseleave', () => {
+			currentlyHovered.delete(attemptUnmute);
 			hoverIntentUnmuted = false;
 			video.muted = true;
 			updateIcon();
