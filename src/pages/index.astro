@@ -805,14 +805,21 @@ import Footer from '../components/Footer.astro';
 			const AUTOPLAY_TWEEN_MS = 2000;
 			const advanceOne = () => {
 				if (activeBi < 0) return;
-				let nextIdx = activeBi + 1;
-				if (nextIdx >= centers.length) nextIdx -= N;
+				const nextIdx = activeBi + 1 >= centers.length ? (activeBi + 1) - N : activeBi + 1;
 				const delta = centers[nextIdx] - centers[activeBi];
 				const from = current;
 				const to = current + delta;
 				target = to;
 				autoplayAnim = { from, to, start: performance.now(), duration: AUTOPLAY_TWEEN_MS };
 				updateActive(wrapVis(to));
+				const safeHigh = centers.length - 2 * N;
+				if (activeBi >= safeHigh) {
+					activeBi -= 2 * N;
+					current -= 2 * setWidth;
+					target -= 2 * setWidth;
+					autoplayAnim.from -= 2 * setWidth;
+					autoplayAnim.to -= 2 * setWidth;
+				}
 			};
 			const scheduleAutoplay = (delay) => {
 				clearTimeout(autoplayTimer);
