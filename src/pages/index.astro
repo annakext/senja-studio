@@ -32,6 +32,8 @@ import Footer from '../components/Footer.astro';
 			#htrack figure::after { content: ""; position: absolute; inset: 0; background: rgba(255, 255, 255, 0.25); pointer-events: none; transition: opacity 0.45s ease; }
 			#htrack figure.is-active::after { opacity: 0.12; }
 			#htrack figure.is-active .photo-num { opacity: 0; }
+			#htrack .photo-visual a { cursor: default; }
+			.big-preview-img { transition: opacity 1s ease; }
 			#idx-table p { transition: color 0.4s ease; }
 			#idx-table p.on { color: #1c1c1c; }
 			.nav-link { position: relative; text-decoration: none; }
@@ -333,7 +335,12 @@ import Footer from '../components/Footer.astro';
 		</main>
 		<div id="projects-group" class="absolute top-[40.2vh] left-1/2 z-10 inline-block">
 			<h1 class="relative block text-[25.33px] leading-tight font-normal" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c;">projects</h1>
-			<img id="projects-big-img" src="/images/projects-photo-5.jpg?v=2" alt="" class="absolute top-full right-full mt-6 w-[345.89px] max-w-none aspect-[4/5] object-cover brightness-125 -translate-x-2" />
+			<div id="projects-big-img" class="absolute top-full right-full mt-6 w-[345.89px] max-w-none aspect-[4/5] -translate-x-2">
+				<img src="/images/projects-photo-5.jpg?v=2" alt="" class="big-preview-img absolute inset-0 h-full w-full object-cover brightness-125 opacity-100" />
+				<img src="/images/projects-photo-6.jpg?v=2" alt="" class="big-preview-img absolute inset-0 h-full w-full object-cover brightness-125 opacity-0" />
+				<img src="/images/projects-photo-7.jpg?v=2" alt="" class="big-preview-img absolute inset-0 h-full w-full object-cover brightness-125 opacity-0" />
+				<img src="/images/projects-photo-8.jpg?v=2" alt="" class="big-preview-img absolute inset-0 h-full w-full object-cover brightness-125 opacity-0" />
+			</div>
 			<div class="projects-thumb absolute top-full left-0 mt-6 w-[42.96px] h-[53.71px] max-w-none overflow-hidden rounded-[3px]" data-img="/images/projects-photo-5.jpg?v=2" data-title1="VILLA CONNEXION" data-title2="intimate luxurious spaces" data-page="1/4" data-href="/projects/villa-connexion">
 				<img src="/images/projects-photo-5.jpg?v=2" alt="" class="h-full w-full object-cover brightness-125" />
 				<div class="thumb-veil pointer-events-none absolute inset-0 transition-opacity duration-300" style="opacity: 0; background: rgba(255,255,255,0.75);"></div>
@@ -426,7 +433,7 @@ import Footer from '../components/Footer.astro';
 
 		<script>
 			const bigImg = document.getElementById('projects-big-img');
-			const defaultBigSrc = bigImg ? bigImg.getAttribute('src') : '';
+			const bigPreviewImgs = bigImg ? Array.from(bigImg.querySelectorAll('.big-preview-img')) : [];
 			const captionInner = document.getElementById('caption-inner');
 			const defaultTitle1 = 'VILLA CONNEXION';
 			const defaultTitle2 = 'intimate luxurious spaces';
@@ -513,28 +520,11 @@ import Footer from '../components/Footer.astro';
 				const title1 = thumb.dataset.title1 || defaultTitle1;
 				const title2 = thumb.dataset.title2 || defaultTitle2;
 				const page = thumb.dataset.page || defaultPage;
-				if (bigImg) {
-					if (bigImg._fadeOverlay) {
-						bigImg._fadeOverlay.remove();
-						bigImg._fadeOverlay = null;
-					}
-					const overlay = bigImg.cloneNode(true);
-					overlay.removeAttribute('id');
-					overlay.style.pointerEvents = 'none';
-					overlay.style.opacity = '0';
-					overlay.src = thumb.dataset.img;
-					bigImg.insertAdjacentElement('afterend', overlay);
-					bigImg._fadeOverlay = overlay;
-
-					overlay.animate(
-						[{ opacity: 0 }, { opacity: 1 }],
-						{ duration: ROLL_MS, easing: 'ease', fill: 'forwards' }
-					).onfinish = () => {
-						bigImg.src = thumb.dataset.img;
-						overlay.remove();
-						if (bigImg._fadeOverlay === overlay) bigImg._fadeOverlay = null;
-					};
-				}
+				bigPreviewImgs.forEach((img) => {
+					const isTarget = img.getAttribute('src') === thumb.dataset.img;
+					img.classList.toggle('opacity-100', isTarget);
+					img.classList.toggle('opacity-0', !isTarget);
+				});
 				rollTo(captionInner, title1 + '<br />' + title2);
 				rollTo(pageInner, page);
 				if (activeThumb) setVeil(activeThumb, true);
@@ -613,6 +603,7 @@ import Footer from '../components/Footer.astro';
 			let prevCountry = 0;
 			let idle = 0;
 			let snapped = false;
+			let autoplayAnim = null;
 			const measure = () => {
 				centers = figs.map((f) => f.offsetLeft + f.offsetWidth / 2);
 				vw = window.innerWidth;
@@ -624,14 +615,45 @@ import Footer from '../components/Footer.astro';
 			if (window.ResizeObserver) {
 				new ResizeObserver(measure).observe(track);
 			}
+			const wrapVis = (v) => (((v % setWidth) + setWidth) % setWidth);
+			const AUTOPLAY_MS = 3000;
+			const AUTOPLAY_RESUME_MS = 6000;
+			const REVEAL_TOTAL_MS = 3600;
+			let autoplayTimer = null;
+			const AUTOPLAY_TWEEN_MS = 2000;
+			const advanceOne = () => {
+				if (activeBi < 0) return;
+				let nextIdx = activeBi + 1;
+				if (nextIdx >= centers.length) nextIdx -= N;
+				const delta = centers[nextIdx] - centers[activeBi];
+				const from = current;
+				const to = current + delta;
+				target = to;
+				autoplayAnim = { from, to, start: performance.now(), duration: AUTOPLAY_TWEEN_MS };
+				updateActive(wrapVis(to));
+			};
+			const scheduleAutoplay = (delay) => {
+				clearTimeout(autoplayTimer);
+				autoplayTimer = setTimeout(() => {
+					advanceOne();
+					idle = 0;
+					snapped = false;
+					scheduleAutoplay(AUTOPLAY_MS);
+				}, delay);
+			};
+			setTimeout(() => scheduleAutoplay(AUTOPLAY_MS), REVEAL_TOTAL_MS);
+
 			main.addEventListener('wheel', (e) => {
 				e.preventDefault();
 				let d = Math.abs(e.deltaY) > Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
 				if (e.deltaMode === 1) d *= 16;
 				else if (e.deltaMode === 2) d *= vw;
+				autoplayAnim = null;
 				target += d;
 				idle = 0;
 				snapped = false;
+				updateActive(wrapVis(target));
+				scheduleAutoplay(AUTOPLAY_RESUME_MS);
 			}, { passive: false });
 			const placeReel = () => {
 				listEl.style.transform = 'translateY(' + ((4 - reelIdx) * ROW) + 'em)';
@@ -648,13 +670,15 @@ import Footer from '../components/Footer.astro';
 				}
 				placeReel();
 			};
+			const HYSTERESIS = 30;
 			const updateActive = (vis) => {
 				const targetPos = vis + vw / 2;
-				let bi = 0;
-				let bd = Infinity;
+				const hasActive = activeBi >= 0 && activeBi < centers.length;
+				let bi = hasActive ? activeBi : 0;
+				let bd = hasActive ? Math.abs(centers[activeBi] - targetPos) : Infinity;
 				for (let i = 0; i < centers.length; i++) {
 					const dd = Math.abs(centers[i] - targetPos);
-					if (dd < bd) { bd = dd; bi = i; }
+					if (dd + HYSTERESIS < bd) { bd = dd; bi = i; }
 				}
 				if (bi !== activeBi) {
 						activeBi = bi;
@@ -674,16 +698,30 @@ import Footer from '../components/Footer.astro';
 
 				return centers[bi] - targetPos;
 			};
+			const centerOffsetFor = (vis) => {
+				if (activeBi < 0) return 0;
+				return centers[activeBi] - (vis + vw / 2);
+			};
 			placeReel();
+			updateActive(wrapVis(current));
 			const raf = () => {
-				current += (target - current) * 0.08;
-				const vis = (((current % setWidth) + setWidth) % setWidth);
+				if (autoplayAnim) {
+					const t = Math.min(1, (performance.now() - autoplayAnim.start) / autoplayAnim.duration);
+					const eased = 1 - Math.pow(1 - t, 3);
+					current = autoplayAnim.from + (autoplayAnim.to - autoplayAnim.from) * eased;
+					if (t >= 1) autoplayAnim = null;
+				} else {
+					current += (target - current) * 0.08;
+				}
+				const vis = wrapVis(current);
 				track.style.transform = 'translate3d(' + (-vis) + 'px, 0, 0)';
-				const bestD = updateActive(vis);
-				idle++;
-				if (!snapped && idle > 8 && Math.abs(target - current) < 1.5) {
-					target += bestD;
-					snapped = true;
+				if (!autoplayAnim) {
+					idle++;
+					if (!snapped && idle > 24 && Math.abs(target - current) < 1.5) {
+						const bestD = centerOffsetFor(vis);
+						target += bestD;
+						snapped = true;
+					}
 				}
 				requestAnimationFrame(raf);
 			};
