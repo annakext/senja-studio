@@ -22,6 +22,8 @@ import Footer from '../components/Footer.astro';
 			.nav-link:hover::after { width: 100%; }
 			.nav-link.active { color: #1c1c1c; }
 			.nav-link.active::after { width: 100%; }
+			:global(html) { scrollbar-width: none; }
+			:global(html)::-webkit-scrollbar { display: none; }
 		</style>
 	</head>
 	<body>
