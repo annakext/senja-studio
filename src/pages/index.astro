@@ -742,7 +742,7 @@ import Footer from '../components/Footer.astro';
 				const thumbRect = firstThumb.getBoundingClientRect();
 				connectorLine.style.left = h1Rect.right + 'px';
 				connectorLine.style.top = bigRect.top + 'px';
-				const lineRight = thumbRect.left + bigRect.width;
+				const lineRight = thumbRect.left + bigRect.width - 20;
 				connectorLine.style.width = (lineRight - h1Rect.right) + 'px';
 
 				const gap = 4.5;
