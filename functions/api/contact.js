@@ -1,3 +1,6 @@
+import { EmailMessage } from 'cloudflare:email';
+import { createMimeMessage } from 'mimetext';
+
 export async function onRequestPost(context) {
 	const { request, env } = context;
 
@@ -34,23 +37,21 @@ export async function onRequestPost(context) {
 		</div>
 	`;
 
-	const res = await fetch('https://api.resend.com/emails', {
-		method: 'POST',
-		headers: {
-			'Authorization': `Bearer ${env.RESEND_API_KEY}`,
-			'Content-Type': 'application/json',
-		},
-		body: JSON.stringify({
-			from: env.FROM_EMAIL || 'Senja Studio <onboarding@resend.dev>',
-			to: env.RECIPIENT_EMAIL || 'anna.k.ext@gmail.com',
-			reply_to: email || undefined,
-			subject: emailSubject,
-			html: emailHtml,
-		}),
-	});
+	const recipient = env.RECIPIENT_EMAIL || 'anna.k.ext@gmail.com';
+	const sender = env.FROM_EMAIL || 'noreply@senja.studio';
 
-	if (!res.ok) {
-		console.error('Resend error:', await res.text());
+	const msg = createMimeMessage();
+	msg.setSender({ name: 'Senja Studio', addr: sender });
+	msg.setRecipient(recipient);
+	if (email) msg.setHeader('Reply-To', email);
+	msg.setSubject(emailSubject);
+	msg.addMessage({ contentType: 'text/html', data: emailHtml });
+
+	try {
+		const eml = new EmailMessage(sender, recipient, msg.asRaw());
+		await env.SEND_EMAIL.send(eml);
+	} catch (err) {
+		console.error('Email send error:', err);
 		return json({ error: 'Failed to send message' }, 500);
 	}
 
