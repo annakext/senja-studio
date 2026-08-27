@@ -54,7 +54,7 @@ import Footer from '../components/Footer.astro';
 					<input type="text" name="_hp" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off" />
 					<div id="turnstile-container" class="pt-2"></div>
 					<div id="form-status"></div>
-					<button type="submit" id="submit-btn" class="pt-2 text-sm font-medium transition-colors hover:text-neutral-400">send my request</button>
+					<button type="submit" id="submit-btn" class="pt-2 text-sm font-medium transition-colors hover:text-neutral-400">SEND</button>
 				</form>
 
 				<script is:inline define:vars={{ siteKey: import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '' }}>
@@ -92,7 +92,7 @@ import Footer from '../components/Footer.astro';
 								status.textContent = 'Please complete the verification.';
 								status.style.color = '#a04040';
 								btn.disabled = false;
-								btn.textContent = 'send my request';
+								btn.textContent = 'SEND';
 								return;
 							}
 
@@ -108,7 +108,7 @@ import Footer from '../components/Footer.astro';
 									status.style.color = '#a04040';
 									if (widgetId != null) window.turnstile.reset(widgetId);
 									btn.disabled = false;
-									btn.textContent = 'send my request';
+									btn.textContent = 'SEND';
 									return;
 								}
 								btn.style.display = 'none';
@@ -120,7 +120,7 @@ import Footer from '../components/Footer.astro';
 								status.style.color = '#a04040';
 								if (widgetId != null) window.turnstile.reset(widgetId);
 								btn.disabled = false;
-								btn.textContent = 'send my request';
+								btn.textContent = 'SEND';
 							}
 						});
 					})();
