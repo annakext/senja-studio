@@ -8,28 +8,15 @@ export async function onRequestPost(context) {
 		return json({ error: 'Invalid JSON' }, 400);
 	}
 
-	const { name, brand, venue, location, message } = body;
-	const turnstileToken = body['cf-turnstile-response'];
+	const { name, email, brand, location, message } = body;
 
 	if (!name || !message) {
 		return json({ error: 'Name and message are required' }, 400);
 	}
 
-	if (!turnstileToken) {
-		return json({ error: 'Missing verification token' }, 400);
-	}
-
+	// Honeypot: bots fill hidden fields, real users never see this one.
 	if (body['_hp']) {
 		return json({ ok: true });
-	}
-
-	const turnstileValid = await verifyTurnstile(
-		turnstileToken,
-		request.headers.get('CF-Connecting-IP') || '',
-		env.TURNSTILE_SECRET_KEY
-	);
-	if (!turnstileValid) {
-		return json({ error: 'Verification failed' }, 403);
 	}
 
 	const emailSubject = brand
@@ -39,44 +26,35 @@ export async function onRequestPost(context) {
 	const emailHtml = `
 		<div style="font-family: sans-serif; max-width: 600px;">
 			<p><strong>Name:</strong> ${escapeHtml(name)}</p>
+			${email ? `<p><strong>Email:</strong> ${escapeHtml(email)}</p>` : ''}
 			${brand ? `<p><strong>Property / Brand:</strong> ${escapeHtml(brand)}</p>` : ''}
-			${venue ? `<p><strong>Type of venue:</strong> ${escapeHtml(venue)}</p>` : ''}
 			${location ? `<p><strong>Location:</strong> ${escapeHtml(location)}</p>` : ''}
 			<hr style="border: none; border-top: 1px solid #ddd; margin: 16px 0;" />
 			<p style="white-space: pre-wrap;">${escapeHtml(message)}</p>
 		</div>
 	`;
 
-	const form = new URLSearchParams();
-	form.set('from', env.FROM_EMAIL || 'Senja Studio <noreply@contact.senjastudio.com>');
-	form.set('to', env.RECIPIENT_EMAIL || 'anna.k.ext@gmail.com');
-	form.set('subject', emailSubject);
-	form.set('html', emailHtml);
-
-	const res = await fetch(`https://api.mailgun.net/v3/${env.MAILGUN_DOMAIN}/messages`, {
+	const res = await fetch('https://api.resend.com/emails', {
 		method: 'POST',
 		headers: {
-			'Authorization': 'Basic ' + btoa('api:' + env.MAILGUN_API_KEY),
+			'Authorization': `Bearer ${env.RESEND_API_KEY}`,
+			'Content-Type': 'application/json',
 		},
-		body: form,
+		body: JSON.stringify({
+			from: env.FROM_EMAIL || 'Senja Studio <onboarding@resend.dev>',
+			to: env.RECIPIENT_EMAIL || 'anna.k.ext@gmail.com',
+			reply_to: email || undefined,
+			subject: emailSubject,
+			html: emailHtml,
+		}),
 	});
 
 	if (!res.ok) {
-		console.error('Mailgun error:', await res.text());
+		console.error('Resend error:', await res.text());
 		return json({ error: 'Failed to send message' }, 500);
 	}
 
 	return json({ ok: true });
-}
-
-async function verifyTurnstile(token, ip, secret) {
-	const res = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
-		method: 'POST',
-		headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-		body: new URLSearchParams({ secret, response: token, remoteip: ip }),
-	});
-	const data = await res.json();
-	return data.success === true;
 }
 
 function escapeHtml(s) {
