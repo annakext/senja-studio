@@ -42,65 +42,7 @@ import Footer from '../components/Footer.astro';
 
 		<main class="min-h-screen px-6 pb-24 pt-28">
 			<div class="ml-[29vw] max-w-xl">
-				<h1 class="relative block text-[25.33px] leading-tight font-normal" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c;">inquire</h1>
-				<div class="mt-6 space-y-12 text-justify text-sm font-[325] leading-relaxed" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c;">
-
-				<form id="contact-form" class="space-y-3 text-left" novalidate>
-					<input type="text" name="name" placeholder="your name" class="w-full border-b border-neutral-300 bg-transparent pb-2 text-[0.8rem] outline-none placeholder:text-neutral-400 focus:border-[#1c1c1c]" />
-					<input type="email" name="email" placeholder="email" class="w-full border-b border-neutral-300 bg-transparent pb-2 text-[0.8rem] outline-none placeholder:text-neutral-400 focus:border-[#1c1c1c]" />
-					<input type="text" name="brand" placeholder="property / brand name" class="w-full border-b border-neutral-300 bg-transparent pb-2 text-[0.8rem] outline-none placeholder:text-neutral-400 focus:border-[#1c1c1c]" />
-					<input type="text" name="location" placeholder="country and city" class="w-full border-b border-neutral-300 bg-transparent pb-2 text-[0.8rem] outline-none placeholder:text-neutral-400 focus:border-[#1c1c1c]" />
-					<textarea name="message" placeholder="tell us about your project" rows="3" class="w-full resize-none border-b border-neutral-300 bg-transparent pb-2 text-[0.8rem] outline-none placeholder:text-neutral-400 focus:border-[#1c1c1c]"></textarea>
-					<input type="text" name="_hp" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off" />
-					<div id="form-status"></div>
-					<button type="submit" id="submit-btn" class="pt-2 text-sm font-medium transition-colors hover:text-neutral-400">SEND</button>
-				</form>
-
-				<script is:inline>
-					(function() {
-						const form = document.getElementById('contact-form');
-						const btn = document.getElementById('submit-btn');
-						const status = document.getElementById('form-status');
-
-						form.addEventListener('submit', async function(e) {
-							e.preventDefault();
-							btn.disabled = true;
-							btn.textContent = 'sending…';
-							status.textContent = '';
-							status.style.color = '';
-
-							const data = Object.fromEntries(new FormData(form));
-
-							try {
-								const res = await fetch('/api/contact', {
-									method: 'POST',
-									headers: { 'Content-Type': 'application/json' },
-									body: JSON.stringify(data),
-								});
-								const result = await res.json();
-								if (!res.ok) {
-									status.textContent = result.error || 'Something went wrong.';
-									status.style.color = '#a04040';
-									btn.disabled = false;
-									btn.textContent = 'SEND';
-									return;
-								}
-								btn.style.display = 'none';
-								status.textContent = 'Message sent — thank you.';
-								status.style.color = '#4a7a3a';
-								form.reset();
-							} catch {
-								status.textContent = 'Network error. Please try again.';
-								status.style.color = '#a04040';
-								btn.disabled = false;
-								btn.textContent = 'SEND';
-							}
-						});
-					})();
-				</script>
-
-				<p>or reach out directly at <a href="mailto:hello@senja.studio" class="font-medium transition-colors hover:text-neutral-400">hello@senja.studio</a></p>
-				</div>
+				<p class="text-justify text-[0.8rem] font-[325] leading-relaxed" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c;">let's work together<br /><a href="mailto:hello@senja.studio" class="transition-colors hover:text-neutral-400">hello@senja.studio</a></p>
 			</div>
 		</main>
 
