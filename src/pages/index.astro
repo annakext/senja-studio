@@ -31,6 +31,7 @@ import Footer from '../components/Footer.astro';
 			#htrack figure { position: relative; }
 			#htrack figure::after { content: ""; position: absolute; inset: 0; background: rgba(255, 255, 255, 0.25); pointer-events: none; transition: opacity 0.45s ease; }
 			#htrack figure.is-active::after { opacity: 0.12; }
+			#htrack .photo-num { transition: opacity 0.45s ease; }
 			#htrack figure.is-active .photo-num { opacity: 0; }
 			#htrack .photo-visual a { cursor: default; }
 			.big-preview-img { transition: opacity 1s ease; }
