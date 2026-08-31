@@ -819,7 +819,7 @@ import Footer from '../components/Footer.astro';
 				const to = current + delta;
 				target = to;
 				autoplayAnim = { from, to, start: performance.now(), duration: AUTOPLAY_TWEEN_MS };
-				updateActive(wrapVis(to));
+				activeBi = nextIdx;
 				const safeHigh = centers.length - 2 * N;
 				if (activeBi >= safeHigh) {
 					activeBi -= 2 * N;
@@ -868,6 +868,20 @@ import Footer from '../components/Footer.astro';
 				placeReel();
 			};
 			const HYSTERESIS = 30;
+			const applyActiveVisual = (bi) => {
+				for (let i = 0; i < figs.length; i++) {
+					figs[i].classList.toggle('is-active', i === bi);
+					figs[i].classList.toggle('is-before', i < bi);
+					figs[i].classList.toggle('is-after', i > bi);
+				}
+				const m = bi % N;
+				if (m !== activeM) {
+					activeM = m;
+					if (numEl) numEl.textContent = String(m + 1).padStart(2, '0');
+					if (themeEl) themeEl.textContent = themes[m % themes.length];
+					setReel(m);
+				}
+			};
 			const updateActive = (vis) => {
 				const targetPos = vis + vw / 2;
 				const hasActive = activeBi >= 0 && activeBi < centers.length;
@@ -878,20 +892,9 @@ import Footer from '../components/Footer.astro';
 					if (dd + HYSTERESIS < bd) { bd = dd; bi = i; }
 				}
 				if (bi !== activeBi) {
-						activeBi = bi;
-						for (let i = 0; i < figs.length; i++) {
-							figs[i].classList.toggle('is-active', i === bi);
-							figs[i].classList.toggle('is-before', i < bi);
-							figs[i].classList.toggle('is-after', i > bi);
-						}
-						const m = bi % N;
-						if (m !== activeM) {
-							activeM = m;
-							if (numEl) numEl.textContent = String(m + 1).padStart(2, '0');
-							if (themeEl) themeEl.textContent = themes[m % themes.length];
-							setReel(m);
-						}
-					}
+					activeBi = bi;
+					applyActiveVisual(bi);
+				}
 
 				return centers[bi] - targetPos;
 			};
@@ -922,7 +925,10 @@ import Footer from '../components/Footer.astro';
 					const t = Math.min(1, (performance.now() - autoplayAnim.start) / autoplayAnim.duration);
 					const eased = 1 - Math.pow(1 - t, 3);
 					current = autoplayAnim.from + (autoplayAnim.to - autoplayAnim.from) * eased;
-					if (t >= 1) autoplayAnim = null;
+					if (t >= 1) {
+						autoplayAnim = null;
+						applyActiveVisual(activeBi);
+					}
 				} else {
 					current += (target - current) * 0.08;
 				}
