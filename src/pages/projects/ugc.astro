@@ -49,11 +49,6 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 				<img id="ugc-img7" src="/images/ugc/7.webp" alt="" class="w-[420px] aspect-[4032/3024] object-cover" loading="lazy" />
 			</div>
 
-			<div id="ugc-row9" class="mt-2 flex w-fit flex-row items-end gap-6">
-				<img id="ugc-img9bis" src="/images/ugc/9bis.webp" alt="" class="w-[140px] aspect-[2048/2657] object-cover brightness-145" loading="lazy" />
-				<img id="ugc-img8bis" src="/images/ugc/8bis.webp" alt="" class="w-[230px] aspect-[3024/4032] object-cover" loading="lazy" />
-			</div>
-
 			<div id="ugc-row12" class="mt-2 ml-auto flex w-fit flex-row items-end gap-[300px]">
 				<div class="flex flex-row items-end gap-2">
 					<img id="ugc-img10bis" src="/images/ugc/10bis.webp" alt="" class="w-[160px] aspect-[2160/2700] object-cover" loading="lazy" />
@@ -62,7 +57,7 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 					</VideoHoverSound>
 				</div>
 				<VideoHoverSound>
-					<video id="ugc-video12" src="/videos/ugc-12.mp4" class="w-[215px] aspect-[9/16] object-cover brightness-115" autoplay loop muted playsinline></video>
+					<video id="ugc-video12" src="/videos/ugc-12.mp4" class="w-[215px] h-[352px] object-cover brightness-115" autoplay loop muted playsinline></video>
 				</VideoHoverSound>
 			</div>
 
@@ -138,16 +133,8 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 					const targetHeight = video6.getBoundingClientRect().height;
 					img7.style.width = (targetHeight * (4032 / 3024)) + 'px';
 				}
-				const img9bis = document.getElementById('ugc-img9bis');
-				const img8bis = document.getElementById('ugc-img8bis');
-				if (img7 && img8bis) alignLeftEdgeTo(img8bis, img7.getBoundingClientRect().right);
 				const row12 = document.getElementById('ugc-row12');
-				if (row12 && img8bis) alignRightEdgeTo(row12, img8bis.getBoundingClientRect().left);
-				const video12 = document.getElementById('ugc-video12');
-				if (video12 && img9bis) {
-					const w = img9bis.getBoundingClientRect().width;
-					alignLeftEdgeTo(img9bis, video12.getBoundingClientRect().left - w);
-				}
+				if (row12) alignRightEdgeTo(row12, 977);
 				const video11 = document.getElementById('ugc-video11');
 				const img13bis = document.getElementById('ugc-img13bis');
 				if (video11 && img13bis) alignLeftEdgeTo(img13bis, video11.getBoundingClientRect().right);
