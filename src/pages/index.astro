@@ -927,8 +927,7 @@ import Footer from '../components/Footer.astro';
 					current += (target - current) * 0.08;
 				}
 				const vis = wrapVis(current);
-				const EDGE_SAFETY_PX = 6;
-				track.style.transform = 'translate3d(' + (-(vis + EDGE_SAFETY_PX)) + 'px, 0, 0)';
+				track.style.transform = 'translate3d(' + (-vis) + 'px, 0, 0)';
 				if (!autoplayAnim) {
 					idle++;
 					if (!snapped && idle > 24 && Math.abs(target - current) < 1.5) {
