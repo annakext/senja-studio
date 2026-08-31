@@ -36,10 +36,6 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 					</VideoHoverSound>
 				</div>
 				<p class="max-w-[220px] text-[0.76rem] font-[325] text-justify" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.5;">Designed for social platforms, these visuals combine a natural perspective with a refined aesthetic. Created to feel spontaneous yet intentional, the content captures the experience and atmosphere of a place while remaining ready to share across digital channels.</p>
-				<div id="ugc-img3bis" class="relative w-[310px] aspect-[1280/700]">
-					<img src="/images/ugc/3bis.webp" alt="" class="h-full w-full object-cover" />
-					<div class="pointer-events-none absolute inset-0 bg-white/35"></div>
-				</div>
 			</div>
 
 			<div id="ugc-row4" class="mt-2 ml-auto flex w-fit flex-row items-end gap-2">
@@ -134,8 +130,7 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 				if (nav && row1) alignRightEdgeTo(row1, nav.getBoundingClientRect().right);
 				const images1 = document.getElementById('ugc-images1');
 				const row4 = document.getElementById('ugc-row4');
-				const img3bis = document.getElementById('ugc-img3bis');
-				if (img3bis && row4) alignRightEdgeTo(row4, img3bis.getBoundingClientRect().right);
+				if (row1 && row4) alignRightEdgeTo(row4, row1.getBoundingClientRect().right);
 				const img5 = document.getElementById('ugc-img5');
 				const row6 = document.getElementById('ugc-row6');
 				if (img5 && row6) alignRightEdgeTo(row6, img5.getBoundingClientRect().left - 8);
