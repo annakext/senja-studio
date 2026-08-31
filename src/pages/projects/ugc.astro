@@ -40,7 +40,6 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 			</div>
 
 			<div id="ugc-row4" class="mt-2 ml-auto flex w-fit flex-row items-end gap-2">
-				<img id="ugc-img4bis" src="/images/ugc/4bis.webp" alt="" class="w-[130px] aspect-[2297/3024] object-cover" loading="lazy" />
 				<img id="ugc-img5" src="/images/ugc/5.webp" alt="" class="w-[200px] aspect-[1886/1190] object-cover" loading="lazy" />
 			</div>
 
@@ -134,14 +133,9 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 				const row4 = document.getElementById('ugc-row4');
 				const img3bis = document.getElementById('ugc-img3bis');
 				if (img3bis && row4) alignRightEdgeTo(row4, img3bis.getBoundingClientRect().right);
-				const img4bis = document.getElementById('ugc-img4bis');
 				const img5 = document.getElementById('ugc-img5');
-				if (img4bis && img5) {
-					const targetHeight = img4bis.getBoundingClientRect().height;
-					img5.style.width = (targetHeight * (1886 / 1190)) + 'px';
-				}
 				const row6 = document.getElementById('ugc-row6');
-				if (img4bis && row6) alignRightEdgeTo(row6, img4bis.getBoundingClientRect().right);
+				if (img5 && row6) alignRightEdgeTo(row6, img5.getBoundingClientRect().right);
 				const video6 = document.getElementById('ugc-video6');
 				const img7 = document.getElementById('ugc-img7');
 				if (video6 && img7) {
