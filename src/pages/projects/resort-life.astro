@@ -42,7 +42,7 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 
 			<div id="rl-row9" class="mt-2 ml-[772px] flex w-fit flex-row items-end gap-2">
 				<VideoHoverSound>
-					<video id="rl-video14" src="/videos/resort-life-14.mp4" class="w-[265px] aspect-[9/16] object-cover" autoplay loop muted playsinline></video>
+					<video id="rl-video14" src="/videos/resort-life-14.mp4" class="w-[250px] aspect-[9/16] object-cover" autoplay loop muted playsinline></video>
 				</VideoHoverSound>
 			</div>
 
@@ -120,7 +120,7 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 				const img17 = document.getElementById('rl-img17');
 				if (!nav || !img17) return;
 				const delta = nav.getBoundingClientRect().right - img17.getBoundingClientRect().right;
-				['rl-row7', 'rl-row9', 'rl-row11', 'rl-row14', 'rl-row-video', 'rl-row3', 'rl-img2'].forEach((id) => {
+				['rl-row7', 'rl-row11', 'rl-row14', 'rl-row-video', 'rl-row3', 'rl-img2'].forEach((id) => {
 					const el = document.getElementById(id);
 					if (!el) return;
 					const currentML = parseFloat(getComputedStyle(el).marginLeft) || 0;
@@ -151,6 +151,11 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 					const img8bisHeight = img8bis.getBoundingClientRect().height;
 					img8bis.style.left = (img7Rect.right + 8 - row7Rect.left) + 'px';
 					img8bis.style.top = (img7Rect.bottom - img8bisHeight - row7Rect.top) + 'px';
+				}
+				const row9 = document.getElementById('rl-row9');
+				if (img8bis && row9) {
+					const currentML = parseFloat(getComputedStyle(row9).marginLeft) || 0;
+					row9.style.marginLeft = (currentML + (img8bis.getBoundingClientRect().left - row9.getBoundingClientRect().left)) + 'px';
 				}
 			};
 			layoutRows();
