@@ -28,9 +28,9 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 	<body>
 		<div style="position: absolute; inset: 0; z-index: -1; background: #fff;"></div>
 		<main class="min-h-screen px-6 pb-24 pt-48 reveal-page">
-			<div id="rl-row7" class="relative ml-[326px] flex w-fit flex-row items-end gap-2">
-				<img id="rl-img7" src="/images/resort-life/7.webp" alt="" class="w-[320px] aspect-[4/5] object-cover" loading="lazy" />
-				<div class="flex h-[400px] flex-col justify-between">
+			<div id="rl-row7" class="relative ml-[326px] flex w-fit flex-row items-end gap-4">
+				<img id="rl-img7" src="/images/resort-life/7.webp" alt="" class="w-[300px] aspect-[4/5] object-cover" loading="lazy" />
+				<div id="rl-text-col" class="absolute flex h-[400px] flex-col justify-between">
 					<p id="rl-text" class="max-w-[220px] text-[0.76rem] font-[325] text-justify" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.5;">A resort is experienced as a sequence of spaces rather than a collection of rooms. Pools, lobbies, restaurants and quiet corners shape the rhythm of a stay as much as the accommodation itself. Through careful attention to light, texture and materials, these images explore the character of a place and the quiet experience it offers.</p>
 					<img id="rl-img8bis" src="/images/resort-life/8bis.webp" alt="" class="w-[110px] h-[157px] object-cover object-bottom" loading="lazy" />
 				</div>
@@ -135,6 +135,14 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 					const img16Width = img16Wrap.getBoundingClientRect().width;
 					img16Wrap.style.left = (img7Rect.left - img16Width - row7Rect.left) + 'px';
 					img16Wrap.style.top = (img7Rect.bottom - row7Rect.top) + 'px';
+				}
+				const textCol = document.getElementById('rl-text-col');
+				if (img7 && row7 && textCol) {
+					const img7Rect = img7.getBoundingClientRect();
+					const row7Rect = row7.getBoundingClientRect();
+					const textColRect = textCol.getBoundingClientRect();
+					textCol.style.left = (img7Rect.left - 16 - textColRect.width - row7Rect.left) + 'px';
+					textCol.style.top = (img7Rect.bottom - textColRect.height - row7Rect.top) + 'px';
 				}
 			};
 			layoutRows();
