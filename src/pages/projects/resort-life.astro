@@ -28,19 +28,19 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 	<body>
 		<div style="position: absolute; inset: 0; z-index: -1; background: #fff;"></div>
 		<main class="min-h-screen px-6 pb-24 pt-48 reveal-page">
-			<div id="rl-row7" class="ml-[326px] flex w-fit flex-row items-end gap-2">
+			<div id="rl-row7" class="relative ml-[326px] flex w-fit flex-row items-end gap-2">
 				<img id="rl-img7" src="/images/resort-life/7.webp" alt="" class="w-[320px] aspect-[4/5] object-cover" loading="lazy" />
 				<div class="flex h-[400px] flex-col justify-between">
 					<p id="rl-text" class="max-w-[220px] text-[0.76rem] font-[325] text-justify" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.5;">A resort is experienced as a sequence of spaces rather than a collection of rooms. Pools, lobbies, restaurants and quiet corners shape the rhythm of a stay as much as the accommodation itself. Through careful attention to light, texture and materials, these images explore the character of a place and the quiet experience it offers.</p>
 					<img id="rl-img8bis" src="/images/resort-life/8bis.webp" alt="" class="w-[110px] h-[157px] object-cover object-bottom" loading="lazy" />
 				</div>
-			</div>
-
-			<div id="rl-row9" class="mt-2 ml-[589px] flex w-fit flex-row items-end gap-2">
-				<div class="relative ml-[35px] w-[140px] h-[165px]">
+				<div id="rl-img16-wrap" class="absolute w-[140px] h-[165px]">
 					<img id="rl-img16" src="/images/resort-life/16.webp" alt="" class="h-full w-full object-cover brightness-105 [transform:scaleX(-1)]" loading="lazy" />
 					<div class="pointer-events-none absolute inset-0 bg-white/[0.03]"></div>
 				</div>
+			</div>
+
+			<div id="rl-row9" class="mt-2 ml-[772px] flex w-fit flex-row items-end gap-2">
 				<VideoHoverSound>
 					<video id="rl-video14" src="/videos/resort-life-14.mp4" class="w-[265px] aspect-[9/16] object-cover" autoplay loop muted playsinline></video>
 				</VideoHoverSound>
@@ -126,6 +126,15 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 					const currentML = parseFloat(getComputedStyle(el).marginLeft) || 0;
 					el.style.marginLeft = (currentML + delta) + 'px';
 				});
+				const img7 = document.getElementById('rl-img7');
+				const row7 = document.getElementById('rl-row7');
+				const img16Wrap = document.getElementById('rl-img16-wrap');
+				if (img7 && row7 && img16Wrap) {
+					const img7Rect = img7.getBoundingClientRect();
+					const row7Rect = row7.getBoundingClientRect();
+					img16Wrap.style.left = (img7Rect.right - row7Rect.left) + 'px';
+					img16Wrap.style.top = (img7Rect.bottom - row7Rect.top) + 'px';
+				}
 			};
 			layoutRows();
 			window.addEventListener('resize', layoutRows);
