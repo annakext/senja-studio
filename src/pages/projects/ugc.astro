@@ -28,42 +28,52 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 	<body>
 		<div style="position: absolute; inset: 0; z-index: -1; background: #fff;"></div>
 		<main class="min-h-screen px-6 pb-24 pt-48 reveal-page">
-			<div id="ugc-row1" class="ml-[251px] flex w-fit flex-row items-start gap-4">
+			<div id="ugc-row-lanterns" class="ml-auto flex w-fit flex-row items-end gap-2">
+				<div id="ugc-lanterns-wrap" class="relative w-[347px] h-[190px]">
+					<img src="/images/ugc/3bis.webp" alt="" class="h-full w-full object-cover" />
+					<div class="pointer-events-none absolute inset-0 bg-white/[0.1]"></div>
+				</div>
+			</div>
+
+			<div id="ugc-row1" class="mt-[-227px] ml-[251px] flex w-fit flex-row items-end gap-4">
 				<div id="ugc-images1" class="flex flex-row items-end gap-2">
-					<img src="/images/ugc/1.webp" alt="" class="w-[180px] aspect-[694/933] object-cover" />
+					<img src="/images/ugc/1.webp" alt="" class="w-[160px] aspect-[694/933] object-cover" />
 					<VideoHoverSound>
-						<video src="/videos/ugc-2.mp4" class="w-[255px] aspect-[9/16] object-cover brightness-125 saturate-90" autoplay loop muted playsinline></video>
+						<video id="ugc-video2" src="/videos/ugc-2.mp4" class="w-[230px] aspect-[9/16] object-cover brightness-125 saturate-90 contrast-95" autoplay loop muted playsinline></video>
+						<div class="pointer-events-none absolute inset-0 bg-white/[0.05]"></div>
 					</VideoHoverSound>
 				</div>
-				<p class="self-end max-w-[220px] text-[0.76rem] font-[325] text-justify" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.5;">Designed for social platforms, these visuals combine a natural perspective with a refined aesthetic. Created to feel spontaneous yet intentional, the content captures the experience and atmosphere of a place while remaining ready to share across digital channels.</p>
+				<p class="self-end max-w-[220px] text-[0.76rem] font-[325] text-justify" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.5;">Designed for social platforms, these visuals combine a natural perspective with a refined aesthetic. Created to feel spontaneous yet intentional, the content captures the experience and atmosphere of a place while remaining ready to share across digital channels. Shot from a genuine guest perspective, it is the kind of content that audiences instinctively trust.</p>
 			</div>
 
-			<div id="ugc-row4" class="mt-4 ml-auto flex w-fit flex-row items-end gap-2">
-				<img id="ugc-img5" src="/images/ugc/5.webp" alt="" class="w-[271px] aspect-[1886/1190] object-cover" loading="lazy" />
+			<div id="ugc-row-img5" class="ml-auto flex w-fit flex-row items-end gap-2">
+				<div class="relative w-[215px] h-[171px]">
+					<img id="ugc-img5" src="/images/ugc/5.webp" alt="" class="h-full w-full object-left object-cover" loading="lazy" />
+					<div class="pointer-events-none absolute inset-0 bg-white/[0.08]"></div>
+				</div>
 			</div>
 
-			<div id="ugc-row6" class="mt-2 ml-auto flex w-fit flex-row items-end gap-2">
+			<div id="ugc-row6" class="mt-0 ml-auto flex w-fit flex-row items-end gap-2">
 				<VideoHoverSound>
 					<video id="ugc-video6" src="/videos/ugc-6.mp4" class="w-[215px] aspect-[9/16] object-cover" autoplay loop muted playsinline></video>
 				</VideoHoverSound>
 				<img id="ugc-img7" src="/images/ugc/7.webp" alt="" class="w-[420px] aspect-[4032/3024] object-cover" loading="lazy" />
 			</div>
 
-			<div id="ugc-row12" class="mt-2 ml-auto flex w-fit flex-row items-end gap-[300px]">
-				<div class="flex flex-row items-end gap-2">
-					<img id="ugc-img10bis" src="/images/ugc/10bis.webp" alt="" class="w-[160px] aspect-[2160/2700] object-cover" loading="lazy" />
-					<VideoHoverSound>
-						<video id="ugc-video11" src="/videos/ugc-11.mp4" class="w-[215px] aspect-[9/16] object-cover" autoplay loop muted playsinline></video>
-					</VideoHoverSound>
-				</div>
+			<div id="ugc-row4" class="mt-0 ml-auto flex w-fit flex-row items-end gap-2">
+				<img id="ugc-img13bis" src="/images/ugc/13bis.webp" alt="" class="self-start w-[160px] aspect-[720/837] object-cover saturate-125" loading="lazy" />
 				<VideoHoverSound>
-					<video id="ugc-video12" src="/videos/ugc-12.mp4" class="w-[215px] h-[352px] object-cover brightness-115" autoplay loop muted playsinline></video>
+					<video id="ugc-video11" src="/videos/ugc-11.mp4" class="w-[215px] aspect-[9/16] object-cover" autoplay loop muted playsinline></video>
 				</VideoHoverSound>
 			</div>
 
-			<img id="ugc-img13bis" src="/images/ugc/13bis.webp" alt="" class="mt-2 w-[160px] aspect-[720/837] object-cover saturate-125" loading="lazy" />
+			<div id="ugc-row12" class="ml-[223px] flex w-fit flex-row items-end gap-[300px]">
+				<VideoHoverSound>
+					<video id="ugc-video12" src="/videos/ugc-12.mp4" class="w-[304px] h-[484px] rounded-[10px] object-cover object-[center_60%] brightness-115 contrast-75" autoplay loop muted playsinline></video>
+				</VideoHoverSound>
+			</div>
 
-			<div id="ugc-row14" class="mt-2 flex w-fit flex-row items-end gap-2">
+			<div id="ugc-row14" class="mt-0 flex w-fit flex-row items-end gap-2">
 				<img id="ugc-img14" src="/images/ugc/14.webp" alt="" class="w-[230px] aspect-[3024/4032] object-cover" loading="lazy" />
 				<img id="ugc-img15" src="/images/ugc/15.webp" alt="" class="w-[230px] aspect-[3024/4032] object-cover" loading="lazy" />
 			</div>
@@ -119,31 +129,46 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 				const currentML = parseFloat(getComputedStyle(el).marginLeft) || 0;
 				el.style.marginLeft = (currentML + (targetX - el.getBoundingClientRect().left)) + 'px';
 			};
+			const alignTopEdgeTo = (el, targetY) => {
+				const currentMT = parseFloat(getComputedStyle(el).marginTop) || 0;
+				el.style.marginTop = (currentMT + (targetY - el.getBoundingClientRect().top)) + 'px';
+			};
 			const layoutRows = () => {
 				const nav = document.getElementById('ugc-nav');
 				const images1 = document.getElementById('ugc-images1');
-				const row4 = document.getElementById('ugc-row4');
-				if (nav && row4) alignRightEdgeTo(row4, nav.getBoundingClientRect().right);
-				const img5 = document.getElementById('ugc-img5');
-				const row6 = document.getElementById('ugc-row6');
-				if (img5 && row6) alignRightEdgeTo(row6, img5.getBoundingClientRect().left - 8);
 				const video6 = document.getElementById('ugc-video6');
 				const img7 = document.getElementById('ugc-img7');
 				if (video6 && img7) {
 					const targetHeight = video6.getBoundingClientRect().height;
 					img7.style.width = (targetHeight * (4032 / 3024)) + 'px';
 				}
-				const row12 = document.getElementById('ugc-row12');
-				if (row12) alignRightEdgeTo(row12, 977);
+				const row4 = document.getElementById('ugc-row4');
+				if (nav && row4) alignRightEdgeTo(row4, nav.getBoundingClientRect().right);
 				const video11 = document.getElementById('ugc-video11');
-				const img13bis = document.getElementById('ugc-img13bis');
-				if (video11 && img13bis) alignLeftEdgeTo(img13bis, video11.getBoundingClientRect().right);
-				const row14 = document.getElementById('ugc-row14');
-				const img15 = document.getElementById('ugc-img15');
-				if (img13bis && row14 && img15) {
-					const rowOffset = img15.getBoundingClientRect().left - row14.getBoundingClientRect().left;
-					alignLeftEdgeTo(row14, img13bis.getBoundingClientRect().left - rowOffset);
+				const rowLanterns = document.getElementById('ugc-row-lanterns');
+				if (video11 && rowLanterns) alignRightEdgeTo(rowLanterns, video11.getBoundingClientRect().right);
+				const lanternsWrap = document.getElementById('ugc-lanterns-wrap');
+				const text1 = document.querySelector('#ugc-row1 p');
+				const video2 = document.getElementById('ugc-video2');
+				if (video11 && lanternsWrap && text1 && video2) {
+					const targetGap = text1.getBoundingClientRect().left - video2.getBoundingClientRect().right;
+					const width = video11.getBoundingClientRect().right - text1.getBoundingClientRect().right - targetGap;
+					lanternsWrap.style.width = width + 'px';
+					lanternsWrap.style.height = (width / (530 / 290)) + 'px';
 				}
+				const rowImg5 = document.getElementById('ugc-row-img5');
+				if (video11 && rowImg5) alignRightEdgeTo(rowImg5, video11.getBoundingClientRect().right);
+				const row6 = document.getElementById('ugc-row6');
+				if (video11 && row6) alignRightEdgeTo(row6, video11.getBoundingClientRect().left);
+				const video6El = document.getElementById('ugc-video6');
+				const img13bis = document.getElementById('ugc-img13bis');
+				if (video6El && img13bis) alignRightEdgeTo(img13bis, video6El.getBoundingClientRect().left);
+				const video12 = document.getElementById('ugc-video12');
+				if (img13bis && video12) alignLeftEdgeTo(video12, img13bis.getBoundingClientRect().right);
+				const row12 = document.getElementById('ugc-row12');
+				if (img13bis && row12) alignTopEdgeTo(row12, img13bis.getBoundingClientRect().bottom);
+				const row14 = document.getElementById('ugc-row14');
+				if (row14 && video12) alignLeftEdgeTo(row14, video12.getBoundingClientRect().right);
 			};
 			layoutRows();
 			window.addEventListener('resize', layoutRows);
