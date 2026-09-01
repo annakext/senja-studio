@@ -28,7 +28,7 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 	<body>
 		<div style="position: absolute; inset: 0; z-index: -1; background: #fff;"></div>
 		<main class="min-h-screen px-6 pb-24 pt-48 reveal-page">
-			<div id="rl-row7" class="relative ml-[326px] flex w-fit flex-row items-end gap-4">
+			<div id="rl-row7" class="relative mt-[-25px] ml-[346px] flex w-fit flex-row items-end gap-4">
 				<img id="rl-img7" src="/images/resort-life/7.webp" alt="" class="w-[300px] aspect-[4/5] object-cover" loading="lazy" />
 				<div id="rl-text-col" class="absolute flex h-[400px] flex-col justify-between">
 					<p id="rl-text" class="max-w-[220px] text-[0.76rem] font-[325] text-justify" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.5;">A resort is experienced as a sequence of spaces rather than a collection of rooms. Pools, lobbies, restaurants and quiet corners shape the rhythm of a stay as much as the accommodation itself. Through careful attention to light, texture and materials, these images explore the character of a place and the quiet experience it offers.</p>
@@ -42,7 +42,7 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 
 			<div id="rl-row9" class="mt-2 ml-[772px] flex w-fit flex-row items-end gap-2">
 				<VideoHoverSound>
-					<video id="rl-video14" src="/videos/resort-life-14.mp4" class="w-[250px] aspect-[9/16] object-cover" autoplay loop muted playsinline></video>
+					<video id="rl-video14" src="/videos/resort-life-14.mp4" class="w-[235px] aspect-[9/16] object-cover" autoplay loop muted playsinline></video>
 				</VideoHoverSound>
 			</div>
 
@@ -116,16 +116,6 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 			window.addEventListener('resize', syncBlendFixed);
 
 			const layoutRows = () => {
-				const nav = document.querySelector('nav');
-				const img17 = document.getElementById('rl-img17');
-				if (!nav || !img17) return;
-				const delta = nav.getBoundingClientRect().right - img17.getBoundingClientRect().right;
-				['rl-row7', 'rl-row11', 'rl-row14', 'rl-row-video', 'rl-row3', 'rl-img2'].forEach((id) => {
-					const el = document.getElementById(id);
-					if (!el) return;
-					const currentML = parseFloat(getComputedStyle(el).marginLeft) || 0;
-					el.style.marginLeft = (currentML + delta) + 'px';
-				});
 				const img7 = document.getElementById('rl-img7');
 				const row7 = document.getElementById('rl-row7');
 				const img16Wrap = document.getElementById('rl-img16-wrap');
@@ -142,7 +132,7 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 					const row7Rect = row7.getBoundingClientRect();
 					const textColRect = textCol.getBoundingClientRect();
 					textCol.style.left = (img7Rect.left - 16 - textColRect.width - row7Rect.left) + 'px';
-					textCol.style.top = (img7Rect.bottom - textColRect.height - row7Rect.top) + 'px';
+					textCol.style.top = (img7Rect.top - row7Rect.top) + 'px';
 				}
 				const img8bis = document.getElementById('rl-img8bis');
 				if (img7 && row7 && img8bis) {
@@ -156,6 +146,16 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 				if (img8bis && row9) {
 					const currentML = parseFloat(getComputedStyle(row9).marginLeft) || 0;
 					row9.style.marginLeft = (currentML + (img8bis.getBoundingClientRect().left - row9.getBoundingClientRect().left)) + 'px';
+				}
+				const img13bis = document.getElementById('rl-img13bis');
+				if (img7 && img13bis) {
+					const groupDelta = img7.getBoundingClientRect().right - img13bis.getBoundingClientRect().right;
+					['rl-row11', 'rl-row14', 'rl-row-video', 'rl-row3', 'rl-img2'].forEach((id) => {
+						const el = document.getElementById(id);
+						if (!el) return;
+						const currentML = parseFloat(getComputedStyle(el).marginLeft) || 0;
+						el.style.marginLeft = (currentML + groupDelta) + 'px';
+					});
 				}
 			};
 			layoutRows();
