@@ -57,7 +57,7 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 				<img id="rl-img17" src="/images/resort-life/17.webp" alt="" class="w-[140px] aspect-[2160/2544] object-cover object-[center_65%] brightness-110" loading="lazy" />
 			</div>
 
-			<div class="mt-2 ml-[265px] flex w-fit flex-row items-end gap-2">
+			<div id="rl-row-video" class="mt-2 ml-[265px] flex w-fit flex-row items-end gap-2">
 				<VideoHoverSound>
 					<video id="rl-video" src="/videos/resort-life-1.mp4" class="w-[499px] h-[355px] rounded-[12px] object-cover brightness-115" autoplay loop muted playsinline></video>
 				</VideoHoverSound>
@@ -115,6 +115,21 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 			window.addEventListener('scroll', syncBlendFixed, { passive: true });
 			window.addEventListener('resize', syncBlendFixed);
 
+			const layoutRows = () => {
+				const nav = document.querySelector('nav');
+				const img17 = document.getElementById('rl-img17');
+				if (!nav || !img17) return;
+				const delta = nav.getBoundingClientRect().right - img17.getBoundingClientRect().right;
+				['rl-row7', 'rl-row9', 'rl-row11', 'rl-row14', 'rl-row-video', 'rl-row3', 'rl-img2'].forEach((id) => {
+					const el = document.getElementById(id);
+					if (!el) return;
+					const currentML = parseFloat(getComputedStyle(el).marginLeft) || 0;
+					el.style.marginLeft = (currentML + delta) + 'px';
+				});
+			};
+			layoutRows();
+			window.addEventListener('resize', layoutRows);
+			window.addEventListener('load', layoutRows);
 		</script>
 	</body>
 </html>
