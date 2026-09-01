@@ -32,8 +32,8 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 				<img id="rl-img7" src="/images/resort-life/7.webp" alt="" class="w-[300px] aspect-[4/5] object-cover" loading="lazy" />
 				<div id="rl-text-col" class="absolute flex h-[400px] flex-col justify-between">
 					<p id="rl-text" class="max-w-[220px] text-[0.76rem] font-[325] text-justify" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.5;">A resort is experienced as a sequence of spaces rather than a collection of rooms. Pools, lobbies, restaurants and quiet corners shape the rhythm of a stay as much as the accommodation itself. Through careful attention to light, texture and materials, these images explore the character of a place and the quiet experience it offers.</p>
-					<img id="rl-img8bis" src="/images/resort-life/8bis.webp" alt="" class="w-[110px] h-[157px] object-cover object-bottom" loading="lazy" />
 				</div>
+				<img id="rl-img8bis" src="/images/resort-life/8bis.webp" alt="" class="absolute w-[110px] h-[157px] object-cover object-bottom" loading="lazy" />
 				<div id="rl-img16-wrap" class="absolute w-[140px] h-[165px]">
 					<img id="rl-img16" src="/images/resort-life/16.webp" alt="" class="h-full w-full object-cover brightness-105 [transform:scaleX(-1)]" loading="lazy" />
 					<div class="pointer-events-none absolute inset-0 bg-white/[0.03]"></div>
@@ -143,6 +143,14 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 					const textColRect = textCol.getBoundingClientRect();
 					textCol.style.left = (img7Rect.left - 16 - textColRect.width - row7Rect.left) + 'px';
 					textCol.style.top = (img7Rect.bottom - textColRect.height - row7Rect.top) + 'px';
+				}
+				const img8bis = document.getElementById('rl-img8bis');
+				if (img7 && row7 && img8bis) {
+					const img7Rect = img7.getBoundingClientRect();
+					const row7Rect = row7.getBoundingClientRect();
+					const img8bisHeight = img8bis.getBoundingClientRect().height;
+					img8bis.style.left = (img7Rect.right + 8 - row7Rect.left) + 'px';
+					img8bis.style.top = (img7Rect.bottom - img8bisHeight - row7Rect.top) + 'px';
 				}
 			};
 			layoutRows();
