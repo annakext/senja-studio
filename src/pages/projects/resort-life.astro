@@ -132,7 +132,8 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 				if (img7 && row7 && img16Wrap) {
 					const img7Rect = img7.getBoundingClientRect();
 					const row7Rect = row7.getBoundingClientRect();
-					img16Wrap.style.left = (img7Rect.right - row7Rect.left) + 'px';
+					const img16Width = img16Wrap.getBoundingClientRect().width;
+					img16Wrap.style.left = (img7Rect.left - img16Width - row7Rect.left) + 'px';
 					img16Wrap.style.top = (img7Rect.bottom - row7Rect.top) + 'px';
 				}
 			};
