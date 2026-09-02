@@ -5,6 +5,7 @@ export function initResponsiveLogo() {
 	const baseFontSize = 41;
 	const breakpoint = 768;
 	const leftMargin = 24;
+	const mobileReduction = 0.85;
 	const naturalWidth = logo.getBoundingClientRect().width;
 
 	const apply = () => {
@@ -12,7 +13,7 @@ export function initResponsiveLogo() {
 			logo.style.fontSize = '';
 			return;
 		}
-		const targetWidth = window.innerWidth / 2 - leftMargin;
+		const targetWidth = (window.innerWidth / 2 - leftMargin) * mobileReduction;
 		const scale = targetWidth / naturalWidth;
 		logo.style.fontSize = (baseFontSize * scale) + 'px';
 	};
