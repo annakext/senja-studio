@@ -38,7 +38,10 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 
 			<div id="ugc-row1" class="relative mt-[-227px] flex w-fit flex-row items-end gap-4">
 				<div id="ugc-images1" class="flex flex-row items-end gap-2">
-					<img id="ugc-img1" src="/images/ugc/1.webp" alt="" class="w-[160px] aspect-[694/933] object-cover" />
+					<div class="relative w-[160px] aspect-[694/933]">
+						<img id="ugc-img1" src="/images/ugc/1.webp" alt="" class="h-full w-full object-cover" />
+						<div class="pointer-events-none absolute inset-0 bg-white/[0.05]"></div>
+					</div>
 					<VideoHoverSound>
 						<video id="ugc-video2" src="/videos/ugc-2.mp4" class="w-[230px] aspect-[9/16] object-cover brightness-125 saturate-90 contrast-95" autoplay loop muted playsinline></video>
 						<div class="pointer-events-none absolute inset-0 bg-white/[0.05]"></div>
