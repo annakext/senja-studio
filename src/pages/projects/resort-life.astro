@@ -40,6 +40,7 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 					<img src="/images/resort-life/12ter.webp" alt="" class="w-[183px] aspect-[9/16] object-cover brightness-105" loading="lazy" />
 					<img id="rl-img13bis" src="/images/resort-life/13bis.webp" alt="" class="w-[183px] aspect-[9/16] object-cover brightness-105" loading="lazy" />
 				</div>
+				<p id="rl-deliverables" class="absolute w-fit whitespace-nowrap text-right text-[0.76rem] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.5;"><span class="mr-4 italic lowercase">deliverables</span>instagram feed · reels · stories · website imagery · paid ads</p>
 			</div>
 
 			<div id="rl-row9" class="relative mt-2 ml-[772px] flex flex-row items-end gap-2">
@@ -144,6 +145,16 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 					const row11Width = row11Wrap.getBoundingClientRect().width;
 					row11Wrap.style.left = (img7Rect.left - row11Width - row7Rect.left) + 'px';
 					row11Wrap.style.top = (img7Rect.bottom + 8 - row7Rect.top) + 'px';
+				}
+				const img13bis = document.getElementById('rl-img13bis');
+				const deliverables = document.getElementById('rl-deliverables');
+				if (img13bis && row11Wrap && row7 && deliverables) {
+					const img13bisRect = img13bis.getBoundingClientRect();
+					const row11WrapRect = row11Wrap.getBoundingClientRect();
+					const row7Rect = row7.getBoundingClientRect();
+					const deliverablesWidth = deliverables.getBoundingClientRect().width;
+					deliverables.style.left = (img13bisRect.right - deliverablesWidth - row7Rect.left) + 'px';
+					deliverables.style.top = (row11WrapRect.bottom + 8 - row7Rect.top) + 'px';
 				}
 				const textCol = document.getElementById('rl-text-col');
 				if (img7 && row7 && textCol) {
