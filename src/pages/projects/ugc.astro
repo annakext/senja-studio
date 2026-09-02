@@ -35,7 +35,7 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 				</div>
 			</div>
 
-			<div id="ugc-row1" class="mt-[-227px] ml-[251px] flex w-fit flex-row items-end gap-4">
+			<div id="ugc-row1" class="mt-[-227px] flex w-fit flex-row items-end gap-4">
 				<div id="ugc-images1" class="flex flex-row items-end gap-2">
 					<img src="/images/ugc/1.webp" alt="" class="w-[160px] aspect-[694/933] object-cover" />
 					<VideoHoverSound>
@@ -150,11 +150,21 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 				const lanternsWrap = document.getElementById('ugc-lanterns-wrap');
 				const text1 = document.querySelector('#ugc-row1 p');
 				const video2 = document.getElementById('ugc-video2');
-				if (video11 && lanternsWrap && text1 && video2) {
-					const targetGap = text1.getBoundingClientRect().left - video2.getBoundingClientRect().right;
-					const width = video11.getBoundingClientRect().right - text1.getBoundingClientRect().right - targetGap;
-					lanternsWrap.style.width = width + 'px';
-					lanternsWrap.style.height = (width / (530 / 290)) + 'px';
+				if (lanternsWrap && video2) {
+					const lanternsTop = lanternsWrap.getBoundingClientRect().top;
+					const currentHeight = lanternsWrap.getBoundingClientRect().height;
+					const video2Top = video2.getBoundingClientRect().top;
+					const newHeight = currentHeight + (lanternsTop - video2Top);
+					const newWidth = newHeight * (530 / 290);
+					lanternsWrap.style.width = newWidth + 'px';
+					lanternsWrap.style.height = newHeight + 'px';
+				}
+				const row1 = document.getElementById('ugc-row1');
+				if (row1 && text1 && video2 && lanternsWrap) {
+					const gapVideoText = text1.getBoundingClientRect().left - video2.getBoundingClientRect().right;
+					const targetTextRight = lanternsWrap.getBoundingClientRect().left - gapVideoText;
+					const currentML = parseFloat(getComputedStyle(row1).marginLeft) || 0;
+					row1.style.marginLeft = (currentML + (targetTextRight - text1.getBoundingClientRect().right)) + 'px';
 				}
 				const rowImg5 = document.getElementById('ugc-row-img5');
 				if (video11 && rowImg5) alignRightEdgeTo(rowImg5, video11.getBoundingClientRect().right);
