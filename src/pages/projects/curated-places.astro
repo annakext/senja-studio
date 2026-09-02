@@ -38,9 +38,11 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 				<div id="cp-triptych" class="flex flex-row items-start gap-2">
 					<img src="/images/curated-places/5.webp" alt="" class="w-[145px] aspect-[9/16] object-cover" />
 					<img src="/images/curated-places/4.webp" alt="" class="w-[145px] aspect-[9/16] object-cover" />
-					<img src="/images/curated-places/3.webp" alt="" class="w-[145px] aspect-[9/16] object-cover" />
+					<img id="cp-img3" src="/images/curated-places/3.webp" alt="" class="w-[145px] aspect-[9/16] object-cover" />
 				</div>
 			</div>
+
+			<p id="cp-deliverables" class="mt-2 ml-auto w-fit whitespace-nowrap text-[0.76rem] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.5;"><span class="mr-4 italic lowercase">deliverables</span>instagram feed · reels · stories · website imagery · paid ads · lookbook · editorial</p>
 
 			<div id="cp-img2ter" class="relative w-[115px] h-[150px]">
 				<img src="/images/curated-places/2ter.webp" alt="" class="h-full w-full object-cover object-bottom" />
@@ -137,6 +139,9 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 					const currentML = parseFloat(getComputedStyle(row1).marginLeft) || 0;
 					row1.style.marginLeft = (currentML + (nav.getBoundingClientRect().right - img1qua.getBoundingClientRect().right)) + 'px';
 				}
+				const img3 = document.getElementById('cp-img3');
+				const deliverables = document.getElementById('cp-deliverables');
+				if (img3 && deliverables) alignRightEdgeTo(deliverables, img3.getBoundingClientRect().right);
 				const video6 = document.getElementById('cp-video6');
 				if (text && video6) {
 					video6.style.width = (text.getBoundingClientRect().width + 32) + 'px';
