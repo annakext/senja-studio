@@ -46,14 +46,7 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 				<p class="self-end max-w-[220px] text-[0.76rem] font-[325] text-justify" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.5;">Designed for social platforms, these visuals combine a natural perspective with a refined aesthetic. Created to feel spontaneous yet intentional, the content captures the experience and atmosphere of a place while remaining ready to share across digital channels. Shot from a genuine guest perspective, it is the kind of content that audiences instinctively trust.</p>
 			</div>
 
-			<div id="ugc-row-img5" class="ml-auto flex w-fit flex-row items-end gap-2">
-				<div class="relative w-[215px] h-[171px]">
-					<img id="ugc-img5" src="/images/ugc/5.webp" alt="" class="h-full w-full object-left object-cover" loading="lazy" />
-					<div class="pointer-events-none absolute inset-0 bg-white/[0.08]"></div>
-				</div>
-			</div>
-
-			<div id="ugc-row6" class="mt-0 ml-auto flex w-fit flex-row items-end gap-2">
+			<div id="ugc-row6" class="mt-[-12px] ml-auto flex w-fit flex-row items-end gap-2">
 				<VideoHoverSound>
 					<video id="ugc-video6" src="/videos/ugc-6.mp4" class="w-[215px] aspect-[9/16] object-cover" autoplay loop muted playsinline></video>
 				</VideoHoverSound>
@@ -61,10 +54,6 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 				<VideoHoverSound>
 					<video id="ugc-video11" src="/videos/ugc-11.mp4" class="w-[215px] aspect-[9/16] object-cover" autoplay loop muted playsinline></video>
 				</VideoHoverSound>
-			</div>
-
-			<div id="ugc-row4" class="mt-0 ml-auto flex w-fit flex-row items-end gap-2">
-				<img id="ugc-img13bis" src="/images/ugc/13bis.webp" alt="" class="self-start w-[160px] aspect-[720/837] object-cover saturate-125" loading="lazy" />
 			</div>
 
 			<div id="ugc-row12" class="ml-[223px] flex w-fit flex-row items-end gap-[300px]">
@@ -142,8 +131,6 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 					const targetHeight = video6.getBoundingClientRect().height;
 					img7.style.width = (targetHeight * (4032 / 3024)) + 'px';
 				}
-				const row4 = document.getElementById('ugc-row4');
-				if (nav && row4) alignRightEdgeTo(row4, nav.getBoundingClientRect().right);
 				const row6 = document.getElementById('ugc-row6');
 				if (nav && row6) alignRightEdgeTo(row6, nav.getBoundingClientRect().right);
 				const video11 = document.getElementById('ugc-video11');
@@ -168,15 +155,10 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 					const currentML = parseFloat(getComputedStyle(row1).marginLeft) || 0;
 					row1.style.marginLeft = (currentML + (targetTextRight - text1.getBoundingClientRect().right)) + 'px';
 				}
-				const rowImg5 = document.getElementById('ugc-row-img5');
-				if (video11 && rowImg5) alignRightEdgeTo(rowImg5, video11.getBoundingClientRect().right);
-				const video6El = document.getElementById('ugc-video6');
-				const img13bis = document.getElementById('ugc-img13bis');
-				if (video6El && img13bis) alignRightEdgeTo(img13bis, video6El.getBoundingClientRect().left);
-				const video12 = document.getElementById('ugc-video12');
-				if (img13bis && video12) alignLeftEdgeTo(video12, img13bis.getBoundingClientRect().right);
+				const video12 = document.getElementById('ugc-video12')?.parentElement;
+				if (video6 && video12) alignLeftEdgeTo(video12, video6.getBoundingClientRect().left);
 				const row12 = document.getElementById('ugc-row12');
-				if (img13bis && row12) alignTopEdgeTo(row12, img13bis.getBoundingClientRect().bottom);
+				if (row6 && row12) alignTopEdgeTo(row12, row6.getBoundingClientRect().bottom);
 				const row14 = document.getElementById('ugc-row14');
 				if (row14 && video12) alignLeftEdgeTo(row14, video12.getBoundingClientRect().right);
 			};
