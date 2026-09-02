@@ -628,13 +628,22 @@ import Footer from '../components/Footer.astro';
 
 			const homeLogo = document.getElementById('site-logo');
 			const homeNav = document.getElementById('home-nav');
+			const homeNavBaseFontSize = homeNav ? parseFloat(getComputedStyle(homeNav).fontSize) : 0;
+			const homeNavNaturalWidth = homeNav ? homeNav.getBoundingClientRect().width : 0;
 			const alignHomeNavTop = () => {
 				if (!homeLogo || !homeNav) return;
 				if (window.innerWidth >= 768) {
 					homeNav.style.top = '17px';
+					homeNav.style.fontSize = '';
 					return;
 				}
-				homeNav.style.top = homeLogo.getBoundingClientRect().top + 'px';
+				const logoRect = homeLogo.getBoundingClientRect();
+				homeNav.style.top = logoRect.top + 'px';
+				const gap = 16;
+				const rightMargin = 18;
+				const availableWidth = window.innerWidth - rightMargin - gap - logoRect.right;
+				const scale = Math.min(1, availableWidth / homeNavNaturalWidth);
+				homeNav.style.fontSize = (homeNavBaseFontSize * scale) + 'px';
 			};
 			alignHomeNavTop();
 			window.addEventListener('resize', alignHomeNavTop);
