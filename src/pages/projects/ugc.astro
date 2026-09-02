@@ -36,15 +36,16 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 				</div>
 			</div>
 
-			<div id="ugc-row1" class="mt-[-227px] flex w-fit flex-row items-end gap-4">
+			<div id="ugc-row1" class="relative mt-[-227px] flex w-fit flex-row items-end gap-4">
 				<div id="ugc-images1" class="flex flex-row items-end gap-2">
-					<img src="/images/ugc/1.webp" alt="" class="w-[160px] aspect-[694/933] object-cover" />
+					<img id="ugc-img1" src="/images/ugc/1.webp" alt="" class="w-[160px] aspect-[694/933] object-cover" />
 					<VideoHoverSound>
 						<video id="ugc-video2" src="/videos/ugc-2.mp4" class="w-[230px] aspect-[9/16] object-cover brightness-125 saturate-90 contrast-95" autoplay loop muted playsinline></video>
 						<div class="pointer-events-none absolute inset-0 bg-white/[0.05]"></div>
 					</VideoHoverSound>
 				</div>
 				<p class="self-end max-w-[220px] text-[0.76rem] font-[325] text-justify" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.5;">Designed for social platforms, these visuals combine a natural perspective with a refined aesthetic. Created to feel spontaneous yet intentional, the content captures the experience and atmosphere of a place while remaining ready to share across digital channels. Shot from a genuine guest perspective, it is the kind of content that audiences instinctively trust.</p>
+				<p id="ugc-services" class="absolute text-right text-[0.76rem] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.5;"><span class="italic lowercase">services</span><br /><br />ugc<br />post-production<br />content strategy</p>
 			</div>
 
 			<div id="ugc-row6" class="mt-[95.5px] ml-auto flex w-fit flex-row items-end gap-2">
@@ -146,6 +147,15 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 					const targetTextRight = lanternsWrap.getBoundingClientRect().left - gapVideoText;
 					const currentML = parseFloat(getComputedStyle(row1).marginLeft) || 0;
 					row1.style.marginLeft = (currentML + (targetTextRight - text1.getBoundingClientRect().right)) + 'px';
+				}
+				const img1 = document.getElementById('ugc-img1');
+				const services = document.getElementById('ugc-services');
+				if (services && img1 && row1) {
+					const img1Rect = img1.getBoundingClientRect();
+					const row1Rect = row1.getBoundingClientRect();
+					const servicesWidth = services.getBoundingClientRect().width;
+					services.style.left = (img1Rect.left - servicesWidth - row1Rect.left) + 'px';
+					services.style.top = (img1Rect.bottom - row1Rect.top) + 'px';
 				}
 				const row12 = document.getElementById('ugc-row12');
 				if (row6 && row12 && row1) {
