@@ -141,7 +141,7 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 				}
 				const img3 = document.getElementById('cp-img3');
 				const deliverables = document.getElementById('cp-deliverables');
-				if (img3 && deliverables) alignRightEdgeTo(deliverables, img3.getBoundingClientRect().right);
+				if (img3 && deliverables) alignRightEdgeTo(deliverables, img3.getBoundingClientRect().right - 8);
 				const video6 = document.getElementById('cp-video6');
 				if (text && video6) {
 					video6.style.width = (text.getBoundingClientRect().width + 32) + 'px';
