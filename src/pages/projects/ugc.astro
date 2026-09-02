@@ -59,7 +59,7 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 			<div id="ugc-row12" class="flex w-fit flex-row items-start gap-2">
 				<div id="ugc-1415-block" class="flex flex-row items-end gap-2">
 					<img id="ugc-img14" src="/images/ugc/14.webp" alt="" class="w-[230px] aspect-[3024/4032] object-cover" loading="lazy" />
-					<img id="ugc-img15" src="/images/ugc/15.webp" alt="" class="w-[230px] aspect-[3024/4032] object-cover" loading="lazy" />
+					<img id="ugc-img15" src="/images/ugc/15.webp" alt="" class="w-[215px] aspect-[3024/4032] object-cover" loading="lazy" />
 				</div>
 				<VideoHoverSound>
 					<video id="ugc-video12" src="/videos/ugc-12.mp4" class="w-[280px] h-[445px] rounded-[10px] object-cover object-[center_60%] brightness-115 contrast-75" autoplay loop muted playsinline></video>
@@ -155,7 +155,10 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 					row1.style.marginLeft = (currentML + (targetTextRight - text1.getBoundingClientRect().right)) + 'px';
 				}
 				const row12 = document.getElementById('ugc-row12');
-				if (row6 && row12) alignTopEdgeTo(row12, row6.getBoundingClientRect().bottom);
+				if (row6 && row12 && row1) {
+					const gap23 = row6.getBoundingClientRect().top - row1.getBoundingClientRect().bottom;
+					alignTopEdgeTo(row12, row6.getBoundingClientRect().bottom + gap23);
+				}
 				const block1415 = document.getElementById('ugc-1415-block');
 				if (video6 && block1415) {
 					const targetLeft = video6.getBoundingClientRect().right - block1415.getBoundingClientRect().width;
