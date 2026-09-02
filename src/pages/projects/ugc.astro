@@ -56,15 +56,14 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 				</VideoHoverSound>
 			</div>
 
-			<div id="ugc-row12" class="ml-[223px] flex w-fit flex-row items-end gap-[300px]">
+			<div id="ugc-row12" class="flex w-fit flex-row items-end gap-2">
+				<div id="ugc-1415-block" class="flex flex-row items-end gap-2">
+					<img id="ugc-img14" src="/images/ugc/14.webp" alt="" class="w-[230px] aspect-[3024/4032] object-cover" loading="lazy" />
+					<img id="ugc-img15" src="/images/ugc/15.webp" alt="" class="w-[230px] aspect-[3024/4032] object-cover" loading="lazy" />
+				</div>
 				<VideoHoverSound>
 					<video id="ugc-video12" src="/videos/ugc-12.mp4" class="w-[304px] h-[484px] rounded-[10px] object-cover object-[center_60%] brightness-115 contrast-75" autoplay loop muted playsinline></video>
 				</VideoHoverSound>
-			</div>
-
-			<div id="ugc-row14" class="mt-0 flex w-fit flex-row items-end gap-2">
-				<img id="ugc-img14" src="/images/ugc/14.webp" alt="" class="w-[230px] aspect-[3024/4032] object-cover" loading="lazy" />
-				<img id="ugc-img15" src="/images/ugc/15.webp" alt="" class="w-[230px] aspect-[3024/4032] object-cover" loading="lazy" />
 			</div>
 
 			<a href="/projects/villa-connexion" class="mt-16 block pt-6" style="border-top: 0.5px solid #1c1c1c;">
@@ -155,12 +154,13 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 					const currentML = parseFloat(getComputedStyle(row1).marginLeft) || 0;
 					row1.style.marginLeft = (currentML + (targetTextRight - text1.getBoundingClientRect().right)) + 'px';
 				}
-				const video12 = document.getElementById('ugc-video12')?.parentElement;
-				if (video6 && video12) alignLeftEdgeTo(video12, video6.getBoundingClientRect().left);
 				const row12 = document.getElementById('ugc-row12');
 				if (row6 && row12) alignTopEdgeTo(row12, row6.getBoundingClientRect().bottom);
-				const row14 = document.getElementById('ugc-row14');
-				if (row14 && video12) alignLeftEdgeTo(row14, video12.getBoundingClientRect().right);
+				const block1415 = document.getElementById('ugc-1415-block');
+				if (video6 && block1415) {
+					const targetLeft = video6.getBoundingClientRect().right - block1415.getBoundingClientRect().width;
+					alignLeftEdgeTo(block1415, targetLeft);
+				}
 			};
 			layoutRows();
 			window.addEventListener('resize', layoutRows);
