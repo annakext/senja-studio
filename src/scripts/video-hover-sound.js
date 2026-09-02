@@ -6,25 +6,52 @@ export function initHoverSoundVideos(root) {
 		wrapper.dataset.hoverSoundInit = '1';
 
 		const video = wrapper.querySelector('video');
-		const btn = wrapper.querySelector('.sound-toggle');
-		if (!video || !btn) return;
-		const iconOn = btn.querySelector('.icon-on');
-		const iconOff = btn.querySelector('.icon-off');
+		if (!video) return;
 
-		const updateIcon = () => {
-			if (iconOn) iconOn.classList.toggle('hidden', video.muted);
-			if (iconOff) iconOff.classList.toggle('hidden', !video.muted);
-		};
-		updateIcon();
+		const soundBtn = wrapper.querySelector('.sound-toggle');
+		if (soundBtn) {
+			const iconOn = soundBtn.querySelector('.icon-on');
+			const iconOff = soundBtn.querySelector('.icon-off');
 
-		btn.addEventListener('click', (e) => {
-			e.stopPropagation();
-			video.muted = !video.muted;
-			if (!video.muted) {
-				const p = video.play();
-				if (p && p.catch) p.catch(() => {});
-			}
-			updateIcon();
-		});
+			const updateSoundIcon = () => {
+				if (iconOn) iconOn.classList.toggle('hidden', video.muted);
+				if (iconOff) iconOff.classList.toggle('hidden', !video.muted);
+			};
+			updateSoundIcon();
+
+			soundBtn.addEventListener('click', (e) => {
+				e.stopPropagation();
+				video.muted = !video.muted;
+				if (!video.muted) {
+					const p = video.play();
+					if (p && p.catch) p.catch(() => {});
+				}
+				updateSoundIcon();
+			});
+		}
+
+		const playBtn = wrapper.querySelector('.play-toggle');
+		if (playBtn) {
+			const iconPlaying = playBtn.querySelector('.icon-playing');
+			const iconPaused = playBtn.querySelector('.icon-paused');
+
+			const updatePlayIcon = () => {
+				if (iconPlaying) iconPlaying.classList.toggle('hidden', video.paused);
+				if (iconPaused) iconPaused.classList.toggle('hidden', !video.paused);
+			};
+			updatePlayIcon();
+			video.addEventListener('play', updatePlayIcon);
+			video.addEventListener('pause', updatePlayIcon);
+
+			playBtn.addEventListener('click', (e) => {
+				e.stopPropagation();
+				if (video.paused) {
+					const p = video.play();
+					if (p && p.catch) p.catch(() => {});
+				} else {
+					video.pause();
+				}
+			});
+		}
 	});
 }
