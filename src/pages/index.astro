@@ -47,13 +47,13 @@ import Footer from '../components/Footer.astro';
 		</style>
 	</head>
 	<body class="reveal-page">
-				<div class="fixed top-3 left-6 right-6 z-10 flex flex-row items-start">
+				<div class="fixed top-3 left-[18px] right-6 md:left-6 z-10 flex flex-row items-start">
 			<a id="site-logo" href="/" class="block text-[41px] leading-tight font-normal" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.05em; color: #1c1c1c; text-transform: uppercase;">senja studio</a>
 		</div>
 		<div id="header-tagline" class="fixed top-3 left-1/2 z-10 hidden md:block">
 			<p class="text-[0.76rem] font-[325]" style="margin-top: 7px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">visual content studio and brand image consultancy<br />for luxury hospitality and lifestyle brands.<br />film. photography. creative direction.</p>
 		</div>
-		<nav class="fixed right-6 z-10 flex flex-row text-[0.76rem] font-[325]" style="top: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c;">
+		<nav id="home-nav" class="fixed right-[18px] md:right-6 z-10 flex flex-row text-[0.76rem] font-[325]" style="top: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c;">
 			<a href="/" class="nav-link active">projects</a><span>,&nbsp;</span><a href="/services" class="nav-link">services</a><span>,&nbsp;</span><a href="/about" class="nav-link">about</a><span>,&nbsp;</span><a href="/contact" class="nav-link">contact</a>
 		</nav>
 		<a href="https://www.instagram.com/roll.bysenja/" target="_blank" rel="noopener noreferrer" class="fixed z-10" style="top: 44px; right: 23.5px;" aria-label="Instagram">
@@ -624,7 +624,21 @@ import Footer from '../components/Footer.astro';
 
 		<script>
 			import { initResponsiveLogo } from '../scripts/responsive-logo.js';
-			initResponsiveLogo();
+			initResponsiveLogo(18);
+
+			const homeLogo = document.getElementById('site-logo');
+			const homeNav = document.getElementById('home-nav');
+			const alignHomeNavTop = () => {
+				if (!homeLogo || !homeNav) return;
+				if (window.innerWidth >= 768) {
+					homeNav.style.top = '17px';
+					return;
+				}
+				homeNav.style.top = homeLogo.getBoundingClientRect().top + 'px';
+			};
+			alignHomeNavTop();
+			window.addEventListener('resize', alignHomeNavTop);
+			window.addEventListener('load', alignHomeNavTop);
 
 			const bigImg = document.getElementById('projects-big-img');
 			const bigPreviewImgs = bigImg ? Array.from(bigImg.querySelectorAll('.big-preview-img')) : [];

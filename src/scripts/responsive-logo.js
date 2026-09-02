@@ -1,10 +1,9 @@
-export function initResponsiveLogo() {
+export function initResponsiveLogo(leftMargin = 24) {
 	const logo = document.getElementById('site-logo');
 	if (!logo) return;
 
 	const baseFontSize = 41;
 	const breakpoint = 768;
-	const leftMargin = 24;
 	const mobileReduction = 0.85;
 	const naturalWidth = logo.getBoundingClientRect().width;
 
@@ -20,4 +19,5 @@ export function initResponsiveLogo() {
 
 	apply();
 	window.addEventListener('resize', apply);
+	window.addEventListener('load', apply);
 }
