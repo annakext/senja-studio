@@ -49,6 +49,7 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 				</div>
 				<p class="self-end max-w-[220px] text-[0.76rem] font-[325] text-justify" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.5;">Designed for social platforms, these visuals combine a natural perspective with a refined aesthetic. Created to feel spontaneous yet intentional, the content captures the experience and atmosphere of a place while remaining ready to share across digital channels. Shot from a genuine guest perspective, it is the kind of content that audiences instinctively trust.</p>
 				<p id="ugc-services" class="absolute text-right text-[0.76rem] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.5;"><span class="italic lowercase">services</span><br /><br />ugc<br />post-production<br />content strategy</p>
+				<p id="ugc-deliverables" class="absolute whitespace-nowrap text-right text-[0.76rem] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.5;"><span class="mr-4 italic lowercase">deliverables</span>reels · stories · paid ads</p>
 			</div>
 
 			<div id="ugc-row6" class="mt-[95.5px] ml-auto flex w-fit flex-row items-end gap-2">
@@ -174,6 +175,15 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 				if (img7 && video12) {
 					const targetLeft = img7.getBoundingClientRect().right - video12.getBoundingClientRect().width;
 					alignLeftEdgeTo(video12, targetLeft);
+				}
+				const video11Wrap = video11 ? video11.parentElement : null;
+				const deliverables = document.getElementById('ugc-deliverables');
+				if (video11Wrap && deliverables && row1) {
+					const v11Rect = video11Wrap.getBoundingClientRect();
+					const row1Rect = row1.getBoundingClientRect();
+					const delivRect = deliverables.getBoundingClientRect();
+					deliverables.style.left = (v11Rect.right - delivRect.width - row1Rect.left) + 'px';
+					deliverables.style.top = (-8 - delivRect.height) + 'px';
 				}
 			};
 			layoutRows();
