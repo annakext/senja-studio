@@ -155,7 +155,7 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 					const row1Rect = row1.getBoundingClientRect();
 					const servicesWidth = services.getBoundingClientRect().width;
 					services.style.left = (img1Rect.left - servicesWidth - row1Rect.left) + 'px';
-					services.style.top = (img1Rect.bottom - row1Rect.top) + 'px';
+					services.style.top = (img1Rect.bottom + 8 - row1Rect.top) + 'px';
 				}
 				const row12 = document.getElementById('ugc-row12');
 				if (row6 && row12 && row1) {
