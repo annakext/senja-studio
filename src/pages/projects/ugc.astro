@@ -84,7 +84,7 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 		</main>
 
 		<div class="js-blend-fixed absolute top-3 left-6 right-6 flex flex-row items-start">
-			<a href="/" class="block text-[41px] leading-tight font-normal" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.05em; color: #fff; mix-blend-mode: difference; text-transform: uppercase;">senja studio</a>
+			<a id="site-logo" href="/" class="block text-[41px] leading-tight font-normal" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.05em; color: #fff; mix-blend-mode: difference; text-transform: uppercase;">senja studio</a>
 		</div>
 		<div class="absolute top-3 left-1/2 z-10 w-1/2 pointer-events-none">
 			<p class="text-[0.76rem] font-[325]" style="margin-top: 7px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">4/4<br />UGC<br />authentic and ready to post</p>
@@ -97,7 +97,9 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 		<Footer fixed={false} />
 		<script>
 			import { initHoverSoundVideos } from '../../scripts/video-hover-sound.js';
+			import { initResponsiveLogo } from '../../scripts/responsive-logo.js';
 			initHoverSoundVideos();
+			initResponsiveLogo();
 
 			const blendFixedEls = Array.from(document.querySelectorAll('.js-blend-fixed')).map((el) => ({
 				el,

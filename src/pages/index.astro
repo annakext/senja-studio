@@ -48,7 +48,7 @@ import Footer from '../components/Footer.astro';
 	</head>
 	<body class="reveal-page">
 				<div class="fixed top-3 left-6 right-6 z-10 flex flex-row items-start">
-			<a href="/" class="block text-[41px] leading-tight font-normal" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.05em; color: #1c1c1c; text-transform: uppercase;">senja studio</a>
+			<a id="site-logo" href="/" class="block text-[41px] leading-tight font-normal" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.05em; color: #1c1c1c; text-transform: uppercase;">senja studio</a>
 		</div>
 		<div id="header-tagline" class="fixed top-3 left-1/2 z-10">
 			<p class="text-[0.76rem] font-[325]" style="margin-top: 7px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">visual content studio and brand image consultancy<br />for luxury hospitality and lifestyle brands.<br />film. photography. creative direction.</p>
@@ -623,6 +623,9 @@ import Footer from '../components/Footer.astro';
 
 
 		<script>
+			import { initResponsiveLogo } from '../scripts/responsive-logo.js';
+			initResponsiveLogo();
+
 			const bigImg = document.getElementById('projects-big-img');
 			const bigPreviewImgs = bigImg ? Array.from(bigImg.querySelectorAll('.big-preview-img')) : [];
 			const captionInner = document.getElementById('caption-inner');

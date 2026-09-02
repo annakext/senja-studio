@@ -29,7 +29,7 @@ import Footer from '../components/Footer.astro';
 	</head>
 	<body>
 		<div class="fixed top-3 left-6 right-6 z-10 flex flex-row items-start">
-			<a href="/" class="block text-[41px] leading-tight font-normal" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.05em; color: #1c1c1c; text-transform: uppercase;">senja studio</a>
+			<a id="site-logo" href="/" class="block text-[41px] leading-tight font-normal" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.05em; color: #1c1c1c; text-transform: uppercase;">senja studio</a>
 		</div>
 		<nav class="fixed right-6 z-10 flex flex-row text-[0.76rem] font-[325]" style="top: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c;">
 			<a href="/" class="nav-link">projects</a><span>,&nbsp;</span><a href="/services" class="nav-link active">services</a><span>,&nbsp;</span><a href="/about" class="nav-link">about</a><span>,&nbsp;</span><a href="/contact" class="nav-link">contact</a>
@@ -86,5 +86,9 @@ import Footer from '../components/Footer.astro';
 		</main>
 
 		<Footer />
+		<script>
+			import { initResponsiveLogo } from '../scripts/responsive-logo.js';
+			initResponsiveLogo();
+		</script>
 	</body>
 </html>
