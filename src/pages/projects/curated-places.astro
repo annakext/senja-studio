@@ -51,9 +51,10 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 				<video id="cp-video6" src="/videos/curated-places-6.mp4" class="w-[170px] aspect-[9/16] object-cover" autoplay loop muted playsinline></video>
 			</VideoHoverSound>
 
-			<div id="cp-row7" class="mt-2 flex w-fit flex-row items-end gap-2">
+			<div id="cp-row7" class="relative mt-2 flex w-fit flex-row items-end gap-2">
 				<img id="cp-img7" src="/images/curated-places/7.webp" alt="" class="w-[160px] aspect-[3/4] object-cover" loading="lazy" />
 				<img id="cp-img8bis" src="/images/curated-places/8bis.webp" alt="" class="w-[210px] aspect-[4/3] object-cover" loading="lazy" />
+				<p id="cp-services" class="absolute text-left text-[0.76rem] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.5;"><span class="italic lowercase">services</span><br /><br />concept<br />creative direction<br />photography<br />film<br />ugc<br />post-production<br />brand consulting<br />content strategy</p>
 			</div>
 
 			<div id="cp-video9" class="relative mt-2 ml-auto w-[400px] aspect-[16/9]">
@@ -165,6 +166,14 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 				}
 				const video9 = document.getElementById('cp-video9');
 				if (img7 && video9) alignRightEdgeTo(video9, img7.getBoundingClientRect().right);
+				const row7 = document.getElementById('cp-row7');
+				const services = document.getElementById('cp-services');
+				if (services && img7 && row7) {
+					const img7Rect = img7.getBoundingClientRect();
+					const row7Rect = row7.getBoundingClientRect();
+					services.style.left = (img7Rect.right + 8 - row7Rect.left) + 'px';
+					services.style.top = (img7Rect.top - row7Rect.top) + 'px';
+				}
 			};
 			layoutRows();
 			window.addEventListener('resize', layoutRows);
