@@ -43,6 +43,7 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 			</div>
 
 			<div id="rl-row9" class="relative mt-2 ml-[772px] flex flex-row items-end gap-2">
+				<p id="rl-services" class="absolute text-[0.76rem] font-[325] text-right" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.5;"><span class="italic lowercase">services</span><br /><br />concept<br />creative direction<br />photography<br />film<br />ugc<br />post-production<br />content strategy</p>
 				<VideoHoverSound>
 					<video id="rl-video14" src="/videos/resort-life-14.mp4" class="w-[215px] aspect-[9/16] object-cover" autoplay loop muted playsinline></video>
 				</VideoHoverSound>
@@ -120,6 +121,15 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 					const currentML = parseFloat(getComputedStyle(video14Wrap).marginLeft) || 0;
 					const width = video14.getBoundingClientRect().width;
 					video14Wrap.style.marginLeft = (currentML + (nav.getBoundingClientRect().right - width - video14.getBoundingClientRect().left) - 103) + 'px';
+				}
+				const row9 = document.getElementById('rl-row9');
+				const services = document.getElementById('rl-services');
+				if (services && video14Wrap && row9) {
+					const row9Rect = row9.getBoundingClientRect();
+					const video14Rect = video14Wrap.getBoundingClientRect();
+					const servicesWidth = services.getBoundingClientRect().width;
+					services.style.left = (video14Rect.left - 8 - servicesWidth - row9Rect.left) + 'px';
+					services.style.top = (video14Rect.top - row9Rect.top) + 'px';
 				}
 				if (img7 && row7 && video14Wrap) {
 					const img7Width = img7.getBoundingClientRect().width;
