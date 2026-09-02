@@ -46,7 +46,7 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 				<p class="mr-2 text-[0.76rem] font-[325] text-right" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.5;"><span class="italic lowercase">services</span><br /><br />concept<br />creative direction<br />photography<br />film<br />ugc<br />post-production</p>
 				<img src="/images/villa-connexion/05.webp" alt="" class="w-[180px] aspect-[3/4] object-cover" loading="lazy" />
 				<img src="/images/villa-connexion/06.webp" alt="" class="w-[180px] aspect-[3/4] object-cover" loading="lazy" />
-				<img src="/images/villa-connexion/07.webp" alt="" class="w-[180px] aspect-[3/4] object-cover" loading="lazy" />
+				<img id="vc-img07" src="/images/villa-connexion/07.webp" alt="" class="w-[180px] aspect-[3/4] object-cover" loading="lazy" />
 				<video id="vc-video-leaves" src="/videos/villa-connexion-leaves.mp4" class="w-[180px] aspect-[3/4] object-cover object-bottom" autoplay loop muted playsinline></video>
 			</div>
 
@@ -132,6 +132,9 @@ import VideoHoverSound from '../../components/VideoHoverSound.astro';
 				const row7 = document.getElementById('vc-row7');
 				const row8 = document.getElementById('vc-row8');
 				if (img1 && row2) alignRightEdgeTo(row2, img1.getBoundingClientRect().left - 16);
+				const img07 = document.getElementById('vc-img07');
+				const deliverables = document.getElementById('vc-deliverables');
+				if (img07 && deliverables) alignRightEdgeTo(deliverables, img07.getBoundingClientRect().right);
 				if (img5 && row4) alignRightEdgeTo(row4, img5.getBoundingClientRect().left);
 				if (row4 && row5) alignLeftEdgeTo(row5, row4.getBoundingClientRect().right);
 				const row5FirstImg = row5 && row5.querySelector('img');
