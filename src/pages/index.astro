@@ -25,12 +25,13 @@ import MobileMenu from '../components/MobileMenu.astro';
 		<title>SENJA STUDIO</title>
 		<meta name="description" content="Senja Studio is a visual content studio and brand image consultancy for luxury hospitality and lifestyle brands — film, photography and creative direction." />
 		<style>
+			.photo-num { display: none; }
+			#site-header { animation: none; opacity: 1; }
 			@media (max-width: 767px) {
 				#projects-big-img, .projects-thumb, #caption-wrap, #projects-connector-line, #projects-page-indicator { display: none; }
 				:global(body) { background-color: #faf9f9 !important; }
 				#projects-group h1 { text-align: left; text-transform: uppercase; }
 				#idx-table { display: none; }
-				.photo-num { font-size: calc(0.58rem + 2pt) !important; }
 				#projects-group { left: 12px; }
 			}
 			#htrack figure { transform: translateX(0); transition: transform 0.45s ease; }
@@ -533,11 +534,11 @@ import MobileMenu from '../components/MobileMenu.astro';
 		<div id="projects-list-line" class="absolute left-[12px] right-6 z-10 hidden max-md:block" style="border-top: 0.75px solid #1c1c1c;"></div>
 		<div id="projects-mobile-list" class="absolute top-[calc(40.2vh+40px)] left-[12px] right-6 z-10 hidden max-md:flex flex-col">
 			<a href="/projects/villa-connexion" class="projects-mobile-item flex flex-row items-start gap-4 py-2">
-				<img src="/images/projects-photo-5.webp" alt="" class="w-[calc(33vw-12px)] aspect-square object-cover brightness-125 object-top" />
+				<img src="/images/projects-photo-5.webp" alt="" class="w-[calc(33vw-12px)] aspect-square object-cover brightness-150 object-bottom" />
 				<div class="text-[calc(0.76rem+1pt)] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">VILLA CONNEXION<br />intimate luxurious spaces</div>
 			</a>
 			<a href="/projects/resort-life" class="projects-mobile-item flex flex-row items-start gap-4 py-2">
-				<img src="/images/projects-photo-6.webp" alt="" class="w-[calc(33vw-12px)] aspect-square object-cover brightness-125 object-top" />
+				<img src="/images/projects-photo-6.webp" alt="" class="w-[calc(33vw-12px)] aspect-square object-cover brightness-125 object-bottom" />
 				<div class="text-[calc(0.76rem+1pt)] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">RESORT LIFE<br />stillness and light</div>
 			</a>
 			<a href="/projects/curated-places" class="projects-mobile-item flex flex-row items-start gap-4 py-2">
@@ -545,7 +546,7 @@ import MobileMenu from '../components/MobileMenu.astro';
 				<div class="text-[calc(0.76rem+1pt)] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">CURATED PLACES<br />lifestyle, food and culture</div>
 			</a>
 			<a href="/projects/ugc" class="projects-mobile-item flex flex-row items-start gap-4 py-2">
-				<img src="/images/projects-photo-8.webp" alt="" class="w-[calc(33vw-12px)] aspect-square object-cover brightness-125 object-bottom" />
+				<img src="/images/projects-photo-8.webp" alt="" class="w-[calc(33vw-12px)] aspect-square object-cover brightness-125 object-top" />
 				<div class="text-[calc(0.76rem+1pt)] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">UGC<br />authentic and ready to post</div>
 			</a>
 		</div>
@@ -672,9 +673,9 @@ import MobileMenu from '../components/MobileMenu.astro';
 					return;
 				}
 				const logoBottom = siteHeader.getBoundingClientRect().bottom;
-				tagline.style.top = (logoBottom + 160) + 'px';
+				tagline.style.top = (logoBottom + 180) + 'px';
 				const taglineBottom = tagline.getBoundingClientRect().bottom;
-				htrack.style.paddingTop = (taglineBottom + 120) + 'px';
+				htrack.style.paddingTop = (taglineBottom + 104) + 'px';
 				const photoBottom = firstFigure.getBoundingClientRect().bottom;
 				let stackBottom = photoBottom + 64;
 				if (idxTable && idxLine && getComputedStyle(idxTable).display !== 'none') {
