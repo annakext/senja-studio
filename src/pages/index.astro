@@ -26,10 +26,11 @@ import MobileMenu from '../components/MobileMenu.astro';
 		<meta name="description" content="Senja Studio is a visual content studio and brand image consultancy for luxury hospitality and lifestyle brands — film, photography and creative direction." />
 		<style>
 			@media (max-width: 767px) {
-				.photo-num { display: none; }
-				#idx-table { display: none; }
 				#projects-big-img, .projects-thumb, #caption-wrap, #projects-connector-line, #projects-page-indicator { display: none; }
 				:global(body) { background-color: #faf9f9 !important; }
+				#projects-group h1 { text-align: left; text-transform: uppercase; }
+				#idx-table { position: absolute; }
+				.projects-mobile-item + .projects-mobile-item { border-top: 0.5px solid #1c1c1c; }
 			}
 			#htrack figure { transform: translateX(0); transition: transform 0.45s ease; }
 			#htrack figure.is-before { transform: translateX(0); }
@@ -60,8 +61,8 @@ import MobileMenu from '../components/MobileMenu.astro';
 		<div id="header-tagline" class="fixed top-3 left-1/2 z-10 hidden md:block">
 			<p class="text-[0.76rem] font-[325]" style="margin-top: 7px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">visual content studio and brand image consultancy<br />for luxury hospitality and lifestyle brands.<br />film. photography. creative direction.</p>
 		</div>
-		<div id="header-tagline-mobile" class="fixed left-1/3 right-[12px] z-10 md:hidden">
-			<p class="text-[calc(0.76rem+4pt)] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.5;">visual content studio and brand image consultancy for luxury hospitality and lifestyle brands.<br />film. photography. creative direction.</p>
+		<div id="header-tagline-mobile" class="absolute left-1/3 right-[12px] z-10 md:hidden">
+			<p class="text-[calc(0.76rem+3pt)] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.5;">visual content studio and brand image consultancy for luxury hospitality and lifestyle brands.<br />film. photography. creative direction.</p>
 		</div>
 		<nav id="home-nav" class="fixed right-[18px] md:right-6 z-10 hidden md:flex flex-row text-[0.76rem] font-[325]" style="top: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c;">
 			<a href="/" class="nav-link active">projects</a><span>,&nbsp;</span><a href="/services" class="nav-link">services</a><span>,&nbsp;</span><a href="/about" class="nav-link">about</a><span>,&nbsp;</span><a href="/contact" class="nav-link">contact</a>
@@ -563,23 +564,29 @@ import MobileMenu from '../components/MobileMenu.astro';
 				<div id="caption-inner" class="text-[0.76rem] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">VILLA CONNEXION<br />intimate luxurious spaces</div>
 			</div>
 		</div>
-		<div id="projects-mobile-list" class="absolute top-[calc(40.2vh+40px)] left-[58px] right-[28px] z-10 hidden max-md:flex flex-col gap-3">
-			<a href="/projects/villa-connexion" class="flex flex-row items-start gap-4">
-				<img src="/images/projects-photo-5.webp" alt="" class="w-[calc(50vw-58px)] aspect-[4/3] object-cover brightness-125 rounded-[6px] object-bottom" />
+		<div id="projects-list-line" class="absolute left-[58px] right-[28px] z-10 hidden max-md:block" style="border-top: 0.5px solid #1c1c1c;"></div>
+		<div id="projects-mobile-list" class="absolute top-[calc(40.2vh+40px)] left-[58px] right-[28px] z-10 hidden max-md:flex flex-col">
+			<a href="/projects/villa-connexion" class="projects-mobile-item flex flex-row items-start gap-4 py-4">
+				<img src="/images/projects-photo-5.webp" alt="" class="w-[calc(50vw-58px)] aspect-[4/5] object-cover brightness-125 rounded-[6px] object-bottom" />
 				<div class="text-[calc(0.76rem+1pt)] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">VILLA CONNEXION<br />intimate luxurious spaces</div>
 			</a>
-			<a href="/projects/resort-life" class="flex flex-row items-start gap-4">
-				<img src="/images/projects-photo-6.webp" alt="" class="w-[calc(50vw-58px)] aspect-[4/3] object-cover brightness-125 rounded-[6px] object-[50%_87%]" />
+			<a href="/projects/resort-life" class="projects-mobile-item flex flex-row items-start gap-4 py-4">
+				<img src="/images/projects-photo-6.webp" alt="" class="w-[calc(50vw-58px)] aspect-[4/5] object-cover brightness-125 rounded-[6px] object-[50%_87%]" />
 				<div class="text-[calc(0.76rem+1pt)] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">RESORT LIFE<br />stillness and light</div>
 			</a>
-			<a href="/projects/curated-places" class="flex flex-row items-start gap-4">
-				<img src="/images/projects-photo-7.webp" alt="" class="w-[calc(50vw-58px)] aspect-[4/3] object-cover brightness-125 rounded-[6px] object-center" />
+			<a href="/projects/curated-places" class="projects-mobile-item flex flex-row items-start gap-4 py-4">
+				<img src="/images/projects-photo-7.webp" alt="" class="w-[calc(50vw-58px)] aspect-[4/5] object-cover brightness-125 rounded-[6px] object-center" />
 				<div class="text-[calc(0.76rem+1pt)] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">CURATED PLACES<br />lifestyle, food and culture</div>
 			</a>
-			<a href="/projects/ugc" class="flex flex-row items-start gap-4">
-				<img src="/images/projects-photo-8.webp" alt="" class="w-[calc(50vw-58px)] aspect-[4/3] object-cover brightness-125 rounded-[6px] object-top" />
+			<a href="/projects/ugc" class="projects-mobile-item flex flex-row items-start gap-4 py-4">
+				<img src="/images/projects-photo-8.webp" alt="" class="w-[calc(50vw-58px)] aspect-[4/5] object-cover brightness-125 rounded-[6px] object-top" />
 				<div class="text-[calc(0.76rem+1pt)] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">UGC<br />authentic and ready to post</div>
 			</a>
+		</div>
+		<div id="mobile-footer" class="absolute left-[12px] right-6 z-10 hidden max-md:flex flex-col gap-1">
+			<a href="/" class="block text-[19px] leading-tight font-normal uppercase" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.05em; color: #1c1c1c;">SJ</a>
+			<a href="mailto:hello@senja.studio" class="block text-[calc(0.76rem+1pt)] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c;">hello@senja.studio</a>
+			<a href="https://www.instagram.com/roll.bysenja/" target="_blank" rel="noopener noreferrer" class="block text-[calc(0.76rem+1pt)] font-[325] lowercase" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c;">instagram</a>
 		</div>
 		<div id="projects-connector-line" class="fixed pointer-events-none z-20" style="border-top: 0.5px solid #1c1c1c;"></div>
 		<div id="projects-page-indicator" class="fixed overflow-hidden" style="height: 14px;">
@@ -682,6 +689,10 @@ import MobileMenu from '../components/MobileMenu.astro';
 			const projectsList = document.getElementById('projects-mobile-list');
 			const htrack = document.getElementById('htrack');
 			const firstFigure = document.querySelector('#htrack figure');
+			const idxTable = document.getElementById('idx-table');
+			const idxLine = document.getElementById('idx-line');
+			const projectsListLine = document.getElementById('projects-list-line');
+			const mobileFooter = document.getElementById('mobile-footer');
 			const layoutMobileHero = () => {
 				if (!tagline || !siteHeader || !projectsGroup || !projectsList || !htrack || !firstFigure) return;
 				if (window.innerWidth >= 768) {
@@ -689,17 +700,37 @@ import MobileMenu from '../components/MobileMenu.astro';
 					htrack.style.paddingTop = '';
 					projectsGroup.style.top = '';
 					projectsList.style.top = '';
+					if (idxTable) idxTable.style.top = '';
+					if (projectsListLine) projectsListLine.style.top = '';
+					if (mobileFooter) mobileFooter.style.top = '';
 					return;
 				}
 				const logoBottom = siteHeader.getBoundingClientRect().bottom;
-				tagline.style.top = (logoBottom + 48) + 'px';
+				tagline.style.top = (logoBottom + 72) + 'px';
 				const taglineBottom = tagline.getBoundingClientRect().bottom;
 				htrack.style.paddingTop = (taglineBottom + 16) + 'px';
 				const photoBottom = firstFigure.getBoundingClientRect().bottom;
-				projectsGroup.style.top = (photoBottom + 16) + 'px';
+				let stackBottom = photoBottom + 16;
+				if (idxTable && idxLine) {
+					idxTable.style.top = photoBottom + 'px';
+					const lineTop = idxLine.getBoundingClientRect().top;
+					const desiredLineTop = photoBottom + 20;
+					idxTable.style.top = (photoBottom + (desiredLineTop - lineTop)) + 'px';
+					stackBottom = idxLine.getBoundingClientRect().bottom + 24;
+				}
+				projectsGroup.style.top = stackBottom + 'px';
 				const h1 = projectsGroup.querySelector('h1');
-				const h1Bottom = h1 ? h1.getBoundingClientRect().bottom : photoBottom + 16;
-				projectsList.style.top = (h1Bottom + 16) + 'px';
+				const h1Bottom = h1 ? h1.getBoundingClientRect().bottom : stackBottom;
+				let listTop = h1Bottom + 16;
+				if (projectsListLine) {
+					projectsListLine.style.top = (h1Bottom + 8) + 'px';
+					listTop = h1Bottom + 16;
+				}
+				projectsList.style.top = listTop + 'px';
+				if (mobileFooter) {
+					const listBottom = projectsList.getBoundingClientRect().bottom;
+					mobileFooter.style.top = (listBottom + 40) + 'px';
+				}
 			};
 			layoutMobileHero();
 			window.addEventListener('resize', layoutMobileHero);
