@@ -1,10 +1,9 @@
-export function initResponsiveLogo(leftMargin = 24) {
+export function initResponsiveLogo(leftMargin = 24, mobileReduction = 1) {
 	const logo = document.getElementById('site-logo');
 	if (!logo) return;
 
 	const baseFontSize = 41;
 	const breakpoint = 768;
-	const mobileReduction = 1;
 
 	const measureNaturalWidth = () => {
 		const prevFontSize = logo.style.fontSize;

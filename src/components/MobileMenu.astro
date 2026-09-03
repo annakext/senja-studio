@@ -4,8 +4,9 @@ export interface Props {
 	blend?: boolean;
 	right?: string;
 	left?: string;
+	label?: string;
 }
-const { active, blend = false, right = 'right-6', left = 'left-6' } = Astro.props;
+const { active, blend = false, right = 'right-6', left = 'left-6', label } = Astro.props;
 
 const iconStyle = blend
 	? 'color: #fff; mix-blend-mode: difference;'
@@ -20,18 +21,27 @@ const items = [
 ];
 ---
 
-<button
-	id="mobile-menu-toggle"
-	aria-label="Menu"
-	class={`mobile-menu-toggle md:hidden ${togglePositionClass} ${right}`}
-	style="top: 16px; width: 22px; touch-action: manipulation;"
->
-	<svg width="22" height="14" viewBox="0 0 22 14" fill="none" xmlns="http://www.w3.org/2000/svg" style={iconStyle}>
-		<line x1="0" y1="1" x2="22" y2="1" stroke="currentColor" stroke-width="1.3" />
-		<line x1="0" y1="7" x2="22" y2="7" stroke="currentColor" stroke-width="1.3" />
-		<line x1="0" y1="13" x2="22" y2="13" stroke="currentColor" stroke-width="1.3" />
-	</svg>
-</button>
+{label ? (
+	<button
+		id="mobile-menu-toggle"
+		aria-label="Menu"
+		class={`mobile-menu-toggle md:hidden ${togglePositionClass} ${right} text-[0.76rem] font-[325] uppercase`}
+		style={`top: 19px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.05em; touch-action: manipulation; ${iconStyle}`}
+	>{label}</button>
+) : (
+	<button
+		id="mobile-menu-toggle"
+		aria-label="Menu"
+		class={`mobile-menu-toggle md:hidden ${togglePositionClass} ${right}`}
+		style="top: 16px; width: 22px; touch-action: manipulation;"
+	>
+		<svg width="22" height="14" viewBox="0 0 22 14" fill="none" xmlns="http://www.w3.org/2000/svg" style={iconStyle}>
+			<line x1="0" y1="1" x2="22" y2="1" stroke="currentColor" stroke-width="1.3" />
+			<line x1="0" y1="7" x2="22" y2="7" stroke="currentColor" stroke-width="1.3" />
+			<line x1="0" y1="13" x2="22" y2="13" stroke="currentColor" stroke-width="1.3" />
+		</svg>
+	</button>
+)}
 
 <div id="mobile-menu-overlay" class="md:hidden fixed inset-0 z-50 hidden" style="background-color: #fff;">
 	<a
