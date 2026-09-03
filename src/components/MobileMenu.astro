@@ -1,0 +1,65 @@
+---
+export interface Props {
+	active: 'projects' | 'services' | 'about' | 'contact';
+	blend?: boolean;
+	right?: string;
+}
+const { active, blend = false, right = 'right-6' } = Astro.props;
+
+const iconStyle = blend
+	? 'background-color: #fff; mix-blend-mode: difference;'
+	: 'background-color: #1c1c1c;';
+const togglePositionClass = blend ? 'js-blend-fixed absolute' : 'fixed z-40';
+
+const items = [
+	{ key: 'projects', label: 'projects', href: '/' },
+	{ key: 'services', label: 'services', href: '/services' },
+	{ key: 'about', label: 'about', href: '/about' },
+	{ key: 'contact', label: 'contact', href: '/contact' },
+];
+---
+
+<button
+	id="mobile-menu-toggle"
+	aria-label="Menu"
+	class={`mobile-menu-toggle md:hidden ${togglePositionClass} flex flex-col justify-center gap-[5px] ${right}`}
+	style="top: 19px; width: 22px; height: 14px;"
+>
+	<span class="block h-[1.5px] w-full" style={iconStyle}></span>
+	<span class="block h-[1.5px] w-full" style={iconStyle}></span>
+	<span class="block h-[1.5px] w-full" style={iconStyle}></span>
+</button>
+
+<div id="mobile-menu-overlay" class="md:hidden fixed inset-0 z-50 hidden" style="background-color: #fff;">
+	<button
+		id="mobile-menu-close"
+		aria-label="Close menu"
+		class={`fixed z-50 ${right}`}
+		style="top: 19px; width: 22px; height: 14px;"
+	>
+		<span class="absolute left-1/2 top-1/2 h-[1.5px] w-[22px]" style="background-color: #1c1c1c; transform: translate(-50%, -50%) rotate(45deg);"></span>
+		<span class="absolute left-1/2 top-1/2 h-[1.5px] w-[22px]" style="background-color: #1c1c1c; transform: translate(-50%, -50%) rotate(-45deg);"></span>
+	</button>
+	<nav class="flex h-full flex-col justify-center gap-5 pl-6 text-[1.15rem] font-[325] lowercase" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c;">
+		{items.map((item) => (
+			<a href={item.href} class={item.key === active ? 'italic' : ''}>{item.label}</a>
+		))}
+		<a href="https://www.instagram.com/roll.bysenja/" target="_blank" rel="noopener noreferrer">instagram</a>
+	</nav>
+</div>
+
+<script>
+	const toggle = document.getElementById('mobile-menu-toggle');
+	const overlay = document.getElementById('mobile-menu-overlay');
+	const closeBtn = document.getElementById('mobile-menu-close');
+	const openMenu = () => {
+		overlay?.classList.remove('hidden');
+		document.body.style.overflow = 'hidden';
+	};
+	const closeMenu = () => {
+		overlay?.classList.add('hidden');
+		document.body.style.overflow = '';
+	};
+	toggle?.addEventListener('click', openMenu);
+	closeBtn?.addEventListener('click', closeMenu);
+</script>
