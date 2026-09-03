@@ -546,7 +546,7 @@ import MobileMenu from '../components/MobileMenu.astro';
 				<div class="text-[calc(0.76rem+1pt)] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">CURATED PLACES<br />lifestyle, food and culture</div>
 			</a>
 			<a href="/projects/ugc" class="projects-mobile-item flex flex-row items-start gap-4 py-2">
-				<img src="/images/projects-photo-8.webp" alt="" class="w-[calc(33vw-12px)] aspect-square object-cover brightness-125 object-top rounded-[6px]" />
+				<img src="/images/projects-photo-8.webp" alt="" class="w-[calc(33vw-12px)] aspect-square object-cover brightness-135 object-top rounded-[6px]" />
 				<div class="text-[calc(0.76rem+1pt)] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">UGC<br />authentic and ready to post</div>
 			</a>
 		</div>
@@ -665,7 +665,6 @@ import MobileMenu from '../components/MobileMenu.astro';
 				if (!tagline || !siteHeader || !projectsGroup || !projectsList || !htrack || !firstFigure) return;
 				if (window.innerWidth >= 768) {
 					tagline.style.top = '';
-					tagline.style.left = '';
 					htrack.style.paddingTop = '';
 					projectsGroup.style.top = '';
 					projectsList.style.top = '';
@@ -676,11 +675,8 @@ import MobileMenu from '../components/MobileMenu.astro';
 				}
 				const logoBottom = siteHeader.getBoundingClientRect().bottom;
 				tagline.style.top = (logoBottom + 180) + 'px';
-				if (logoStudio) {
-					tagline.style.left = logoStudio.getBoundingClientRect().left + 'px';
-				}
 				const taglineBottom = tagline.getBoundingClientRect().bottom;
-				htrack.style.paddingTop = (taglineBottom + 84) + 'px';
+				htrack.style.paddingTop = (taglineBottom + 64) + 'px';
 				const photoBottom = firstFigure.getBoundingClientRect().bottom;
 				let stackBottom = photoBottom + 64;
 				if (idxTable && idxLine && getComputedStyle(idxTable).display !== 'none') {
