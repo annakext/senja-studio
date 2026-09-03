@@ -31,7 +31,7 @@ import MobileMenu from '../components/MobileMenu.astro';
 				#projects-group h1 { text-align: left; text-transform: uppercase; }
 				#idx-table { display: none; }
 				.projects-mobile-item + .projects-mobile-item { border-top: 1px solid #1c1c1c; }
-				.photo-num { font-size: calc(0.58rem + 1pt) !important; font-weight: 700 !important; }
+				.photo-num { font-size: calc(0.58rem + 2pt) !important; }
 				#projects-group { left: 12px; }
 			}
 			#htrack figure { transform: translateX(0); transition: transform 0.45s ease; }
@@ -539,7 +539,7 @@ import MobileMenu from '../components/MobileMenu.astro';
 			</div>
 		</main>
 		<div id="projects-group" class="absolute top-[40.2vh] left-1/2 z-10 inline-block">
-			<h1 class="relative block text-[19px] md:text-[25.33px] leading-tight font-normal" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c;">projects</h1>
+			<h1 class="relative block text-[15px] md:text-[25.33px] leading-tight font-normal" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c;">projects</h1>
 			<div id="projects-big-img" class="absolute top-full right-full mt-6 w-[345.89px] max-w-none aspect-[4/5] -translate-x-2">
 				<img src="/images/projects-photo-5.webp" alt="" class="big-preview-img absolute inset-0 h-full w-full object-cover brightness-125 opacity-100" />
 				<img src="/images/projects-photo-6.webp" alt="" class="big-preview-img absolute inset-0 h-full w-full object-cover brightness-125 opacity-0" />
@@ -708,11 +708,11 @@ import MobileMenu from '../components/MobileMenu.astro';
 					return;
 				}
 				const logoBottom = siteHeader.getBoundingClientRect().bottom;
-				tagline.style.top = (logoBottom + 96) + 'px';
+				tagline.style.top = (logoBottom + 150) + 'px';
 				const taglineBottom = tagline.getBoundingClientRect().bottom;
 				htrack.style.paddingTop = (taglineBottom + 32) + 'px';
 				const photoBottom = firstFigure.getBoundingClientRect().bottom;
-				let stackBottom = photoBottom + 16;
+				let stackBottom = photoBottom + 40;
 				if (idxTable && idxLine && getComputedStyle(idxTable).display !== 'none') {
 					idxTable.style.top = photoBottom + 'px';
 					const lineTop = idxLine.getBoundingClientRect().top;
