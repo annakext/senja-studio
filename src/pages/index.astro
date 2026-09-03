@@ -675,6 +675,30 @@ import MobileMenu from '../components/MobileMenu.astro';
 			window.addEventListener('resize', fitHomeNav);
 			window.addEventListener('load', fitHomeNav);
 
+			const tagline = document.getElementById('header-tagline-mobile');
+			const projectsGroup = document.getElementById('projects-group');
+			const projectsList = document.getElementById('projects-mobile-list');
+			const firstFigure = document.querySelector('#htrack figure');
+			const layoutMobileHero = () => {
+				if (!tagline || !projectsGroup || !projectsList || !firstFigure) return;
+				if (window.innerWidth >= 768) {
+					tagline.style.top = '';
+					projectsGroup.style.top = '';
+					projectsList.style.top = '';
+					return;
+				}
+				const photoBottom = firstFigure.getBoundingClientRect().bottom;
+				tagline.style.top = (photoBottom + 16) + 'px';
+				const taglineBottom = tagline.getBoundingClientRect().bottom;
+				projectsGroup.style.top = (taglineBottom + 23) + 'px';
+				const h1 = projectsGroup.querySelector('h1');
+				const h1Bottom = h1 ? h1.getBoundingClientRect().bottom : taglineBottom + 23;
+				projectsList.style.top = (h1Bottom + 16) + 'px';
+			};
+			layoutMobileHero();
+			window.addEventListener('resize', layoutMobileHero);
+			window.addEventListener('load', layoutMobileHero);
+
 			const bigImg = document.getElementById('projects-big-img');
 			const bigPreviewImgs = bigImg ? Array.from(bigImg.querySelectorAll('.big-preview-img')) : [];
 			const captionInner = document.getElementById('caption-inner');
