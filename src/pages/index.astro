@@ -32,9 +32,6 @@ import MobileMenu from '../components/MobileMenu.astro';
 				#idx-table { display: none; }
 				.photo-num { font-size: calc(0.58rem + 2pt) !important; }
 				#projects-group { left: 12px; }
-				#site-header { position: absolute; z-index: auto; animation: none; opacity: 1; }
-				#site-header #site-logo { color: #fff !important; mix-blend-mode: difference; }
-				#htrack { isolation: isolate; }
 			}
 			#htrack figure { transform: translateX(0); transition: transform 0.45s ease; }
 			#htrack figure.is-before { transform: translateX(0); }
@@ -59,7 +56,7 @@ import MobileMenu from '../components/MobileMenu.astro';
 		</style>
 	</head>
 	<body class="reveal-page">
-				<div id="site-header" class="js-blend-fixed fixed top-3 left-[12px] right-6 md:left-6 z-10 flex flex-row items-start">
+				<div id="site-header" class="fixed top-3 left-[12px] right-6 md:left-6 z-10 flex flex-row items-start">
 			<a id="site-logo" href="/" class="block text-[41px] leading-tight font-normal" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.05em; color: #1c1c1c; text-transform: uppercase;">senja studio</a>
 		</div>
 		<div id="header-tagline" class="fixed top-3 left-1/2 z-10 hidden md:block">
@@ -71,7 +68,7 @@ import MobileMenu from '../components/MobileMenu.astro';
 		<nav id="home-nav" class="fixed right-[18px] md:right-6 z-10 hidden md:flex flex-row text-[0.76rem] font-[325]" style="top: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c;">
 			<a href="/" class="nav-link active">projects</a><span>,&nbsp;</span><a href="/services" class="nav-link">services</a><span>,&nbsp;</span><a href="/about" class="nav-link">about</a><span>,&nbsp;</span><a href="/contact" class="nav-link">contact</a>
 		</nav>
-		<MobileMenu active="projects" blend={true} right="right-[12px] md:right-6" left="left-[12px]" label="menu" />
+		<MobileMenu active="projects" right="right-[12px] md:right-6" left="left-[12px]" label="menu" />
 		<a href="https://www.instagram.com/roll.bysenja/" target="_blank" rel="noopener noreferrer" class="fixed z-10 hidden md:block" style="top: 44px; right: 23.5px;" aria-label="Instagram">
 			<svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 				<rect x="2" y="2" width="20" height="20" rx="5" stroke="#1c1c1c" stroke-width="2" />
@@ -536,19 +533,19 @@ import MobileMenu from '../components/MobileMenu.astro';
 		<div id="projects-list-line" class="absolute left-[12px] right-6 z-10 hidden max-md:block" style="border-top: 0.75px solid #1c1c1c;"></div>
 		<div id="projects-mobile-list" class="absolute top-[calc(40.2vh+40px)] left-[12px] right-6 z-10 hidden max-md:flex flex-col">
 			<a href="/projects/villa-connexion" class="projects-mobile-item flex flex-row items-start gap-4 py-2">
-				<img src="/images/projects-photo-5.webp" alt="" class="w-[calc(33vw-12px)] aspect-[4/5] object-cover brightness-125 object-bottom" />
+				<img src="/images/projects-photo-5.webp" alt="" class="w-[calc(33vw-12px)] aspect-square object-cover brightness-125 object-top" />
 				<div class="text-[calc(0.76rem+1pt)] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">VILLA CONNEXION<br />intimate luxurious spaces</div>
 			</a>
 			<a href="/projects/resort-life" class="projects-mobile-item flex flex-row items-start gap-4 py-2">
-				<img src="/images/projects-photo-6.webp" alt="" class="w-[calc(33vw-12px)] aspect-[4/5] object-cover brightness-125 object-[50%_87%]" />
+				<img src="/images/projects-photo-6.webp" alt="" class="w-[calc(33vw-12px)] aspect-square object-cover brightness-125 object-top" />
 				<div class="text-[calc(0.76rem+1pt)] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">RESORT LIFE<br />stillness and light</div>
 			</a>
 			<a href="/projects/curated-places" class="projects-mobile-item flex flex-row items-start gap-4 py-2">
-				<img src="/images/projects-photo-7.webp" alt="" class="w-[calc(33vw-12px)] aspect-[4/5] object-cover brightness-125 object-center" />
+				<img src="/images/projects-photo-7.webp" alt="" class="w-[calc(33vw-12px)] aspect-square object-cover brightness-125 object-center" />
 				<div class="text-[calc(0.76rem+1pt)] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">CURATED PLACES<br />lifestyle, food and culture</div>
 			</a>
 			<a href="/projects/ugc" class="projects-mobile-item flex flex-row items-start gap-4 py-2">
-				<img src="/images/projects-photo-8.webp" alt="" class="w-[calc(33vw-12px)] aspect-[4/5] object-cover brightness-125 object-top" />
+				<img src="/images/projects-photo-8.webp" alt="" class="w-[calc(33vw-12px)] aspect-square object-cover brightness-125 object-bottom" />
 				<div class="text-[calc(0.76rem+1pt)] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">UGC<br />authentic and ready to post</div>
 			</a>
 		</div>
@@ -675,11 +672,11 @@ import MobileMenu from '../components/MobileMenu.astro';
 					return;
 				}
 				const logoBottom = siteHeader.getBoundingClientRect().bottom;
-				tagline.style.top = (logoBottom + 120) + 'px';
+				tagline.style.top = (logoBottom + 160) + 'px';
 				const taglineBottom = tagline.getBoundingClientRect().bottom;
-				htrack.style.paddingTop = (taglineBottom + 88) + 'px';
+				htrack.style.paddingTop = (taglineBottom + 120) + 'px';
 				const photoBottom = firstFigure.getBoundingClientRect().bottom;
-				let stackBottom = photoBottom + 40;
+				let stackBottom = photoBottom + 64;
 				if (idxTable && idxLine && getComputedStyle(idxTable).display !== 'none') {
 					idxTable.style.top = photoBottom + 'px';
 					const lineTop = idxLine.getBoundingClientRect().top;
@@ -709,22 +706,6 @@ import MobileMenu from '../components/MobileMenu.astro';
 				layoutMobileHero();
 			});
 			window.addEventListener('load', layoutMobileHero);
-
-			const blendFixedEls = Array.from(document.querySelectorAll('.js-blend-fixed')).map((el) => ({
-				el,
-				offset: parseFloat(getComputedStyle(el).top) || 0,
-			}));
-			const syncBlendFixed = () => {
-				if (window.innerWidth >= 768) {
-					blendFixedEls.forEach(({ el }) => { el.style.top = ''; });
-				} else {
-					blendFixedEls.forEach(({ el, offset }) => {
-						el.style.top = (window.scrollY + offset) + 'px';
-					});
-				}
-				requestAnimationFrame(syncBlendFixed);
-			};
-			syncBlendFixed();
 
 			const bigImg = document.getElementById('projects-big-img');
 			const bigPreviewImgs = bigImg ? Array.from(bigImg.querySelectorAll('.big-preview-img')) : [];
