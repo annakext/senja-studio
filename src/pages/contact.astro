@@ -17,10 +17,6 @@ import Footer from '../components/Footer.astro';
 		<title>contact — SENJA STUDIO</title>
 		<meta name="description" content="Get in touch with Senja Studio for visual content and brand image consultancy for hospitality and lifestyle brands." />
 		<style>
-			@media (max-width: 767px) {
-				#site-logo { color: #fff !important; }
-				nav, nav .nav-link.active { color: #fff !important; }
-			}
 			.nav-link { position: relative; text-decoration: none; }
 			.nav-link::after { content: ""; position: absolute; left: 0; bottom: 1px; width: 0; height: 1px; background: currentColor; transition: width 0.3s ease; }
 			.nav-link:hover::after { width: 100%; }
@@ -29,7 +25,7 @@ import Footer from '../components/Footer.astro';
 		</style>
 	</head>
 	<body>
-		<div class="fixed top-0 left-0 right-0 h-[54px] bg-[#1c1c1c] md:hidden"></div>
+		<div class="fixed top-0 left-0 right-0 z-50 bg-[#1c1c1c]" style="height: env(safe-area-inset-top, 0px);"></div>
 		<div class="fixed top-3 left-6 right-6 z-10 flex flex-row items-start">
 			<a id="site-logo" href="/" class="block text-[41px] leading-tight font-normal" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.05em; color: #1c1c1c; text-transform: uppercase;">senja studio</a>
 		</div>
