@@ -25,6 +25,10 @@ import MobileMenu from '../components/MobileMenu.astro';
 		<title>SENJA STUDIO</title>
 		<meta name="description" content="Senja Studio is a visual content studio and brand image consultancy for luxury hospitality and lifestyle brands — film, photography and creative direction." />
 		<style>
+			@media (max-width: 767px) {
+				.photo-num { display: none; }
+				#idx-table { display: none; }
+			}
 			#htrack figure { transform: translateX(0); transition: transform 0.45s ease; }
 			#htrack figure.is-before { transform: translateX(0); }
 			#htrack figure.is-after { transform: translateX(0); }
