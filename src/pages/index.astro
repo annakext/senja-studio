@@ -28,6 +28,7 @@ import MobileMenu from '../components/MobileMenu.astro';
 			@media (max-width: 767px) {
 				.photo-num { display: none; }
 				#idx-table { display: none; }
+				#projects-big-img, .projects-thumb, #caption-wrap, #projects-connector-line, #projects-page-indicator { display: none; }
 			}
 			#htrack figure { transform: translateX(0); transition: transform 0.45s ease; }
 			#htrack figure.is-before { transform: translateX(0); }
@@ -560,6 +561,24 @@ import MobileMenu from '../components/MobileMenu.astro';
 			<div id="caption-wrap" class="fixed w-40 overflow-hidden" style="height: 33px;">
 				<div id="caption-inner" class="text-[0.76rem] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">VILLA CONNEXION<br />intimate luxurious spaces</div>
 			</div>
+		</div>
+		<div id="projects-mobile-list" class="absolute top-[calc(40.2vh+40px)] left-[18px] right-[18px] z-10 hidden max-md:flex flex-col gap-6">
+			<a href="/projects/villa-connexion" class="flex flex-row items-start gap-4">
+				<img src="/images/projects-photo-5.webp" alt="" class="w-[130px] aspect-[4/5] object-cover" />
+				<div class="text-[0.76rem] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">VILLA CONNEXION<br />intimate luxurious spaces</div>
+			</a>
+			<a href="/projects/resort-life" class="flex flex-row items-start gap-4">
+				<img src="/images/projects-photo-6.webp" alt="" class="w-[130px] aspect-[4/5] object-cover" />
+				<div class="text-[0.76rem] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">RESORT LIFE<br />stillness and light</div>
+			</a>
+			<a href="/projects/curated-places" class="flex flex-row items-start gap-4">
+				<img src="/images/projects-photo-7.webp" alt="" class="w-[130px] aspect-[4/5] object-cover" />
+				<div class="text-[0.76rem] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">CURATED PLACES<br />lifestyle, food and culture</div>
+			</a>
+			<a href="/projects/ugc" class="flex flex-row items-start gap-4">
+				<img src="/images/projects-photo-8.webp" alt="" class="w-[130px] aspect-[4/5] object-cover" />
+				<div class="text-[0.76rem] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">UGC<br />authentic and ready to post</div>
+			</a>
 		</div>
 		<div id="projects-connector-line" class="fixed pointer-events-none z-20" style="border-top: 0.5px solid #1c1c1c;"></div>
 		<div id="projects-page-indicator" class="fixed overflow-hidden" style="height: 14px;">
