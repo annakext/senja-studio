@@ -29,8 +29,10 @@ import MobileMenu from '../components/MobileMenu.astro';
 				#projects-big-img, .projects-thumb, #caption-wrap, #projects-connector-line, #projects-page-indicator { display: none; }
 				:global(body) { background-color: #faf9f9 !important; }
 				#projects-group h1 { text-align: left; text-transform: uppercase; }
-				#idx-table { position: absolute; }
-				.projects-mobile-item + .projects-mobile-item { border-top: 0.5px solid #1c1c1c; }
+				#idx-table { display: none; }
+				.projects-mobile-item + .projects-mobile-item { border-top: 1px solid #1c1c1c; }
+				.photo-num { font-size: calc(0.58rem + 1pt) !important; font-weight: 700 !important; }
+				#projects-group { left: 12px; }
 			}
 			#htrack figure { transform: translateX(0); transition: transform 0.45s ease; }
 			#htrack figure.is-before { transform: translateX(0); }
@@ -564,22 +566,22 @@ import MobileMenu from '../components/MobileMenu.astro';
 				<div id="caption-inner" class="text-[0.76rem] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">VILLA CONNEXION<br />intimate luxurious spaces</div>
 			</div>
 		</div>
-		<div id="projects-list-line" class="absolute left-[58px] right-[28px] z-10 hidden max-md:block" style="border-top: 0.5px solid #1c1c1c;"></div>
-		<div id="projects-mobile-list" class="absolute top-[calc(40.2vh+40px)] left-[58px] right-[28px] z-10 hidden max-md:flex flex-col">
-			<a href="/projects/villa-connexion" class="projects-mobile-item flex flex-row items-start gap-4 py-4">
-				<img src="/images/projects-photo-5.webp" alt="" class="w-[calc(50vw-58px)] aspect-[4/5] object-cover brightness-125 rounded-[6px] object-bottom" />
+		<div id="projects-list-line" class="absolute left-[12px] right-6 z-10 hidden max-md:block" style="border-top: 1px solid #1c1c1c;"></div>
+		<div id="projects-mobile-list" class="absolute top-[calc(40.2vh+40px)] left-[12px] right-6 z-10 hidden max-md:flex flex-col">
+			<a href="/projects/villa-connexion" class="projects-mobile-item flex flex-row items-start gap-4 py-4 pl-[46px]">
+				<img src="/images/projects-photo-5.webp" alt="" class="w-[calc(50vw-58px)] aspect-[4/5] object-cover brightness-125 object-bottom" />
 				<div class="text-[calc(0.76rem+1pt)] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">VILLA CONNEXION<br />intimate luxurious spaces</div>
 			</a>
-			<a href="/projects/resort-life" class="projects-mobile-item flex flex-row items-start gap-4 py-4">
-				<img src="/images/projects-photo-6.webp" alt="" class="w-[calc(50vw-58px)] aspect-[4/5] object-cover brightness-125 rounded-[6px] object-[50%_87%]" />
+			<a href="/projects/resort-life" class="projects-mobile-item flex flex-row items-start gap-4 py-4 pl-[46px]">
+				<img src="/images/projects-photo-6.webp" alt="" class="w-[calc(50vw-58px)] aspect-[4/5] object-cover brightness-125 object-[50%_87%]" />
 				<div class="text-[calc(0.76rem+1pt)] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">RESORT LIFE<br />stillness and light</div>
 			</a>
-			<a href="/projects/curated-places" class="projects-mobile-item flex flex-row items-start gap-4 py-4">
-				<img src="/images/projects-photo-7.webp" alt="" class="w-[calc(50vw-58px)] aspect-[4/5] object-cover brightness-125 rounded-[6px] object-center" />
+			<a href="/projects/curated-places" class="projects-mobile-item flex flex-row items-start gap-4 py-4 pl-[46px]">
+				<img src="/images/projects-photo-7.webp" alt="" class="w-[calc(50vw-58px)] aspect-[4/5] object-cover brightness-125 object-center" />
 				<div class="text-[calc(0.76rem+1pt)] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">CURATED PLACES<br />lifestyle, food and culture</div>
 			</a>
-			<a href="/projects/ugc" class="projects-mobile-item flex flex-row items-start gap-4 py-4">
-				<img src="/images/projects-photo-8.webp" alt="" class="w-[calc(50vw-58px)] aspect-[4/5] object-cover brightness-125 rounded-[6px] object-top" />
+			<a href="/projects/ugc" class="projects-mobile-item flex flex-row items-start gap-4 py-4 pl-[46px]">
+				<img src="/images/projects-photo-8.webp" alt="" class="w-[calc(50vw-58px)] aspect-[4/5] object-cover brightness-125 object-top" />
 				<div class="text-[calc(0.76rem+1pt)] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">UGC<br />authentic and ready to post</div>
 			</a>
 		</div>
@@ -706,12 +708,12 @@ import MobileMenu from '../components/MobileMenu.astro';
 					return;
 				}
 				const logoBottom = siteHeader.getBoundingClientRect().bottom;
-				tagline.style.top = (logoBottom + 72) + 'px';
+				tagline.style.top = (logoBottom + 96) + 'px';
 				const taglineBottom = tagline.getBoundingClientRect().bottom;
-				htrack.style.paddingTop = (taglineBottom + 16) + 'px';
+				htrack.style.paddingTop = (taglineBottom + 32) + 'px';
 				const photoBottom = firstFigure.getBoundingClientRect().bottom;
 				let stackBottom = photoBottom + 16;
-				if (idxTable && idxLine) {
+				if (idxTable && idxLine && getComputedStyle(idxTable).display !== 'none') {
 					idxTable.style.top = photoBottom + 'px';
 					const lineTop = idxLine.getBoundingClientRect().top;
 					const desiredLineTop = photoBottom + 20;
@@ -733,7 +735,12 @@ import MobileMenu from '../components/MobileMenu.astro';
 				}
 			};
 			layoutMobileHero();
-			window.addEventListener('resize', layoutMobileHero);
+			let lastLayoutWidth = window.innerWidth;
+			window.addEventListener('resize', () => {
+				if (window.innerWidth === lastLayoutWidth) return;
+				lastLayoutWidth = window.innerWidth;
+				layoutMobileHero();
+			});
 			window.addEventListener('load', layoutMobileHero);
 
 			const bigImg = document.getElementById('projects-big-img');
