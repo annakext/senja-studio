@@ -22,12 +22,12 @@ const items = [
 <button
 	id="mobile-menu-toggle"
 	aria-label="Menu"
-	class={`mobile-menu-toggle md:hidden ${togglePositionClass} flex flex-col justify-center gap-[5px] ${right}`}
-	style="top: 19px; width: 22px; height: 14px;"
+	class={`mobile-menu-toggle md:hidden ${togglePositionClass} flex flex-col gap-[5px] ${right}`}
+	style="top: 19px; width: 22px;"
 >
-	<span class="block h-[1.5px] w-full" style={iconStyle}></span>
-	<span class="block h-[1.5px] w-full" style={iconStyle}></span>
-	<span class="block h-[1.5px] w-full" style={iconStyle}></span>
+	<span class="block h-[1.5px] w-full shrink-0" style={iconStyle}></span>
+	<span class="block h-[1.5px] w-full shrink-0" style={iconStyle}></span>
+	<span class="block h-[1.5px] w-full shrink-0" style={iconStyle}></span>
 </button>
 
 <div id="mobile-menu-overlay" class="md:hidden fixed inset-0 z-50 hidden" style="background-color: #fff;">
