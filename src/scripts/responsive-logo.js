@@ -4,7 +4,7 @@ export function initResponsiveLogo(leftMargin = 24) {
 
 	const baseFontSize = 41;
 	const breakpoint = 768;
-	const mobileReduction = 0.85;
+	const mobileReduction = 0.75;
 	const naturalWidth = logo.getBoundingClientRect().width;
 
 	const apply = () => {
