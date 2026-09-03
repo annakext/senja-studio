@@ -29,6 +29,7 @@ import MobileMenu from '../components/MobileMenu.astro';
 				.photo-num { display: none; }
 				#idx-table { display: none; }
 				#projects-big-img, .projects-thumb, #caption-wrap, #projects-connector-line, #projects-page-indicator { display: none; }
+				:global(body) { background-color: #f3f2ee; }
 			}
 			#htrack figure { transform: translateX(0); transition: transform 0.45s ease; }
 			#htrack figure.is-before { transform: translateX(0); }
@@ -53,19 +54,19 @@ import MobileMenu from '../components/MobileMenu.astro';
 		</style>
 	</head>
 	<body class="reveal-page">
-				<div class="fixed top-3 left-[18px] right-6 md:left-6 z-10 flex flex-row items-start">
+				<div id="site-header" class="fixed top-3 left-[28px] right-6 md:left-6 z-10 flex flex-row items-start">
 			<a id="site-logo" href="/" class="block text-[41px] leading-tight font-normal" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.05em; color: #1c1c1c; text-transform: uppercase;">senja studio</a>
 		</div>
 		<div id="header-tagline" class="fixed top-3 left-1/2 z-10 hidden md:block">
 			<p class="text-[0.76rem] font-[325]" style="margin-top: 7px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">visual content studio and brand image consultancy<br />for luxury hospitality and lifestyle brands.<br />film. photography. creative direction.</p>
 		</div>
-		<div id="header-tagline-mobile" class="fixed left-[18px] right-[18px] z-10 md:hidden" style="top: calc(56px + 16.0901vh + 76px);">
-			<p class="text-[calc(0.76rem+1pt)] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.5;">visual content studio and brand image consultancy.<br />film. photography. creative direction.</p>
+		<div id="header-tagline-mobile" class="fixed left-[28px] right-[28px] z-10 md:hidden">
+			<p class="text-[calc(0.76rem+1pt)] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.5;">visual content studio and brand image consultancy.</p>
 		</div>
 		<nav id="home-nav" class="fixed right-[18px] md:right-6 z-10 hidden md:flex flex-row text-[0.76rem] font-[325]" style="top: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c;">
 			<a href="/" class="nav-link active">projects</a><span>,&nbsp;</span><a href="/services" class="nav-link">services</a><span>,&nbsp;</span><a href="/about" class="nav-link">about</a><span>,&nbsp;</span><a href="/contact" class="nav-link">contact</a>
 		</nav>
-		<MobileMenu active="projects" right="right-[18px] md:right-6" left="left-[18px]" />
+		<MobileMenu active="projects" right="right-[28px] md:right-6" left="left-[28px]" />
 		<a href="https://www.instagram.com/roll.bysenja/" target="_blank" rel="noopener noreferrer" class="fixed z-10 hidden md:block" style="top: 44px; right: 23.5px;" aria-label="Instagram">
 			<svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 				<rect x="2" y="2" width="20" height="20" rx="5" stroke="#1c1c1c" stroke-width="2" />
@@ -562,22 +563,22 @@ import MobileMenu from '../components/MobileMenu.astro';
 				<div id="caption-inner" class="text-[0.76rem] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">VILLA CONNEXION<br />intimate luxurious spaces</div>
 			</div>
 		</div>
-		<div id="projects-mobile-list" class="absolute top-[calc(40.2vh+40px)] left-[58px] right-[18px] z-10 hidden max-md:flex flex-col gap-3">
+		<div id="projects-mobile-list" class="absolute top-[calc(40.2vh+40px)] left-[58px] right-[28px] z-10 hidden max-md:flex flex-col gap-3">
 			<a href="/projects/villa-connexion" class="flex flex-row items-start gap-4">
-				<img src="/images/projects-photo-5.webp" alt="" class="w-[calc(50vw-58px)] aspect-[4/3] object-cover brightness-125 object-bottom" />
-				<div class="text-[calc(0.76rem+1pt)] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;"><span style="font-weight: 400;">1/4</span><br />VILLA CONNEXION<br />intimate luxurious spaces</div>
+				<img src="/images/projects-photo-5.webp" alt="" class="w-[calc(50vw-58px)] aspect-[4/3] object-cover brightness-125 rounded-[6px] object-bottom" />
+				<div class="text-[calc(0.76rem+1pt)] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">VILLA CONNEXION<br />intimate luxurious spaces</div>
 			</a>
 			<a href="/projects/resort-life" class="flex flex-row items-start gap-4">
-				<img src="/images/projects-photo-6.webp" alt="" class="w-[calc(50vw-58px)] aspect-[4/3] object-cover brightness-125 object-[50%_87%]" />
-				<div class="text-[calc(0.76rem+1pt)] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;"><span style="font-weight: 400;">2/4</span><br />RESORT LIFE<br />stillness and light</div>
+				<img src="/images/projects-photo-6.webp" alt="" class="w-[calc(50vw-58px)] aspect-[4/3] object-cover brightness-125 rounded-[6px] object-[50%_87%]" />
+				<div class="text-[calc(0.76rem+1pt)] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">RESORT LIFE<br />stillness and light</div>
 			</a>
 			<a href="/projects/curated-places" class="flex flex-row items-start gap-4">
-				<img src="/images/projects-photo-7.webp" alt="" class="w-[calc(50vw-58px)] aspect-[4/3] object-cover brightness-125 object-center" />
-				<div class="text-[calc(0.76rem+1pt)] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;"><span style="font-weight: 400;">3/4</span><br />CURATED PLACES<br />lifestyle, food and culture</div>
+				<img src="/images/projects-photo-7.webp" alt="" class="w-[calc(50vw-58px)] aspect-[4/3] object-cover brightness-125 rounded-[6px] object-center" />
+				<div class="text-[calc(0.76rem+1pt)] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">CURATED PLACES<br />lifestyle, food and culture</div>
 			</a>
 			<a href="/projects/ugc" class="flex flex-row items-start gap-4">
-				<img src="/images/projects-photo-8.webp" alt="" class="w-[calc(50vw-58px)] aspect-[4/3] object-cover brightness-125 object-top" />
-				<div class="text-[calc(0.76rem+1pt)] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;"><span style="font-weight: 400;">4/4</span><br />UGC<br />authentic and ready to post</div>
+				<img src="/images/projects-photo-8.webp" alt="" class="w-[calc(50vw-58px)] aspect-[4/3] object-cover brightness-125 rounded-[6px] object-top" />
+				<div class="text-[calc(0.76rem+1pt)] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">UGC<br />authentic and ready to post</div>
 			</a>
 		</div>
 		<div id="projects-connector-line" class="fixed pointer-events-none z-20" style="border-top: 0.5px solid #1c1c1c;"></div>
@@ -676,23 +677,28 @@ import MobileMenu from '../components/MobileMenu.astro';
 			window.addEventListener('load', fitHomeNav);
 
 			const tagline = document.getElementById('header-tagline-mobile');
+			const siteHeader = document.getElementById('site-header');
 			const projectsGroup = document.getElementById('projects-group');
 			const projectsList = document.getElementById('projects-mobile-list');
+			const htrack = document.getElementById('htrack');
 			const firstFigure = document.querySelector('#htrack figure');
 			const layoutMobileHero = () => {
-				if (!tagline || !projectsGroup || !projectsList || !firstFigure) return;
+				if (!tagline || !siteHeader || !projectsGroup || !projectsList || !htrack || !firstFigure) return;
 				if (window.innerWidth >= 768) {
 					tagline.style.top = '';
+					htrack.style.paddingTop = '';
 					projectsGroup.style.top = '';
 					projectsList.style.top = '';
 					return;
 				}
-				const photoBottom = firstFigure.getBoundingClientRect().bottom;
-				tagline.style.top = (photoBottom + 16) + 'px';
+				const logoBottom = siteHeader.getBoundingClientRect().bottom;
+				tagline.style.top = (logoBottom + 12) + 'px';
 				const taglineBottom = tagline.getBoundingClientRect().bottom;
-				projectsGroup.style.top = (taglineBottom + 23) + 'px';
+				htrack.style.paddingTop = (taglineBottom + 16) + 'px';
+				const photoBottom = firstFigure.getBoundingClientRect().bottom;
+				projectsGroup.style.top = (photoBottom + 16) + 'px';
 				const h1 = projectsGroup.querySelector('h1');
-				const h1Bottom = h1 ? h1.getBoundingClientRect().bottom : taglineBottom + 23;
+				const h1Bottom = h1 ? h1.getBoundingClientRect().bottom : photoBottom + 16;
 				projectsList.style.top = (h1Bottom + 16) + 'px';
 			};
 			layoutMobileHero();
