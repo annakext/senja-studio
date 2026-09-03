@@ -3,12 +3,13 @@ export interface Props {
 	active: 'projects' | 'services' | 'about' | 'contact';
 	blend?: boolean;
 	right?: string;
+	left?: string;
 }
-const { active, blend = false, right = 'right-6' } = Astro.props;
+const { active, blend = false, right = 'right-6', left = 'left-6' } = Astro.props;
 
 const iconStyle = blend
-	? 'background-color: #fff; mix-blend-mode: difference;'
-	: 'background-color: #1c1c1c;';
+	? 'color: #fff; mix-blend-mode: difference;'
+	: 'color: #1c1c1c;';
 const togglePositionClass = blend ? 'js-blend-fixed absolute' : 'fixed z-40';
 
 const items = [
@@ -22,20 +23,28 @@ const items = [
 <button
 	id="mobile-menu-toggle"
 	aria-label="Menu"
-	class={`mobile-menu-toggle md:hidden ${togglePositionClass} flex flex-col gap-[5px] ${right}`}
-	style="top: 19px; width: 22px;"
+	class={`mobile-menu-toggle md:hidden ${togglePositionClass} ${right}`}
+	style="top: 16px; width: 22px; touch-action: manipulation;"
 >
-	<span class="block h-[1.5px] w-full shrink-0" style={iconStyle}></span>
-	<span class="block h-[1.5px] w-full shrink-0" style={iconStyle}></span>
-	<span class="block h-[1.5px] w-full shrink-0" style={iconStyle}></span>
+	<svg width="22" height="14" viewBox="0 0 22 14" fill="none" xmlns="http://www.w3.org/2000/svg" style={iconStyle}>
+		<line x1="0" y1="1" x2="22" y2="1" stroke="currentColor" stroke-width="1.3" />
+		<line x1="0" y1="7" x2="22" y2="7" stroke="currentColor" stroke-width="1.3" />
+		<line x1="0" y1="13" x2="22" y2="13" stroke="currentColor" stroke-width="1.3" />
+	</svg>
 </button>
 
 <div id="mobile-menu-overlay" class="md:hidden fixed inset-0 z-50 hidden" style="background-color: #fff;">
+	<a
+		id="site-logo-menu"
+		href="/"
+		class={`fixed top-3 ${left} block text-[41px] leading-tight font-normal`}
+		style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.05em; color: #1c1c1c; text-transform: uppercase;"
+	>senja studio</a>
 	<button
 		id="mobile-menu-close"
 		aria-label="Close menu"
 		class={`fixed z-50 ${right}`}
-		style="top: 19px; width: 22px; height: 14px;"
+		style="top: 19px; width: 22px; height: 14px; touch-action: manipulation;"
 	>
 		<span class="absolute left-1/2 top-1/2 h-[1.5px] w-[22px]" style="background-color: #1c1c1c; transform: translate(-50%, -50%) rotate(45deg);"></span>
 		<span class="absolute left-1/2 top-1/2 h-[1.5px] w-[22px]" style="background-color: #1c1c1c; transform: translate(-50%, -50%) rotate(-45deg);"></span>
@@ -52,7 +61,12 @@ const items = [
 	const toggle = document.getElementById('mobile-menu-toggle');
 	const overlay = document.getElementById('mobile-menu-overlay');
 	const closeBtn = document.getElementById('mobile-menu-close');
+	const realLogo = document.getElementById('site-logo');
+	const menuLogo = document.getElementById('site-logo-menu');
 	const openMenu = () => {
+		if (realLogo && menuLogo) {
+			menuLogo.style.fontSize = getComputedStyle(realLogo).fontSize;
+		}
 		overlay?.classList.remove('hidden');
 		document.body.style.overflow = 'hidden';
 	};
