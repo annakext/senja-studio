@@ -18,10 +18,7 @@ import Footer from '../components/Footer.astro';
 		<meta name="description" content="Founded by Anna Chloé, Senja Studio blends creative direction and visual content production for hospitality and lifestyle brands, based in Asia and available worldwide." />
 		<style>
 			@media (max-width: 767px) {
-				#site-logo { color: #fff !important; }
-				nav, nav .nav-link.active { color: #fff !important; }
-				#ig-icon rect, #ig-icon circle { stroke: #fff !important; fill: none !important; }
-				#ig-icon circle:last-child { fill: #fff !important; }
+				#site-header, nav, #ig-icon { transform: translateY(66px); }
 			}
 			.nav-link { position: relative; text-decoration: none; }
 			.nav-link::after { content: ""; position: absolute; left: 0; bottom: 1px; width: 0; height: 1px; background: currentColor; transition: width 0.3s ease; }
@@ -32,7 +29,7 @@ import Footer from '../components/Footer.astro';
 	</head>
 	<body>
 		<div class="fixed top-0 left-0 right-0 h-[54px] bg-[#1c1c1c] md:hidden"></div>
-		<div class="fixed top-3 left-6 right-6 z-10 flex flex-row items-start">
+		<div id="site-header" class="fixed top-3 left-6 right-6 z-10 flex flex-row items-start">
 			<a id="site-logo" href="/" class="block text-[41px] leading-tight font-normal" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.05em; color: #1c1c1c; text-transform: uppercase;">senja studio</a>
 		</div>
 		<nav class="fixed right-6 z-10 flex flex-row text-[0.76rem] font-[325]" style="top: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c;">

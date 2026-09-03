@@ -26,10 +26,7 @@ import Footer from '../components/Footer.astro';
 		<meta name="description" content="Senja Studio is a visual content studio and brand image consultancy for luxury hospitality and lifestyle brands — film, photography and creative direction." />
 		<style>
 			@media (max-width: 767px) {
-				#site-logo { color: #fff !important; }
-				nav, nav .nav-link.active { color: #fff !important; }
-				#ig-icon rect, #ig-icon circle { stroke: #fff !important; fill: none !important; }
-				#ig-icon circle:last-child { fill: #fff !important; }
+				#site-header, #home-nav, #ig-icon { transform: translateY(66px); }
 			}
 			#htrack figure { transform: translateX(0); transition: transform 0.45s ease; }
 			#htrack figure.is-before { transform: translateX(0); }
@@ -55,7 +52,7 @@ import Footer from '../components/Footer.astro';
 	</head>
 	<body class="reveal-page">
 		<div class="fixed top-0 left-0 right-0 h-[54px] bg-[#1c1c1c] md:hidden"></div>
-				<div class="fixed top-3 left-[18px] right-6 md:left-6 z-10 flex flex-row items-start">
+				<div id="site-header" class="fixed top-3 left-[18px] right-6 md:left-6 z-10 flex flex-row items-start">
 			<a id="site-logo" href="/" class="block text-[41px] leading-tight font-normal" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.05em; color: #1c1c1c; text-transform: uppercase;">senja studio</a>
 		</div>
 		<div id="header-tagline" class="fixed top-3 left-1/2 z-10 hidden md:block">
