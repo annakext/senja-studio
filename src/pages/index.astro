@@ -674,11 +674,11 @@ import MobileMenu from '../components/MobileMenu.astro';
 					return;
 				}
 				const logoBottom = siteHeader.getBoundingClientRect().bottom;
-				tagline.style.top = (logoBottom + 228) + 'px';
+				tagline.style.top = (logoBottom + 220) + 'px';
 				const taglineBottom = tagline.getBoundingClientRect().bottom;
-				htrack.style.paddingTop = (taglineBottom + 40) + 'px';
+				htrack.style.paddingTop = (taglineBottom + 32) + 'px';
 				const photoBottom = firstFigure.getBoundingClientRect().bottom;
-				let stackBottom = photoBottom + 56;
+				let stackBottom = photoBottom + 48;
 				if (idxTable && idxLine && getComputedStyle(idxTable).display !== 'none') {
 					idxTable.style.top = photoBottom + 'px';
 					const lineTop = idxLine.getBoundingClientRect().top;
@@ -697,7 +697,7 @@ import MobileMenu from '../components/MobileMenu.astro';
 				projectsList.style.top = listTop + 'px';
 				if (mobileFooter) {
 					const listBottom = projectsList.getBoundingClientRect().bottom;
-					mobileFooter.style.top = (listBottom + 72) + 'px';
+					mobileFooter.style.top = (listBottom + 104) + 'px';
 				}
 			};
 			layoutMobileHero();
