@@ -922,9 +922,13 @@ import MobileMenu from '../components/MobileMenu.astro';
 				vw = document.documentElement.clientWidth;
 				setWidth = (figs[N].offsetLeft - figs[0].offsetLeft) || 1;
 			};
+			let userInteracted = false;
 			measure();
 			window.addEventListener('resize', measure);
-			window.addEventListener('load', measure);
+			window.addEventListener('load', () => {
+				measure();
+				if (!userInteracted) centerOnFirst();
+			});
 			if (window.ResizeObserver) {
 				new ResizeObserver(measure).observe(track);
 			}
@@ -964,6 +968,7 @@ import MobileMenu from '../components/MobileMenu.astro';
 			setTimeout(() => scheduleAutoplay(AUTOPLAY_MS), REVEAL_TOTAL_MS);
 
 			main.addEventListener('wheel', (e) => {
+				userInteracted = true;
 				e.preventDefault();
 				let d = Math.abs(e.deltaY) > Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
 				if (e.deltaMode === 1) d *= 16;
