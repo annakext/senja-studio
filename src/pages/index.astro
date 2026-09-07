@@ -917,7 +917,9 @@ import MobileMenu from '../components/MobileMenu.astro';
 			let idle = 0;
 			let snapped = false;
 			let autoplayAnim = null;
+			let hiddenFigs = [];
 			const measure = () => {
+				hiddenFigs = figs.map((f) => f.offsetWidth === 0);
 				centers = figs.map((f) => f.offsetLeft + f.offsetWidth / 2);
 				vw = document.documentElement.clientWidth;
 				setWidth = (figs[N].offsetLeft - figs[0].offsetLeft) || 1;
@@ -938,9 +940,18 @@ import MobileMenu from '../components/MobileMenu.astro';
 			const REVEAL_TOTAL_MS = 1900;
 			let autoplayTimer = null;
 			const AUTOPLAY_TWEEN_MS = 2000;
+			const nextVisibleIdx = (i) => {
+				let n = i + 1 >= centers.length ? (i + 1) - N : i + 1;
+				let guard = 0;
+				while (hiddenFigs[n] && guard < centers.length) {
+					n = n + 1 >= centers.length ? (n + 1) - N : n + 1;
+					guard++;
+				}
+				return n;
+			};
 			const advanceOne = () => {
 				if (activeBi < 0) return;
-				const nextIdx = activeBi + 1 >= centers.length ? (activeBi + 1) - N : activeBi + 1;
+				const nextIdx = nextVisibleIdx(activeBi);
 				const delta = centers[nextIdx] - centers[activeBi];
 				const from = current;
 				const to = current + delta;
@@ -1002,6 +1013,7 @@ import MobileMenu from '../components/MobileMenu.astro';
 				let bi = hasActive ? activeBi : 0;
 				let bd = hasActive ? Math.abs(centers[activeBi] - targetPos) : Infinity;
 				for (let i = 0; i < centers.length; i++) {
+					if (hiddenFigs[i]) continue;
 					const dd = Math.abs(centers[i] - targetPos);
 					if (dd + HYSTERESIS < bd) { bd = dd; bi = i; }
 				}
