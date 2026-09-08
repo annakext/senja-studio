@@ -16,13 +16,18 @@ export function initResponsiveLogo(leftMargin = 24, mobileReduction = 1) {
 	const apply = () => {
 		if (window.innerWidth >= breakpoint) {
 			logo.style.fontSize = '';
+			logo.style.visibility = 'visible';
 			return;
 		}
 		const naturalWidth = measureNaturalWidth();
-		if (!naturalWidth) return;
+		if (!naturalWidth) {
+			logo.style.visibility = 'visible';
+			return;
+		}
 		const targetWidth = (window.innerWidth / 2 - leftMargin) * mobileReduction;
 		const scale = targetWidth / naturalWidth;
 		logo.style.fontSize = (baseFontSize * scale) + 'px';
+		logo.style.visibility = 'visible';
 	};
 
 	apply();

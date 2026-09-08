@@ -27,6 +27,7 @@ import MobileMenu from '../../components/MobileMenu.astro';
 			.nav-link.active::after { width: 100%; }
 			@media (max-width: 767px) {
 				#site-logo { color: #1c1c1c !important; mix-blend-mode: normal !important; }
+				main.reveal-page { filter: saturate(1.15); }
 			}
 		</style>
 	</head>
@@ -83,13 +84,13 @@ import MobileMenu from '../../components/MobileMenu.astro';
 				<video src="/videos/villa-connexion-22ter.mp4" class="w-[120px] aspect-[3/4] object-cover saturate-110" autoplay loop muted playsinline></video>
 			</div>
 
-			<a href="/projects/resort-life" class="mt-16 block pt-6" style="border-top: 0.5px solid #1c1c1c;">
+			<a href="/projects/resort-life" class="mt-16 block pt-6 max-md:hidden" style="border-top: 0.5px solid #1c1c1c;">
 				<p class="text-[0.76rem] font-[325] uppercase" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.08em; color: #8c8a84;">Next</p>
 				<p class="mt-1 text-[calc(0.76rem+2pt)] font-[325] tabular-nums" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">2/4<br />RESORT LIFE<br />stillness and light</p>
 			</a>
 			<div class="hidden max-md:block mt-16">
 				<h2 class="mb-4 text-[15px] font-normal uppercase" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c;">More projects</h2>
-				<div class="flex flex-row gap-3 overflow-x-auto" style="scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;">
+				<div class="flex flex-row gap-6 overflow-x-auto" style="scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;">
 					<a href="/projects/resort-life" class="w-[55vw] shrink-0" style="scroll-snap-align: start;">
 						<img src="/images/projects-photo-6.webp" alt="" class="aspect-[4/5] w-full object-cover object-bottom brightness-125" />
 						<p class="mt-2 text-[calc(0.76rem+1pt)] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">RESORT LIFE<br />stillness and light</p>
@@ -139,9 +140,12 @@ import MobileMenu from '../../components/MobileMenu.astro';
 					el.style.top = (window.scrollY + offset) + 'px';
 				});
 			};
-			syncBlendFixed();
-			window.addEventListener('scroll', syncBlendFixed, { passive: true });
 			window.addEventListener('resize', syncBlendFixed);
+			const blendFixedLoop = () => {
+				syncBlendFixed();
+				requestAnimationFrame(blendFixedLoop);
+			};
+			blendFixedLoop();
 
 			const alignRightEdgeTo = (el, targetX) => {
 				const currentMR = parseFloat(getComputedStyle(el).marginRight) || 0;

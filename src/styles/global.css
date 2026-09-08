@@ -11,6 +11,12 @@ body {
 	background-color: #fff;
 }
 
+@media (max-width: 767px) {
+	#site-logo {
+		visibility: hidden;
+	}
+}
+
 @font-face {
 	font-family: "Restora";
 	src: url("/fonts/restora.otf") format("opentype");
