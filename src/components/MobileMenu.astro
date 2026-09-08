@@ -51,12 +51,9 @@ const items = [
 	<button
 		id="mobile-menu-close"
 		aria-label="Close menu"
-		class={`fixed z-50 ${right}`}
-		style="top: 19px; width: 22px; height: 14px; touch-action: manipulation;"
-	>
-		<span class="absolute left-1/2 top-1/2 h-[1.5px] w-[22px]" style="background-color: #1c1c1c; transform: translate(-50%, -50%) rotate(45deg);"></span>
-		<span class="absolute left-1/2 top-1/2 h-[1.5px] w-[22px]" style="background-color: #1c1c1c; transform: translate(-50%, -50%) rotate(-45deg);"></span>
-	</button>
+		class={`fixed z-50 ${right} text-[calc(0.76rem+1pt)] font-[325] uppercase`}
+		style="top: 19px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.05em; touch-action: manipulation; color: #1c1c1c;"
+	>close</button>
 	<nav class="flex h-full flex-col justify-center gap-6 pl-6 text-[1.15rem] font-[325] lowercase" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c;">
 		<div class="flex flex-col gap-1">
 			{items.map((item) => (
