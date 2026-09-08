@@ -29,8 +29,6 @@ import MobileMenu from '../components/MobileMenu.astro';
 			#site-header { animation: none; opacity: 1; }
 			#mobile-menu-overlay { animation: none; opacity: 1; }
 			@media (max-width: 767px) {
-				#site-header { position: absolute; z-index: auto; }
-				#site-header #site-logo { color: #fff; mix-blend-mode: difference; }
 				#htrack .photo-visual { will-change: filter; }
 				.photo-cycle-07 { display: none; }
 				#projects-big-img, .projects-thumb, #caption-wrap, #projects-connector-line, #projects-page-indicator { display: none; }
@@ -748,21 +746,6 @@ import MobileMenu from '../components/MobileMenu.astro';
 				layoutMobileHero();
 			});
 			window.addEventListener('load', layoutMobileHero);
-
-			const headerBlendOffset = parseFloat(getComputedStyle(siteHeader).top) || 0;
-			const syncHeaderBlend = () => {
-				if (window.innerWidth < 768) {
-					siteHeader.style.top = (window.scrollY + headerBlendOffset) + 'px';
-				} else {
-					siteHeader.style.top = '';
-				}
-			};
-			window.addEventListener('resize', syncHeaderBlend);
-			const headerBlendLoop = () => {
-				syncHeaderBlend();
-				requestAnimationFrame(headerBlendLoop);
-			};
-			headerBlendLoop();
 
 			const bigImg = document.getElementById('projects-big-img');
 			const bigPreviewImgs = bigImg ? Array.from(bigImg.querySelectorAll('.big-preview-img')) : [];
