@@ -25,11 +25,15 @@ import MobileMenu from '../../components/MobileMenu.astro';
 			.nav-link::after { content: ""; position: absolute; left: 0; bottom: 1px; width: 0; height: 1px; background: currentColor; transition: width 0.3s ease; }
 			.nav-link:hover::after { width: 100%; }
 			.nav-link.active::after { width: 100%; }
+			@media (max-width: 767px) {
+				#site-logo { color: #1c1c1c !important; mix-blend-mode: normal !important; }
+			}
 		</style>
 	</head>
 	<body>
 		<div style="position: absolute; inset: 0; z-index: -1; background: #fff;"></div>
 		<main class="min-h-screen px-6 pb-24 pt-48 reveal-page">
+			<p class="hidden max-md:block mb-8 text-center text-[calc(0.76rem+2pt)] font-[325] tabular-nums" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">RESORT LIFE<br />stillness and light</p>
 			<div id="rl-row7" class="relative mt-[-25px] ml-[709px] flex w-fit flex-row items-end gap-4">
 				<img id="rl-img7" src="/images/resort-life/7.webp" alt="" class="w-[300px] aspect-[4/5] object-cover" loading="lazy" />
 				<div id="rl-text-col" class="absolute flex h-[400px] flex-col justify-between">
@@ -82,19 +86,24 @@ import MobileMenu from '../../components/MobileMenu.astro';
 				<p class="text-[0.76rem] font-[325] uppercase" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.08em; color: #8c8a84;">Next</p>
 				<p class="mt-1 text-[calc(0.76rem+2pt)] font-[325] tabular-nums" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">3/4<br />CURATED PLACES<br />lifestyle, food and culture</p>
 			</a>
+			<div class="mt-16 hidden max-md:flex flex-col gap-1">
+				<a href="mailto:hello@senja.studio" class="block text-[calc(0.76rem+1pt)] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c;">hello@senja.studio</a>
+				<a href="https://www.instagram.com/roll.bysenja/" target="_blank" rel="noopener noreferrer" class="block text-[calc(0.76rem+1pt)] font-[325] lowercase" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c;">instagram</a>
+				<p class="block text-[calc(0.76rem+1pt)] font-[325]" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; line-height: 1.3;"><span style="color: #1c1c1c;">© 2026. SENJASTUDIO. All rights reserved.</span><br /><span style="color: #9a9a9a;">Design by Anna Chloé</span></p>
+			</div>
 		</main>
 
 		<div class="js-blend-fixed absolute top-3 left-6 right-6 flex flex-row items-start">
 			<a id="site-logo" href="/" class="block text-[41px] leading-tight font-normal" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.05em; color: #fff; mix-blend-mode: difference; text-transform: uppercase;">senja studio</a>
 		</div>
-		<div class="absolute top-3 left-1/2 z-10 w-1/2 pointer-events-none">
+		<div class="absolute top-3 left-1/2 z-10 w-1/2 pointer-events-none max-md:hidden">
 			<p class="text-[0.76rem] font-[325]" style="margin-top: 7px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #1c1c1c; line-height: 1.15;">2/4<br />RESORT LIFE<br />stillness and light</p>
 		</div>
 		<nav class="js-blend-fixed absolute right-6 hidden md:flex flex-row text-[0.76rem] font-[325]" style="top: 17px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 0.02em; color: #fff; mix-blend-mode: difference;">
 			<a href="/" class="nav-link active">projects</a><span>,&nbsp;</span><a href="/services" class="nav-link">services</a><span>,&nbsp;</span><a href="/about" class="nav-link">about</a><span>,&nbsp;</span><a href="/contact" class="nav-link">contact</a>
 		</nav>
-		<MobileMenu active="projects" blend={true} />
-		<a href="/" class="fixed left-6 z-10 text-2xl font-normal" style="top: 84px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #1c1c1c; text-decoration: none;">←</a>
+		<MobileMenu active="projects" label="menu" />
+		<a href="/" class="fixed left-6 z-10 text-2xl font-normal max-md:hidden" style="top: 84px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #1c1c1c; text-decoration: none;">←</a>
 
 		<Footer fixed={false} />
 		<script>
