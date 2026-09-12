@@ -1073,7 +1073,7 @@ import MobileMenu from '../components/MobileMenu.astro';
 			const raf = () => {
 				if (autoplayAnim) {
 					const t = Math.min(1, (performance.now() - autoplayAnim.start) / autoplayAnim.duration);
-					const eased = 1 - Math.pow(1 - t, 3);
+					const eased = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 					current = autoplayAnim.from + (autoplayAnim.to - autoplayAnim.from) * eased;
 					if (t >= 1) autoplayAnim = null;
 				} else {
