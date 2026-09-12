@@ -956,7 +956,6 @@ import MobileMenu from '../components/MobileMenu.astro';
 			if (window.ResizeObserver) {
 				new ResizeObserver(measure).observe(track);
 			}
-			const wrapVis = (v) => (((v % setWidth) + setWidth) % setWidth);
 			const AUTOPLAY_MS = 3000;
 			const AUTOPLAY_RESUME_MS = 6000;
 			const REVEAL_TOTAL_MS = 1900;
@@ -979,7 +978,7 @@ import MobileMenu from '../components/MobileMenu.astro';
 				const to = current + delta;
 				target = to;
 				autoplayAnim = { from, to, start: performance.now(), duration: AUTOPLAY_TWEEN_MS };
-				updateActive(wrapVis(to));
+				updateActive(to);
 				const safeHigh = centers.length - 2 * N;
 				if (activeBi >= safeHigh) {
 					activeBi -= 2 * N;
@@ -1010,7 +1009,7 @@ import MobileMenu from '../components/MobileMenu.astro';
 				target += d;
 				idle = 0;
 				snapped = false;
-				updateActive(wrapVis(target));
+				updateActive(target);
 				scheduleAutoplay(AUTOPLAY_RESUME_MS);
 			}, { passive: false });
 			const placeReel = () => {
@@ -1063,18 +1062,10 @@ import MobileMenu from '../components/MobileMenu.astro';
 			};
 			const centerOnFirst = () => {
 				const refBi = N;
-				activeBi = refBi;
-				activeM = 0;
 				const startVis = centers[refBi] - vw / 2;
 				current = startVis;
 				target = startVis;
-				figs.forEach((f, i) => {
-					f.classList.toggle('is-active', i === refBi);
-					f.classList.toggle('is-before', i < refBi);
-					f.classList.toggle('is-after', i > refBi);
-				});
-				if (numEl) numEl.textContent = '01';
-				if (themeEl) themeEl.textContent = themes[0];
+				updateActive(startVis);
 				snapped = true;
 			};
 			placeReel();
@@ -1088,7 +1079,7 @@ import MobileMenu from '../components/MobileMenu.astro';
 				} else {
 					current += (target - current) * 0.08;
 				}
-				const vis = wrapVis(current);
+				const vis = current;
 				track.style.transform = 'translate3d(' + (-vis) + 'px, 0, 0)';
 				if (!autoplayAnim) {
 					idle++;
